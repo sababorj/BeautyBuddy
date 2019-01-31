@@ -24,6 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/appDB', {useNewUrlParser: true});
+// Set index on our data(not recommended for big DB)
 mongoose.set('useCreateIndex', true);
 
 // Init the express-jwt middleware
