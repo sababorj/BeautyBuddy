@@ -17,7 +17,6 @@ class App extends Component {
   goToEditProfile = () => {
     this.props.history.replace('/profile');
   };
-
   render() {
     console.log(process.env.REACT_APP_SECRET_CODE);
     return (
