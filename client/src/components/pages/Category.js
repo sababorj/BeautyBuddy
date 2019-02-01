@@ -13,15 +13,19 @@ class Category extends Component {
      type: type
  }
 
+ GoToItem = (name) => {
+     alert(name)
+ }
+
  
     render() {
         return (
-            <div classNAme="row">
-            <div classNAme="col-6">
+            <div className="row">
+            <div className="col-6">
                 {this.state.type.map(item => (
                     <>
                 <h1 className="category-tag">{item.name}</h1>
-                <div className="category-image" style={ {backgroundImage : `url(${item.image})`}}>
+                <div className="category-image" style={ {backgroundImage : `url(${item.image})`}} onClick={()=> this.GoToItem(item.name)}>
                 </div>
                 </>
                 ))}
