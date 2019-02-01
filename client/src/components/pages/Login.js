@@ -37,10 +37,10 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="container center">
+      <div className="container pearl center">
         <div className="drop-top card mx-auto border-dark bg-light mb-3">
-          <div className="card-header">Login</div>
-          <div className="card-body">
+          <div className="card-header ">Login</div>
+          <div className="card-body pearl">
             <form onSubmit={this.handleFormSubmit}>
               <div className="form-group">
                 <label htmlFor="email">Email address:</label>
