@@ -12,7 +12,7 @@ export default {
   productResult: [],
   callMakeUp: function (category) {
     return new Promise((resolve, reject) => {
-      const queryUrl = `http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${category}`;
+      const queryUrl = `https://makeup-api.herokuapp.com/api/v1/products.json?product_type=${category}`;
       // const promise = new Promise(res, rej)
       axios.get(queryUrl)
         .then(response => {
