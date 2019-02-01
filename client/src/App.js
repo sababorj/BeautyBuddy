@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import AuthService from './components/pages/AuthService';
 import withAuth from './components/pages/withAuth';
-import Category from './components/pages/Category'
+import Category from './components/pages/Category';
 const Auth = new AuthService();
 
 class App extends Component {
