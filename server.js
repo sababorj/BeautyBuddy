@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const morgan = require('morgan'); // used to see requests
 const app = express();
 const db = require('./models');
+const io = require('socket.io');
 const PORT = process.env.PORT || 3001;
 
 // Setting CORS so that any website can
@@ -30,6 +31,13 @@ mongoose.set('useCreateIndex', true);
 // Init the express-jwt middleware
 const isAuthenticated = exjwt({
   secret: 'all sorts of code up in here'
+});
+
+io.on('connection', (socket) => {
+  console.log('a user connected');
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
 });
 
 

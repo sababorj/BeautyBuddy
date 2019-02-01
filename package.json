@@ -25,6 +25,7 @@
     "if-env": "^1.0.4",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.8",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "socket.io": "^2.2.0"
   }
 }
