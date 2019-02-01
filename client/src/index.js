@@ -28,6 +28,7 @@ ReactDOM.render(
             <Route exact path="/" component={Category} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
+            <Route exact path="/item" component={Item} />
             <Route exact path="/profile" component={Profile} />
         </div>
     </Router>
