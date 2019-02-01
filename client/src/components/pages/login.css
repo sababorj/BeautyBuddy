@@ -1,0 +1,9 @@
+.white-text {
+    color:white;
+}
+
+.drop-top {
+    margin-top: 15vh;
+    margin-bottom: 50vh;
+    max-width: 25rem;
+}
