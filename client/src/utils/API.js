@@ -30,15 +30,19 @@ export default {
   },
 
   itemCall: function (category) {
-    const itemMap = new Map();
-    itemMap.set('Eye', 'mascara');
-    itemMap.set('Skin', 'foundation');
-    itemMap.set('Nail', 'nail_polish');
-    itemMap.set('Lip', 'lipstick');
-
-    this.callMakeUp(itemMap.get(category)).then(data => {
-      console.log(this.productResult)
-      return this.productResult
+    return new Promise((resolve, reject) => {
+      const itemMap = new Map();
+      itemMap.set('Eye', 'mascara');
+      itemMap.set('Skin', 'foundation');
+      itemMap.set('Nail', 'nail_polish');
+      itemMap.set('Lip', 'lipstick');
+  
+      this.callMakeUp(itemMap.get(category)).then(data => {
+        console.log(this.productResult)
+        resolve(this.productResult);
+      });
     });
+    
+
   }
 };

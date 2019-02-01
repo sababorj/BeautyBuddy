@@ -14,6 +14,7 @@ import Profile from './components/pages/Profile';
 import Signup from './components/pages/Signup';
 import Navbar from './components/Navbar';
 import Category from './components/pages/Category'
+import Item from './components/pages/Item'
 
 // Here is if we have an id_token in localStorage
 if(localStorage.getItem("id_token")) {
@@ -26,6 +27,7 @@ ReactDOM.render(
         <div>
             <Navbar />
             <Route exact path="/" component={Category} />
+            <Route exact path="/item" component={Item} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/item" component={Item} />

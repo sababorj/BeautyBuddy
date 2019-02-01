@@ -8,10 +8,14 @@ class Item extends Component {
         this.Auth = new AuthService();
     }
 
+    componentDidMount(){
+        console.log(this.props.location.state.productResult)
+    }
 
     render() {
         return (
             <div> Item </div>
+
         );
     }
 }
