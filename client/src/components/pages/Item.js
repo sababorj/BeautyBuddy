@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import AuthService from './AuthService';
-import { Link } from 'react-router-dom';
 
 class Item extends Component {
     constructor() {
