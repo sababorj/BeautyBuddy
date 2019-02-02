@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import AuthService from '../pages/AuthService';
+import "../pages/login.css";
 
 class Navbar extends Component {
     constructor() {
@@ -24,16 +25,16 @@ class Navbar extends Component {
         } else {
             return (
                 <ul className="nav justify-content-end">
-                <li className="nav-item">
-                  <a className="nav-link active" href="#">Active</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">Link</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">Link</a>
-                </li>
-              </ul>
+                    <li className="nav-item">
+                        <a className="nav-link nav-pages" href="#">PROFILE</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link nav-pages" href="#">ACCOUNT</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link nav-pages" onClick={this.handleLogout}>LOG OUT</a>
+                    </li>
+                </ul>
             );
         }
     };
@@ -42,7 +43,7 @@ class Navbar extends Component {
         return (
             <nav className="navbar navbar-expand-lg brand-h bg-white">
                 <div className="container">
-                    <Link className="navbar-brand brand-h" to="/">Beauty Buddy</Link>
+                    <Link className="navbar-brand brand-h" to="/">BeautyBuddy</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>

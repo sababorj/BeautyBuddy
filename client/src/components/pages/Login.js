@@ -39,7 +39,7 @@ class Login extends Component {
     return (
       <div className="container pearl center">
         <div className="drop-top card mx-auto bg-light mb-3">
-          <div className="card-header ">Login</div>
+          <div className="card-header">Login</div>
           <div className="card-body pearl">
             <form onSubmit={this.handleFormSubmit}>
               <div className="form-group">
