@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import AuthService from '../pages/AuthService';
+import "../pages/login.css";
 
 class Navbar extends Component {
     constructor() {
@@ -11,7 +12,7 @@ class Navbar extends Component {
     showNavigation = () => {
         if (this.Auth.loggedIn()) {
             return (
-                <ul className="navbar-nav">
+                <ul className="navbar-nav bg-white brand-h">
                     <li className="nav-item">
                         <Link className="nav-link" to="/profile">Profile</Link>
                     </li>
@@ -23,12 +24,15 @@ class Navbar extends Component {
             );
         } else {
             return (
-                <ul className="navbar-nav">
+                <ul className="nav justify-content-end">
                     <li className="nav-item">
-                        <Link className="nav-link" to="/signup">Signup</Link>
+                        <a className="nav-link nav-pages" href="#">PROFILE</a>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/login">Login</Link>
+                        <a className="nav-link nav-pages" href="#">ACCOUNT</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link nav-pages" onClick={this.handleLogout}>LOG OUT</a>
                     </li>
                 </ul>
             );
@@ -37,9 +41,9 @@ class Navbar extends Component {
 
     render() {
         return (
-            <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+            <nav className="navbar navbar-expand-lg brand-h bg-white">
                 <div className="container">
-                    <Link className="navbar-brand" to="/">React JWT App</Link>
+                    <Link className="navbar-brand brand-h" to="/">BeautyBuddy</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>

@@ -1,0 +1,29 @@
+.white-text {
+    color:white;
+}
+
+.nav-pages {
+    font-family: 'Oswald', sans-serif;
+    color:black;
+}
+
+.brand-h {
+    color: black;
+    font-weight: bold;
+    font-family: 'Fahkwang', sans-serif;
+}
+.drop-top {
+    margin-top: 15vh;
+    margin-bottom: 50vh;
+    max-width: 25rem;
+}
+
+.pearl {
+    background-image: url("https://www.tailoredoccasions.co.uk/opal-pocketfold.html");
+}
+
+body {
+    background-image: url("https://c8.staticflickr.com/8/7294/26977181263_1beca8f167_o.jpg");
+    background-size: 125%;
+    font-family: sans-serif;
+}
