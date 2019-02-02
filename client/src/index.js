@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 
 
 import registerServiceWorker from './registerServiceWorker';
@@ -30,7 +29,6 @@ ReactDOM.render(
             <Route exact path="/item" component={Item} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
-            <Route exact path="/item" component={Item} />
             <Route exact path="/profile" component={Profile} />
         </div>
     </Router>
