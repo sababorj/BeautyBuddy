@@ -2,9 +2,15 @@
     color:white;
 }
 
+.nav-pages {
+    font-family: 'Oswald', sans-serif;
+    color:black;
+}
+
 .brand-h {
-    color: darkslategrey;
+    color: black;
     font-weight: bold;
+    font-family: 'Fahkwang', sans-serif;
 }
 .drop-top {
     margin-top: 15vh;
