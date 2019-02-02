@@ -3,7 +3,6 @@ import AuthService from './AuthService';
 import type from '../../category.json';
 import './style.css';
 import API from '../../utils/API';
-import item from './Item';
 
 class Category extends Component {
     constructor() {
