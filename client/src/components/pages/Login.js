@@ -37,13 +37,13 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="container center">
-        <div className="drop-top card mx-auto border-dark bg-light mb-3">
+      <div className="container pearl center">
+        <div className="drop-top card mx-auto bg-light mb-3">
           <div className="card-header">Login</div>
-          <div className="card-body">
+          <div className="card-body pearl">
             <form onSubmit={this.handleFormSubmit}>
               <div className="form-group">
-                <label htmlFor="email">Email address:</label>
+                <label htmlFor="email">Email Address:</label>
                 <input className="form-control"
                   placeholder="Email"
                   name="email"
@@ -60,8 +60,8 @@ class Login extends Component {
                   id="pwd"
                   onChange={this.handleChange} />
               </div>
-              <button type="submit" className="btn mx-auto btn-dark">Submit</button>
-              <p><Link to="/signup" className="text-dark">Register</Link></p>
+              <button type="submit" className="btn mx-auto btn-light">Submit</button>
+              <button className="btn mx-auto btn-light"><Link to="/signup" className="text-dark">Register</Link></button>
               </form>
             
           </div>
