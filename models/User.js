@@ -22,10 +22,23 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  image:{
+    type: String,
+    default:"https://via.placeholder.com/200x200"
+  },
+  zipcode:{
+    type: Number,
+    default: 0
+  },
+  favBrand: {
+    type: [String],
+    default: ["benefit"]
+  },
   createdAt: {
     type: Date,
     default: Date.now
   }
+
 });
 
 // Execute before each user.save() call
