@@ -11,7 +11,7 @@ class Navbar extends Component {
     showNavigation = () => {
         if (this.Auth.loggedIn()) {
             return (
-                <ul className="navbar-nav">
+                <ul className="navbar-nav bg-white brand-h">
                     <li className="nav-item">
                         <Link className="nav-link" to="/profile">Profile</Link>
                     </li>
@@ -25,10 +25,10 @@ class Navbar extends Component {
             return (
                 <ul className="nav justify-content-end">
                 <li className="nav-item">
-                  <a class="nav-link active" href="#">Active</a>
+                  <a className="nav-link active" href="#">Active</a>
                 </li>
                 <li className="nav-item">
-                  <a class="nav-link" href="#">Link</a>
+                  <a className="nav-link" href="#">Link</a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="#">Link</a>
@@ -40,9 +40,9 @@ class Navbar extends Component {
 
     render() {
         return (
-            <nav className="navbar navbar-expand-lg navbar-dark">
+            <nav className="navbar navbar-expand-lg brand-h bg-white">
                 <div className="container">
-                    <Link className="navbar-brand" to="/">Beauty Buddy</Link>
+                    <Link className="navbar-brand brand-h" to="/">Beauty Buddy</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
