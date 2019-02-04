@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import withAuth from './withAuth';
 import API from '../../utils/API';
+import { Link } from 'react-router-dom';
 import "../pages/style.css";
 
 
@@ -11,6 +12,7 @@ class Profile extends Component {
       username: "",
       email: "",
       image: "",
+      imageURL: "",
       zipcode: "",
       favBrand: ""
     }
@@ -61,59 +63,50 @@ class Profile extends Component {
 
   render() {
     return (
-        <div className="container-fluid">
-          <div className="row">
+      <div className="container">
 
-            <div className="col-sm-3 card mx-auto bg-light mb-3">
-              <div className="profile-image" style={{ backgroundImage: `url(${this.state.image})` }}>
-                <form onSubmit={this.uploadPic} >
-                  <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
-                  <button type="submit">save</button>
-                </form>
-              </div>
-              <h5>Username: {this.state.username}</h5>
-              <h5>{this.state.zipcode}</h5>
-              <p>Favorite Brands:{this.state.favBrand}</p>
+        <div className="row">
+          <div className="col-sm-3 card mx-auto bg-light mb-3">
+            <div className="profile-image" style={{ backgroundImage: `url(${this.state.image})` }}>
+              <form onSubmit={this.uploadPic} >
+                <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
+                <button type="submit">save</button>
+              </form>
             </div>
-
-
-            <div className="col-md-9 card-columns mx-auto bg-light">
-              <div className="card saved-rem">
-                <img src="..." className="card-img-top" alt="..." />
-                <div className="card-body">
-                  <p className="card-text">SAVED 1</p>
-                </div>
-              </div>
-
-              <div className="card saved-rem">
-                <img src="..." className="card-img-top" alt="..." />
-                <div className="card-body">
-                  <p className="card-text">SAVED 2</p>
-                </div>
-              </div>
-
-              <div className="card saved-rem">
-                <img src="..." className="card-img-top" alt="..." />
-                <div className="card-body">
-                  <p className="card-text">SAVED 3</p>
-                </div>
-              </div>
-
-
-            </div>
-
-            <div className="row drop-top card mx-auto bg-light">
-              shop
-            </div>
+            <h6>Username: {this.state.username}</h6>
+            <h6>{this.state.zipcode}</h6>
+            <p>Brands you are interested in:{this.state.favBrand}</p>
           </div>
 
-          <div className="row drop-top card mx-auto bg-light">Google Places</div>
 
+          <div className="col-md-8 card-columns bg-light">
+            <div className="card saved-rem">
+              <img src="..." className="card-img-top" alt="..." />
+              <div className="card-body">
+                <p className="card-text">SAVED 1</p>
+              </div>
+            </div>
 
+            <div className="card saved-rem">
+              <img src="..." className="card-img-top" alt="..." />
+              <div className="card-body">
+                <p className="card-text">SAVED 2</p>
+              </div>
+            </div>
+
+            <div className="card saved-rem">
+              <img src="..." className="card-img-top" alt="..." />
+              <div className="card-body">
+                <p className="card-text">SAVED 3</p>
+              </div>
+            </div>
+
+          </div>
         </div>
 
-        )
-      }
-    }
-    
+      </div >
+   )
+  }
+}
+
 export default withAuth(Profile);
