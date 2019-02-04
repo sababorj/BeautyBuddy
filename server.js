@@ -74,6 +74,16 @@ app.post('/api/signup', (req, res) => {
     .catch(err => res.status(400).json(err));
 });
 
+// Update Route
+app.post('/api/update', (req,res) => {
+  switch (req.body.piece){
+    case 'image':
+    db.User.findOneAndUpdate({username:req.body.username},{image:req.body.data})
+    .then(data => res.json(data))
+    .catch(err => res.status(400).json(err));
+  }
+})
+
 // Any route with isAuthenticated is protected and you need a valid token
 // to access
 app.get('/api/user/:id', isAuthenticated, (req, res) => {
