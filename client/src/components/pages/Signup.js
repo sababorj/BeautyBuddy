@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AuthService from './AuthService';
 import API from '../../utils/API';
-import "./login.css";
+import "./style.css";
 
 class Signup extends Component {
   constructor() {

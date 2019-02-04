@@ -40,8 +40,8 @@ class Profile extends Component {
   render() {
     return (
       <div className="container">
-        <div className="row">
-          <div className="col-sm drop-top card mx-auto bg-light mb-3">
+        <div className="row card">
+          <div className="card-body col-sm drop-top card mx-auto bg-light mb-3">
             <img src={this.state.image} />
             <h5>Username: {this.state.username}</h5>
             <h5>{this.state.zipcode}</h5>
