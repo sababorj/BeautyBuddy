@@ -26,13 +26,7 @@ class Navbar extends Component {
             return (
                 <ul className="nav justify-content-end">
                     <li className="nav-item">
-                        <a className="nav-link nav-pages" href="#">PROFILE</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link nav-pages" href="#">MESSAGES</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link nav-pages" onClick={this.handleLogout}>LOG OUT</a>
+                        <a className="nav-link nav-pages" href="/login">Login</a>
                     </li>
                 </ul>
             );
