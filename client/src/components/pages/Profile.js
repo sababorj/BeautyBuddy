@@ -67,13 +67,13 @@ class Profile extends Component {
         <div className="row">
 
           <div className="col-sm-3 card mx-auto bg-light mb-3">
-            <h5>Username: {this.state.username}</h5>
             <div className="profile-image" style={{ backgroundImage: `url(${this.state.image})` }}>
               <form onSubmit={this.uploadPic} >
                 <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
                 <button type="submit">save</button>
               </form>
             </div>
+            <h5>Username: {this.state.username}</h5>
             <h5>{this.state.zipcode}</h5>
             <p>Brands you are interested in:{this.state.favBrand}</p>
           </div>

@@ -66,14 +66,12 @@ body {
   display: inline-block;
 }
 
-  .upload-btn {
+.upload-btn {
       color: white;
       border: 0ch;
       background-color: cadetblue
   }
-  .category-tag {
+  
+.category-tag {
       text-align: center
   }
-.black {
-    background-color: black;
-}
