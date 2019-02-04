@@ -13,6 +13,10 @@ export default {
     return axios.post('api/signup', { username: username, email: email, password: password });
   },
 
+  updateUser: (piece,username,data) => {
+    return axios.post('/api/update', {piece: piece, username:username, data:data});
+  },
+
   productResult: [],
   callMakeUp: function (category) {
     return new Promise((resolve, reject) => {

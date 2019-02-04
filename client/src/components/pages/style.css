@@ -1,12 +1,80 @@
+/* Global Styles*/
+
+body {
+    background-image: url("/client/public/image/cosmetic.jpg");
+    background-size: 100%;
+    width: 100%;
+    font-family: sans-serif;
+}
+
+
 .category-image{
-    height: 400px;
-    width: 400px;
+    height:300px;
+    width: 300px;
     text-align: center;
     background-repeat: no-repeat;
     margin: 0 auto 20px;
   }
-  .category-tag{
-      text-align: center
+  .profile-image {
+    height: 200px;
+    width: 200px;
+    background-size: contain;
+  }
+  .header{
+      font-size: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      text-align: center;
+      background-color: lightyellow;
+  }
+  .container {
+      background-color: white;
+      padding-top: 50px;
   }
 
-  
+/*Login Page & Global Card Styling*/
+
+.white-text {
+    color:white;
+}
+
+.nav-pages {
+    font-family: 'Oswald', sans-serif;
+    color:black;
+}
+
+.brand-h {
+    color: black;
+    font-weight: bold;
+    font-family: 'Fahkwang', sans-serif;
+}
+.drop-top {
+    margin-top: 15vh;
+    margin-bottom: 50vh;
+    max-width: 25rem;
+}
+
+.pearl {
+    background-image: url("https://www.tailoredoccasions.co.uk/opal-pocketfold.html");
+}
+
+.shop-save {
+    width: 75%;
+}
+
+.saved-rem {
+  width: 25%;
+  display: inline-block;
+}
+
+  .upload-btn {
+      color: white;
+      border: 0ch;
+      background-color: cadetblue
+  }
+  .category-tag {
+      text-align: center
+  }
+.black {
+    background-color: black;
+}
