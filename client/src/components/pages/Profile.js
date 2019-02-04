@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import withAuth from './withAuth';
 import API from '../../utils/API';
 import { Link } from 'react-router-dom';
+import "../pages/style.css";
+
 
 class Profile extends Component {
 
@@ -37,12 +39,56 @@ class Profile extends Component {
 
   render() {
     return (
-      <div className="container Profile">
-        <h5>Username: {this.state.username}</h5>
-        <img src={this.state.image} />
-        <h5>{this.state.zipcode}</h5>
-        <p>Brands you are interested in:{this.state.favBrand}</p>
+      <div className="container-fluid">
+        <div className="row">
+        
+          <div className="col-sm-3 card mx-auto bg-light mb-3">
+            <img src={this.state.image} />
+            <h5>Username: {this.state.username}</h5>
+            <h5>{this.state.zipcode}</h5>
+            <p>Favorite Brands:{this.state.favBrand}</p>
+          </div>
+
+
+          <div className="col-md-9 card-columns mx-auto bg-light">
+            <div className="card saved-rem">
+              <img src="..." className="card-img-top" alt="..." />
+              <div className="card-body">
+                <p className="card-text">SAVED 1</p>
+              </div>
+            </div>
+
+            <div className="card saved-rem">
+              <img src="..." className="card-img-top" alt="..." />
+              <div className="card-body">
+                <p className="card-text">SAVED 2</p>
+              </div>
+            </div>
+
+            <div className="card saved-rem">
+              <img src="..." className="card-img-top" alt="..." />
+              <div className="card-body">
+                <p className="card-text">SAVED 3</p>
+              </div>
+            </div>
+
+
+          </div>
+
+
+
+          <div className="row drop-top card mx-auto bg-light">
+            shop
+            </div>
+        </div>
+
+        <div className="row drop-top card mx-auto bg-light">Google Places</div>
+
+
       </div>
+
+
+
     )
   }
 }

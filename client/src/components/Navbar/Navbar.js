@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import AuthService from '../pages/AuthService';
-import "../pages/login.css";
+import "../pages/style.css";
 
 class Navbar extends Component {
     constructor() {
@@ -14,7 +14,7 @@ class Navbar extends Component {
             return (
                 <ul className="navbar-nav bg-white brand-h">
                     <li className="nav-item">
-                        <Link className="nav-link" to="/profile">Profile</Link>
+                        <Link className="nav-link" to="/profile">PROFILE</Link>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link nav-pages" href="/message">Message</a>
@@ -29,7 +29,7 @@ class Navbar extends Component {
             return (
                 <ul className="nav justify-content-end">
                     <li className="nav-item">
-                        <a className="nav-link nav-pages" href="/login">Login</a>
+                        <a className="nav-link nav-pages" href="/login">LOGIN</a>
                     </li>
                 </ul>
             );
