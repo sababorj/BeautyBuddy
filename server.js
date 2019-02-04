@@ -97,6 +97,14 @@ app.post('/api/google/:zipcode', (req, res) => {
     let lattitude = result.geometry.location.lat;
     let longitude = result.geometry.location.lng;
     console.log(`Lat: ${lattitude} | Long: ${longitude}`);
+    const placesUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lattitude},${longitude}&radius=15000&type=beauty_salon&key=${placesApiKey}`;
+    // axios.get(placesUrl).then(response => {
+    //   let nearbyResult = response.results;
+    //         // for loop through JSON response retrieve place info
+    //         for (var i = 0; i < 5; i++) {
+    //           let store = nearbyResult
+    //         }
+    // })
   })
 
   res.send(`Query: ${geocodeUrl}`);
