@@ -1,3 +1,12 @@
+/* Global Styles*/
+
+body {
+    background-image: url("https://c8.staticflickr.com/8/7294/26977181263_1beca8f167_o.jpg");
+    background-size: 125%;
+    font-family: sans-serif;
+}
+
+
 .category-image{
     height: 400px;
     width: 400px;
@@ -35,8 +44,6 @@
     background-image: url("https://www.tailoredoccasions.co.uk/opal-pocketfold.html");
 }
 
-body {
-    background-image: url("https://c8.staticflickr.com/8/7294/26977181263_1beca8f167_o.jpg");
-    background-size: 125%;
-    font-family: sans-serif;
+.shop-save {
+    width: 75%;
 }
