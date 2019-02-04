@@ -29,7 +29,7 @@ class Navbar extends Component {
                         <a className="nav-link nav-pages" href="#">PROFILE</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link nav-pages" href="#">ACCOUNT</a>
+                        <a className="nav-link nav-pages" href="#">MESSAGES</a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link nav-pages" onClick={this.handleLogout}>LOG OUT</a>
