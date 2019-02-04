@@ -6,14 +6,20 @@ import "../pages/style.css";
 
 
 class Profile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      email: "",
+      image: "",
+      imageURL: "",
+      zipcode: "",
+      favBrand: ""
+    }
 
-  state = {
-    username: "",
-    email: "",
-    image: "",
-    zipcode: "",
-    favBrand: ""
-  };
+    this.uploadPic = this.uploadPic.bind(this);
+
+  }
 
   componentDidMount() {
     API.getUser(this.props.user.id).then(res => {
@@ -37,20 +43,43 @@ class Profile extends Component {
     })
   }
 
+  uploadPic(e) {
+    e.preventDefault();
+    const data = new FormData();
+    data.append('file', this.uploadInput.files[0]);
+    data.append('category', 'image');
+
+    fetch('https://www.fileconvrtr.com/api/convert/file?apiKey=a8f545dbb31244a5b081a8cc6bdf37f7', {
+      method: 'POST',
+      body: data,
+    }).then((response) => {
+      response.json().then((body) => {
+        this.setState({ image: body.s3Url });
+        console.log(this.state)
+        API.updateUser('image', this.state.username, body.s3Url)
+      })
+    });
+  }
+
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container">
+
         <div className="row">
-        
           <div className="col-sm-3 card mx-auto bg-light mb-3">
-            <img src={this.state.image} />
-            <h5>Username: {this.state.username}</h5>
-            <h5>{this.state.zipcode}</h5>
-            <p>Favorite Brands:{this.state.favBrand}</p>
+            <div className="profile-image" style={{ backgroundImage: `url(${this.state.image})` }}>
+              <form onSubmit={this.uploadPic} >
+                <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
+                <button type="submit">save</button>
+              </form>
+            </div>
+            <h6>Username: {this.state.username}</h6>
+            <h6>{this.state.zipcode}</h6>
+            <p>Brands you are interested in:{this.state.favBrand}</p>
           </div>
 
 
-          <div className="col-md-9 card-columns mx-auto bg-light">
+          <div className="col-md-8 card-columns bg-light">
             <div className="card saved-rem">
               <img src="..." className="card-img-top" alt="..." />
               <div className="card-body">
@@ -72,24 +101,11 @@ class Profile extends Component {
               </div>
             </div>
 
-
           </div>
-
-
-
-          <div className="row drop-top card mx-auto bg-light">
-            shop
-            </div>
         </div>
 
-        <div className="row drop-top card mx-auto bg-light">Google Places</div>
-
-
-      </div>
-
-
-
-    )
+      </div >
+   )
   }
 }
 

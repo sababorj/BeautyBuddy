@@ -1,26 +1,33 @@
 [
     {
+        "id":1,
         "name": "",
         "image": "/image/eyemakep.jpg"
     },
     {
+        "id":2,
         "name": "",
         "image": "/image/light-yellow.jpg"
     },
+
     {
-        "name": "",
+        "id":3,
+        "name": "Lip",
         "image": "/image/lips.jpg"
     },
     {
-        "name": "",
+        "id":4,
+        "name": "Nail",
         "image": "/image/nailart.jpg"
     },
     {
+        "id":5,
         "name": "",
         "image": "/image/light-yellow.jpg"
     },
     {
-        "name": "",
+        "id":6,
+        "name": "Skin",
         "image": "/image/skinpro.jpg"
     }
 ]
