@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const morgan = require('morgan'); // used to see requests
 const app = express();
 const db = require('./models');
+const axios = require('axios');
 const PORT = process.env.PORT || 3001;
 
 // Setting CORS so that any website can
@@ -23,7 +24,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/appDB', {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/appDB', { useNewUrlParser: true });
 // Set index on our data(not recommended for big DB)
 mongoose.set('useCreateIndex', true);
 
@@ -32,6 +33,23 @@ const isAuthenticated = exjwt({
   secret: 'all sorts of code up in here'
 });
 
+// API Call for product data
+  let productType = "foundation";
+  const queryUrl = `http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${productType}`;
+
+  axios.get(queryUrl)
+    .then(response => {
+      for (let i = 0; i < 4; i++) {
+        let brand = response.data[i].brand;
+        console.log(brand);
+        
+      }
+    })
+    .catch(error => {
+      console.log(error);
+})
+
+
 
 // LOGIN ROUTE
 app.post('/api/login', (req, res) => {
@@ -39,14 +57,14 @@ app.post('/api/login', (req, res) => {
     email: req.body.email
   }).then(user => {
     user.verifyPassword(req.body.password, (err, isMatch) => {
-      if(isMatch && !err) {
+      if (isMatch && !err) {
         let token = jwt.sign({ id: user._id, email: user.email }, 'all sorts of code up in here', { expiresIn: 129600 }); // Sigining the token
-        res.json({success: true, message: "Token Issued!", token: token, user: user});
+        res.json({ success: true, message: "Token Issued!", token: token, user: user });
       } else {
-        res.status(401).json({success: false, message: "Authentication failed. Wrong password."});
+        res.status(401).json({ success: false, message: "Authentication failed. Wrong password." });
       }
     });
-  }).catch(err => res.status(404).json({success: false, message: "User not found", error: err}));
+  }).catch(err => res.status(404).json({ success: false, message: "User not found", error: err }));
 });
 
 // SIGNUP ROUTE
@@ -60,10 +78,10 @@ app.post('/api/signup', (req, res) => {
 // to access
 app.get('/api/user/:id', isAuthenticated, (req, res) => {
   db.User.findById(req.params.id).then(data => {
-    if(data) {
+    if (data) {
       res.json(data);
     } else {
-      res.status(404).send({success: false, message: 'No user found'});
+      res.status(404).send({ success: false, message: 'No user found' });
     }
   }).catch(err => res.status(400).send(err));
 });
@@ -90,10 +108,10 @@ app.use(function (err, req, res, next) {
 
 // Send every request to the React app
 // Define any API routes before this runs
-app.get("*", function(req, res) {
+app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
 });

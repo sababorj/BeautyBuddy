@@ -14,7 +14,6 @@ class Item extends Component {
     render() {
         return (
             <div> Item </div>
-
         );
     }
 }
