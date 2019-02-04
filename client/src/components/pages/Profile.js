@@ -15,9 +15,6 @@ class Profile extends Component {
 
   componentDidMount() {
     API.getUser(this.props.user.id).then(res => {
-      API.postZip(this.props.user.zipcode).then(res => {
-        console.log(res.data);
-      })
       if (res.data.zipcode === 0) {
         this.setState({
           username: res.data.username,
@@ -38,14 +35,20 @@ class Profile extends Component {
     })
   }
 
+  getBeautyPlaces = () => {
+    API.postZip(this.state.zipcode).then(res => {
+      console.log(res.data);
+    })
+  }
 
   render() {
     return (
       <div className="container Profile">
         <h5>Username: {this.state.username}</h5>
-        <img src={this.state.image} />
+        <img src={this.state.image} alt="avatar" />
         <h5>{this.state.zipcode}</h5>
         <p>Brands you are interested in:{this.state.favBrand}</p>
+        <button onClick={this.getBeautyPlaces}>Find Beauty Store</button>
       </div>
     )
   }
