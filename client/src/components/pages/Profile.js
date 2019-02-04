@@ -39,9 +39,9 @@ class Profile extends Component {
 
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container">
         <div className="row">
-        
+
           <div className="col-sm-3 card mx-auto bg-light mb-3">
             <img src={this.state.image} />
             <h5>Username: {this.state.username}</h5>
@@ -49,8 +49,7 @@ class Profile extends Component {
             <p>Favorite Brands:{this.state.favBrand}</p>
           </div>
 
-
-          <div className="col-md-9 card-columns mx-auto bg-light">
+          <div className="col-md-8 card-columns bg-light">
             <div className="card saved-rem">
               <img src="..." className="card-img-top" alt="..." />
               <div className="card-body">
@@ -72,20 +71,14 @@ class Profile extends Component {
               </div>
             </div>
 
-
           </div>
 
 
+          
 
-          <div className="row drop-top card mx-auto bg-light">
-            shop
-            </div>
         </div>
 
-        <div className="row drop-top card mx-auto bg-light">Google Places</div>
-
-
-      </div>
+      </div >
 
 
 
