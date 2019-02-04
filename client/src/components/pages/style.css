@@ -47,3 +47,12 @@ body {
 .shop-save {
     width: 75%;
 }
+
+.saved-rem {
+  width: 25%;
+  display: inline-block;
+}
+
+.black {
+    background-color: black;
+}
