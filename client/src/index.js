@@ -12,8 +12,9 @@ import Login from './components/pages/Login';
 import Profile from './components/pages/Profile';
 import Signup from './components/pages/Signup';
 import Navbar from './components/Navbar';
-import Category from './components/pages/Category'
-import Item from './components/pages/Item'
+import Category from './components/pages/Category';
+import Item from './components/pages/Item';
+import Message from './components/pages/Message';
 
 // Here is if we have an id_token in localStorage
 if(localStorage.getItem("id_token")) {
@@ -29,6 +30,7 @@ ReactDOM.render(
             <Route exact path="/item" component={Item} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
+            <Route exact path="/message" component={Message} />
             <Route exact path="/profile" component={Profile} />
         </div>
     </Router>
