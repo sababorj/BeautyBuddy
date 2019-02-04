@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AuthService from './AuthService';
 import { Link } from 'react-router-dom';
-import "./login.css";
+import "./style.css";
 class Login extends Component {
   constructor() {
     super();

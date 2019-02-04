@@ -1,5 +1,6 @@
 [
     {
+<<<<<<< HEAD
         "name": "",
         "image": "/image/eyemakep.jpg"
     },
@@ -22,5 +23,25 @@
     {
         "name": "",
         "image": "/image/skinpro.jpg"
+=======
+        "id":1,
+        "name": "Eye",
+        "image": "/image/eye.jpg"
+    },
+    {
+        "id":2,
+        "name": "Lip",
+        "image": "/image/lip.jpg"
+    },
+    {
+        "id":3,
+        "name": "Nail",
+        "image": "/image/nail.jpg"
+    },
+    {
+        "id":4,
+        "name": "Skin",
+        "image": "/image/skin.jpg"
+>>>>>>> d3ef09ffeb9e39ef51e95630d1ac5b4ac9be7336
     }
 ]

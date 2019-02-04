@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import AuthService from '../pages/AuthService';
-import "../pages/login.css";
+import "../pages/style.css";
 
 class Navbar extends Component {
     constructor() {
@@ -14,7 +14,10 @@ class Navbar extends Component {
             return (
                 <ul className="navbar-nav bg-white brand-h">
                     <li className="nav-item">
-                        <Link className="nav-link" to="/profile">Profile</Link>
+                        <Link className="nav-link" to="/profile">PROFILE</Link>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link nav-pages" href="/message">Message</a>
                     </li>
                     <li className="nav-item">
                         {/* this is not using the Link component to logout or user and then refresh the application to the start */}
@@ -26,13 +29,7 @@ class Navbar extends Component {
             return (
                 <ul className="nav justify-content-end">
                     <li className="nav-item">
-                        <a className="nav-link nav-pages" href="#">PROFILE</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link nav-pages" href="#">MESSAGES</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link nav-pages" onClick={this.handleLogout}>LOG OUT</a>
+                        <a className="nav-link nav-pages" href="/login">LOGIN</a>
                     </li>
                 </ul>
             );
