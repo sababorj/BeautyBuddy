@@ -35,20 +35,20 @@ const isAuthenticated = exjwt({
 });
 
 // API Call for product data
-  let productType = "foundation";
-  const queryUrl = `http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${productType}`;
+let productType = "foundation";
+const queryUrl = `http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${productType}`;
 
-  axios.get(queryUrl)
-    .then(response => {
-      for (let i = 0; i < 4; i++) {
-        let brand = response.data[i].brand;
-        console.log(brand);
-        
-      }
-    })
-    .catch(error => {
-      console.log(error);
-})
+axios.get(queryUrl)
+  .then(response => {
+    for (let i = 0; i < 4; i++) {
+      let brand = response.data[i].brand;
+      console.log(brand);
+
+    }
+  })
+  .catch(error => {
+    console.log(error);
+  })
 
 
 
@@ -87,10 +87,20 @@ app.get('/api/user/:id', isAuthenticated, (req, res) => {
   }).catch(err => res.status(400).send(err));
 });
 
-app.post('/api/google/:zipcode', (req,res) => {
-    let zip = req.params.zipcode;
-    res.send(`You are here: ${zip}`);
-})
+app.post('/api/google/:zipcode', (req, res) => {
+  let zip = req.params.zipcode;
+  const placesApiKey = "AIzaSyD5YTMyDlZYKKMMrlYIguDdqT68DxBrLx4";
+  const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:${zip}&key=${placesApiKey}`;
+  
+  axios.get(geocodeUrl).then(response => {
+    let result = response.data.results[0];
+    let lattitude = result.geometry.location.lat;
+    let longitude = result.geometry.location.lng;
+    console.log(`Lat: ${lattitude} | Long: ${longitude}`);
+  })
+
+  res.send(`Query: ${geocodeUrl}`);
+});
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
