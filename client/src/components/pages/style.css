@@ -5,8 +5,17 @@
     background-repeat: no-repeat;
     margin: 0 auto 20px;
   }
-  .category-tag{
-      text-align: center
+  .profile-image {
+    height: 200px;
+    width: 200px;
+    background-size: contain;
   }
 
-  
+  .upload-btn {
+      color: white;
+      border: 0ch;
+      background-color: cadetblue
+  }
+  .category-tag {
+      text-align: center
+  }
