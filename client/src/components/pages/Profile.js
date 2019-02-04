@@ -15,6 +15,9 @@ class Profile extends Component {
 
   componentDidMount() {
     API.getUser(this.props.user.id).then(res => {
+      API.postZip(this.props.user.zipcode).then(res => {
+        console.log(res.data);
+      })
       if (res.data.zipcode === 0) {
         this.setState({
           username: res.data.username,
@@ -34,6 +37,7 @@ class Profile extends Component {
       };
     })
   }
+
 
   render() {
     return (

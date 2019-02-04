@@ -4,6 +4,10 @@ export default {
   getUser: (id) => {
     return axios.get(`/api/user/${id}`);
   },
+
+  postZip: (zipcode) => {
+    return axios.post(`/api/google/${zipcode}`)
+  },
   // sign up a user to our service
   signUpUser: (username, email, password) => {
     return axios.post('api/signup', { username: username, email: email, password: password });
