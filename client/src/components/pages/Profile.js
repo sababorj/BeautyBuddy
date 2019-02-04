@@ -64,8 +64,8 @@ class Profile extends Component {
   render() {
     return (
       <div className="container">
-        <div className="row">
 
+        <div className="row">
           <div className="col-sm-3 card mx-auto bg-light mb-3">
             <div className="profile-image" style={{ backgroundImage: `url(${this.state.image})` }}>
               <form onSubmit={this.uploadPic} >
@@ -73,10 +73,11 @@ class Profile extends Component {
                 <button type="submit">save</button>
               </form>
             </div>
-            <h5>Username: {this.state.username}</h5>
-            <h5>{this.state.zipcode}</h5>
+            <h6>Username: {this.state.username}</h6>
+            <h6>{this.state.zipcode}</h6>
             <p>Brands you are interested in:{this.state.favBrand}</p>
           </div>
+
 
           <div className="col-md-8 card-columns bg-light">
             <div className="card saved-rem">
