@@ -8,14 +8,25 @@ body {
 
 
 .category-image{
-    height: 400px;
-    width: 400px;
+    height:300px;
+    width: 300px;
     text-align: center;
     background-repeat: no-repeat;
     margin: 0 auto 20px;
   }
   .category-tag{
       text-align: center
+  }
+  .header{
+      font-size: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      text-align: center;
+      background-color: lightyellow;
+  }
+  .container {
+      background-color: white;
+      padding-top: 50px;
   }
 
 /*Login Page & Global Card Styling*/

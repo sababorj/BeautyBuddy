@@ -25,8 +25,12 @@ class Category extends Component {
 
     render() {
         return (
-            <div className="row">
-                <div className="col-6">
+            <div>
+            <div className="header">
+                <h1>Wink, Smile & Shine!</h1>
+            </div>
+            <div className="container">
+                <div className="row">
                     {this.state.type.map(item => (
                         <>
                             <h1 key={item.id} className="category-tag">{item.name}</h1>
@@ -35,6 +39,7 @@ class Category extends Component {
                         </>
                     ))}
                 </div>
+            </div>
             </div>
         );
     }
