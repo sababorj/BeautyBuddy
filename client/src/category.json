@@ -1,22 +1,36 @@
 [
     {
         "id":1,
-        "name": "Eye",
-        "image": "/image/eye.jpg"
+        "name": "",
+        "image": "/image/light-yellow.jpg"
     },
     {
         "id":2,
-        "name": "Lip",
-        "image": "/image/lip.jpg"
+        "name": "",
+        "image": "/image/light-yellow.jpg"
     },
-    {
+       {
         "id":3,
-        "name": "Nail",
-        "image": "/image/nail.jpg"
+        "name": "Eye",
+        "image": "/image/eyemakep.jpg"
     },
     {
         "id":4,
+        "name": "Lip",
+        "image": "/image/lips.jpg"
+    },
+    {
+        "id":5,
+        "name": "Nail",
+        "image": "/image/nailart.jpg"
+    },
+    {
+        "id":6,
         "name": "Skin",
+<<<<<<< HEAD
         "image": "/image/skin.jpg"
+=======
+        "image": "/image/skinpro.jpg"
+>>>>>>> 2355eb3d0f9fb6ff9328122768dae65953c75577
     }
 ]
