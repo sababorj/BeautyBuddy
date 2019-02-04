@@ -17,6 +17,9 @@ class Navbar extends Component {
                         <Link className="nav-link" to="/profile">Profile</Link>
                     </li>
                     <li className="nav-item">
+                        <a className="nav-link nav-pages" href="/message">Message</a>
+                    </li>
+                    <li className="nav-item">
                         {/* this is not using the Link component to logout or user and then refresh the application to the start */}
                         <a className="nav-link" href="/" onClick={() => this.Auth.logout()}>Logout</a>
                     </li>
@@ -26,13 +29,7 @@ class Navbar extends Component {
             return (
                 <ul className="nav justify-content-end">
                     <li className="nav-item">
-                        <a className="nav-link nav-pages" href="#">PROFILE</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link nav-pages" href="#">ACCOUNT</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link nav-pages" onClick={this.handleLogout}>LOG OUT</a>
+                        <a className="nav-link nav-pages" href="/login">Login</a>
                     </li>
                 </ul>
             );

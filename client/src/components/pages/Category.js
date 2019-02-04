@@ -29,8 +29,8 @@ class Category extends Component {
                 <div className="col-6">
                     {this.state.type.map(item => (
                         <>
-                            <h1 className="category-tag">{item.name}</h1>
-                            <div className="category-image" style={{ backgroundImage: `url(${item.image})` }} onClick={() => this.GoToItem(item.name)}>
+                            <h1 key={item.id} className="category-tag">{item.name}</h1>
+                            <div key={item.name} className="category-image" style={{ backgroundImage: `url(${item.image})` }} onClick={() => this.GoToItem(item.name)}>
                             </div>
                         </>
                     ))}
