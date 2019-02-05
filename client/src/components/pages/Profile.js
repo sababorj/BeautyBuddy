@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import withAuth from './withAuth';
 import API from '../../utils/API';
-import { Link } from 'react-router-dom';
 import "../pages/style.css";
 
 class Profile extends Component {
