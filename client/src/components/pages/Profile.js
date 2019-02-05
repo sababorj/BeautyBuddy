@@ -97,7 +97,9 @@ class Profile extends Component {
               </h6>
 
               <button className="zipcode" onClick={this.updateZip} >Update Zip</button>
-              <h6 class="nav-pages">Your Brands: {this.state.favBrand}</h6>
+              <h6 className="nav-pages">Your Brands: {this.state.favBrand}</h6>
+
+
             </div>
           </div>
 
@@ -127,8 +129,18 @@ class Profile extends Component {
               <div className="card">
                 <img className="card-img-top" src="https://via.placeholder.com/140x100" alt="Card image cap" />
                 <div className="card-body">
-                  <h5 className="card-title">Card title</h5>
-                  <p className="card-text">text</p>
+
+                  <h5 className="card-title">Your Places</h5>
+                  {this.state.beautyPlaces.map(yourPlaces => (
+                    <div key={yourPlaces.name}>
+
+                      <h6 className="nav-pages">{yourPlaces.name}</h6>
+                      <p>{yourPlaces.address}</p>
+                      <p>{yourPlaces.rating} Stars</p>
+                      <hr />
+                    </div>
+                  ))}
+
                 </div>
               </div>
             </div>
