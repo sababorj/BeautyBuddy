@@ -80,9 +80,15 @@ app.post('/api/signup', (req, res) => {
 app.post('/api/update', (req, res) => {
   switch (req.body.piece) {
     case 'image':
-      db.User.findOneAndUpdate({ username: req.body.username }, { image: req.body.data })
-        .then(data => res.json(data))
-        .catch(err => res.status(400).json(err));
+    db.User.findOneAndUpdate({username:req.body.username},{image:req.body.data})
+    .then(data => res.json(data))
+    .catch(err => res.status(400).json(err));
+    break;
+    case 'zipcode':
+    db.User.findOneAndUpdate({username:req.body.username},{zipcode:req.body.data})
+    .then(data => res.json(data))
+    .catch(err => res.status(400).json(err));
+    break;
   }
 })
 

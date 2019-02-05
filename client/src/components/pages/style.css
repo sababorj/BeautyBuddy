@@ -1,10 +1,10 @@
 /* Global Styles*/
 
 body {
-    background-image: url("/client/public/image/cosmetic.jpg");
+    background-image: url("https://picjumbo.com/wp-content/uploads/makeup-brushes-on-white-marble-background_free_stock_photos_picjumbo_DSC06754-2210x1473.jpg");
     background-size: 100%;
     width: 100%;
-    font-family: sans-serif;
+    font-family: "Raleway";
 }
 
 
@@ -13,7 +13,8 @@ body {
     width: 300px;
     text-align: center;
     background-repeat: no-repeat;
-    margin: 0 auto 20px;
+    margin: auto;
+    margin-bottom: 20px;
   }
   .profile-image {
     height: 200px;
@@ -27,13 +28,25 @@ body {
       text-align: center;
       background-color: lightyellow;
   }
-  .container {
-      background-color: white;
-      padding-top: 50px;
+
+  .container, .bg-light, .sidebar-prof {
+    padding: 15px;
+
   }
 
 /*Login Page & Global Card Styling*/
 
+.center-flex {
+    justify-content: center;
+    margin: 20px;
+    align-content: center;
+    padding: 10px;
+}
+
+.profile-sidebar{ 
+    text-align:center;
+    align-content:center;
+}
 .white-text {
     color:white;
 }
@@ -55,7 +68,9 @@ body {
 }
 
 .pearl {
-    background-image: url("https://www.tailoredoccasions.co.uk/opal-pocketfold.html");
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwVA7H2P85w-V1fmnG3Om-MJN9FgiyGSsUM-PB8smTpvyS1_yZ");
+    height: 50%;
+    background-size: cover;
 }
 
 .shop-save {
@@ -67,14 +82,37 @@ body {
   display: inline-block;
 }
 
-  .upload-btn {
+.upload-btn {
       color: white;
       border: 0ch;
       background-color: cadetblue
   }
-  .category-tag {
+  
+.category-tag {
       text-align: center
   }
-.black {
-    background-color: black;
+
+.card-margin {
+    margin-top: 20px;
+}
+
+.form {
+    width: 200px;
+    margin: 2px;
+    border: 1px solid darkcyan;
+    color: darkcyan
+}
+
+h6 {
+margin-top: 7px
+}
+
+.zipcode {
+    margin: 2px;
+    width: 200px;
+    text-align: center;
+}
+
+.profile-pad {
+    padding: 20px;
 }
