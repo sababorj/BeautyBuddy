@@ -17,40 +17,21 @@ export default {
     return axios.post('/api/update', {piece: piece, username:username, data:data});
   },
 
-  productResult: [],
-  callMakeUp: function (category) {
-    return new Promise((resolve, reject) => {
-      const queryUrl = `https://makeup-api.herokuapp.com/api/v1/products.json?product_type=${category}`;
-      // const promise = new Promise(res, rej)
-      axios.get(queryUrl)
-        .then(response => {
-          for (let i = 0; i < 6; i++) {
-            this.productResult.push(response.data[i])
-            // console.log(this.productResult)
-          }
-          resolve(this.productResult);
-        })
-        .catch(error => {
-          console.log(error);
-          reject(error);
-        })
-    })
-  },
+ 
 
   itemCall: function (category) {
-    return new Promise((resolve, reject) => {
+    // return new Promise((resolve, reject) => {
       const itemMap = new Map();
       itemMap.set('Eye', 'mascara');
       itemMap.set('Skin', 'foundation');
       itemMap.set('Nail', 'nail_polish');
       itemMap.set('Lip', 'lipstick');
   
-      this.callMakeUp(itemMap.get(category)).then(data => {
-        console.log(this.productResult)
-        resolve(this.productResult);
-      });
-    });
-    
+      return axios.post('/api/getItem', { category: itemMap.get(category)});
+  },
 
-  }
+  fillShop: function(brands) {
+    return axios.post('/api/getShop', { brand : brands});
+  },
+  
 };
