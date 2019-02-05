@@ -7,7 +7,6 @@ body {
     font-family: sans-serif;
 }
 
-
 .category-image{
     height:300px;
     width: 300px;
@@ -30,8 +29,7 @@ body {
   }
 
   .container, .bg-light, .sidebar-prof {
-    padding: 15px;
-
+    padding: 35px;
   }
 
 /*Login Page & Global Card Styling*/
