@@ -27,7 +27,7 @@ class Profile extends Component {
           username: res.data.username,
           email: res.data.email,
           image: res.data.image,
-          zipcode: "Not provided",
+          zipcode: "No Zipcode",
           favBrand: res.data.favBrand
         })
       } else {
@@ -76,21 +76,17 @@ class Profile extends Component {
             <div className="profile-image" style={{ backgroundImage: `url(${this.state.image})` }}>
             </div>
             <form onSubmit={this.uploadPic} >
-                <input className="form" ref={(ref) => { this.uploadInput = ref; }} type="file" />
-                <button className="form" type="submit">save</button>
+                <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
+                <button type="submit">Save Image</button>
               </form>
-            <div className="zipcode">Zipcode: {this.state.zipcode} </div>
-            <button className="zipcode" onClick={this.updateZip} >Alter Zipcode</button>
+            <div>Zip Code: {this.state.zipcode} </div>
+            <button onClick={this.updateZip} >Alter Zipcode</button>
             <h6>Brands you are interested in:{this.state.favBrand}</h6>
           </div>
 
           <div className="col-md-8 bg-light center-flex">
-            <div className="card">
-              <div className="card-body pearl"> 
-              <h4>Save and Shop</h4>
-              </div>
-            </div>
-            <div className="card-deck card-margin">
+          <h4>Save or Shop</h4>
+            <div className="card-deck">
               <div className="card">
                 <img className="card-img-top" src="https://via.placeholder.com/140x100" alt="Card image cap" />
                 <div className="card-body">

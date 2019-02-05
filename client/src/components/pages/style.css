@@ -29,17 +29,26 @@ body {
   }
 
   .container, .bg-light, .sidebar-prof {
-    padding: 35px;
+    padding: 20px;
   }
+
+  /* .profile {
+    padding-left: 35px;
+  } */
 
 /*Login Page & Global Card Styling*/
 
 .center-flex {
     justify-content: center;
     margin: 20px;
+    align-content: center;
     padding: 10px;
 }
 
+.profile-sidebar{ 
+    text-align:center;
+    align-content:center;
+}
 .white-text {
     color:white;
 }
@@ -89,20 +98,16 @@ body {
     margin-top: 20px;
 }
 
-.form {
-    width: 200px;
-    margin: 2px;
-    border: 1px solid darkcyan;
-    color: darkcyan
+.profile-pad {
+    padding: 20px;
 }
 
-h6 {
-margin-top: 7px
+form {
+padding-top: 5px;
+padding-bottom: 5px
 }
 
-.zipcode {
-    margin: 2px;
+button {
     width: 200px;
-    text-align: center;
-    color: saddlebrown
+    padding-bottom: 2px
 }
