@@ -26,12 +26,17 @@ body {
       text-align: center;
       background-color: lightyellow;
   }
-  .container {
-      background-color: white;
-      padding-top: 50px;
+  .container, .bg-light, .sidebar-prof {
+    padding: 15px;
   }
 
 /*Login Page & Global Card Styling*/
+
+.center-flex {
+    justify-content: center;
+    margin: 20px;
+    padding: 10px;
+}
 
 .white-text {
     color:white;

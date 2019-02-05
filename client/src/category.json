@@ -27,10 +27,6 @@
     {
         "id":6,
         "name": "Skin",
-<<<<<<< HEAD
-        "image": "/image/skin.jpg"
-=======
         "image": "/image/skinpro.jpg"
->>>>>>> 2355eb3d0f9fb6ff9328122768dae65953c75577
     }
 ]
