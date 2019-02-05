@@ -78,7 +78,40 @@ app.post('/api/signup', (req, res) => {
 
 
 // MakeUp API Routes
+productResult: [],
 
+app.post('/api/getItem', (req, res) => {
+  const productResult = [];
+    const queryUrl = `http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${req.body.category}`;
+    // const promise = new Promise(res, rej)
+    axios.get(queryUrl)
+      .then(response => {
+        console.log(response.data)
+        for (let i = 0; i < 6; i++) {
+          productResult.push(response.data[i])
+        }
+        res.send(productResult);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  })
+
+  app.post('/api/getShop', (req, res) => {
+  const shop = [];
+  const queryUrl=`http://makeup-api.herokuapp.com/api/v1/products.json?brand=${req.body.brand}`
+      axios.get(queryUrl)
+        .then(response => {
+          for (let i = 0; i < 6; i++) {
+            shop.push(response.data[i])
+          }
+          console.log(shop)
+          res.send(shop);
+        })
+        .catch(error => {
+          console.log(error);
+        })
+    })
 
 // Update Route
 app.post('/api/update', (req, res) => {
