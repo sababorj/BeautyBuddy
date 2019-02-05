@@ -28,7 +28,7 @@ class Profile extends Component {
           username: res.data.username,
           email: res.data.email,
           image: res.data.image,
-          zipcode: "Not provided",
+          zipcode: "No Zipcode",
           favBrand: res.data.favBrand
         })
       } else {
@@ -72,9 +72,9 @@ class Profile extends Component {
   }
 
   updateZip = () => {
-    const newZip = prompt("please provide a five digit zipcode");
-    this.setState({ zipcode: newZip });
-    API.updateUser('zipcode', this.state.username, newZip)
+   const newZip = prompt("please provide a five digit zipcode");
+   this.setState({ zipcode : newZip });
+   API.updateUser('zipcode', this.state.username, newZip)
   }
 
   render() {
@@ -82,36 +82,23 @@ class Profile extends Component {
       <div className="container">
 
         <div className="row">
-          <div className="col-sm-3 card mx-auto profile-sidebar mb-3 rounded">
-            <h3 className="profile-pad nav-pages">Welcome {this.state.username}!</h3>
-            <div className="profile-image align-self-center mr-3" style={{ backgroundImage: `url(${this.state.image})` }}>
+          <div className="col-sm-3 card mx-auto sidebar-prof mb-3">
+          <h6>Welcome {this.state.username}</h6>
+            <div className="profile-image" style={{ backgroundImage: `url(${this.state.image})` }}>
             </div>
-
-            <div className="profile-sidebar">
-              <form onSubmit={this.uploadPic} >
-                <input className="form" ref={(ref) => { this.uploadInput = ref; }} type="file" alt="upload" />
-                <button className="form" type="submit">Save</button>
+            <form onSubmit={this.uploadPic} >
+                <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
+                <button type="submit">Save Image</button>
               </form>
-              <h6 className="zipcode nav-pages black">
-                Zip Code: {this.state.zipcode}
-              </h6>
 
-              <button className="zipcode" onClick={this.updateZip} >Update Zip</button>
-              <h6 className="nav-pages">Your Brands: {this.state.favBrand}</h6>
-
-
-            </div>
+            <div>Zip Code: {this.state.zipcode} </div>
+            <button onClick={this.updateZip} >Alter Zipcode</button>
+            <h6>Brands you are interested in:{this.state.favBrand}</h6>
           </div>
 
-
-
-          <div className="col-md-8 bg-light  rounded">
-            <div className="card">
-              <div className="card-body pearl">
-                <h4 className="nav-pages">SAVE and SHOP</h4>
-              </div>
-            </div>
-            <div className="card-deck card-margin">
+          <div className="col-md-8 bg-light center-flex">
+          <h4>Save or Shop</h4>
+            <div className="card-deck">
               <div className="card">
                 <img className="card-img-top" src="https://via.placeholder.com/140x100" alt="Card image cap" />
                 <div className="card-body">
