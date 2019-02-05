@@ -1,8 +1,9 @@
 /* Global Styles*/
 
 body {
-    background-image: url("https://c8.staticflickr.com/8/7294/26977181263_1beca8f167_o.jpg");
-    background-size: 125%;
+    background-image: url("/client/public/image/cosmetic.jpg");
+    background-size: 100%;
+    width: 100%;
     font-family: sans-serif;
 }
 
