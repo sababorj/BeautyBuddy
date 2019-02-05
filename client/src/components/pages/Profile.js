@@ -85,8 +85,12 @@ class Profile extends Component {
           </div>
 
           <div className="col-md-8 bg-light center-flex">
-          <h4>Save or Shop</h4>
-            <div className="card-deck">
+            <div className="card">
+              <div className="card-body pearl"> 
+              <h4>Save and Shop</h4>
+              </div>
+            </div>
+            <div className="card-deck card-margin">
               <div className="card">
                 <img className="card-img-top" src="https://via.placeholder.com/140x100" alt="Card image cap" />
                 <div className="card-body">
