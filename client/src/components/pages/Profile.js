@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import withAuth from './withAuth';
 import API from '../../utils/API';
-import { Link } from 'react-router-dom';
 import "../pages/style.css";
-
 
 class Profile extends Component {
   constructor(props) {
@@ -16,7 +14,6 @@ class Profile extends Component {
       favBrand: "",
       beautyPlaces: []
     }
-
     this.uploadPic = this.uploadPic.bind(this);
 
   }
@@ -31,6 +28,7 @@ class Profile extends Component {
           zipcode: "No Zipcode",
           favBrand: res.data.favBrand
         })
+        this.getShopItems();
       } else {
         this.setState({
           username: res.data.username,
@@ -40,6 +38,7 @@ class Profile extends Component {
           favBrand: res.data.favBrand
         });
         this.getBeautyPlaces();
+        this.getShopItems();
       };
     });
 
@@ -53,6 +52,13 @@ class Profile extends Component {
       })
     });
   }
+
+  getShopItems = () => {
+    API.fillShop("benefit").then(res => {
+      console.log(res.data)
+    })
+  };
+
   uploadPic(e) {
     e.preventDefault();
     const data = new FormData();
@@ -90,10 +96,10 @@ class Profile extends Component {
               <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
               <button type="submit">Save Image</button>
             </form>
-
             <div>Zip Code: {this.state.zipcode} </div>
             <button onClick={this.updateZip} >Alter Zipcode</button>
-            <h6>Brands you are interested in:{this.state.favBrand}</h6>
+            <h6>Your Brands</h6>
+            <p>{this.state.favBrand}</p>
           </div>
 
           <div className="col-md-8 bg-light center-flex">
