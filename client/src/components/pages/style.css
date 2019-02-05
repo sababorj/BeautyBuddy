@@ -39,9 +39,14 @@ body {
 .center-flex {
     justify-content: center;
     margin: 20px;
+    align-content: center;
     padding: 10px;
 }
 
+.profile-sidebar{ 
+    text-align:center;
+    align-content:center;
+}
 .white-text {
     color:white;
 }
@@ -106,5 +111,8 @@ margin-top: 7px
     margin: 2px;
     width: 200px;
     text-align: center;
-    color: saddlebrown
+}
+
+.profile-pad {
+    padding: 20px;
 }
