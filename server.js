@@ -76,6 +76,10 @@ app.post('/api/signup', (req, res) => {
     .catch(err => res.status(400).json(err));
 });
 
+
+// MakeUp API Routes
+
+
 // Update Route
 app.post('/api/update', (req, res) => {
   switch (req.body.piece) {

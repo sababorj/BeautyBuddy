@@ -50,7 +50,27 @@ export default {
         resolve(this.productResult);
       });
     });
-    
+  },
 
-  }
+  shop : [],
+  fillShop: function(brands) {
+    const queryUrl=`https://makeup-api.herokuapp.com/api/v1/products.json?brand=${brands}`
+    return new Promise((resolve, reject) => {
+      // const promise = new Promise(res, rej)
+      axios.get(queryUrl)
+        .then(response => {
+          for (let i = 0; i < 6; i++) {
+            this.shop.push(response.data[i])
+            // console.log(this.productResult)
+          }
+          console.log(this.shop)
+          resolve(this.shop);
+        })
+        .catch(error => {
+          console.log(error);
+          reject(error);
+        })
+    })
+  },
+  
 };

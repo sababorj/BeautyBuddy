@@ -7,14 +7,6 @@ const Auth = new AuthService();
 
 class App extends Component {
   
-  // handleLogout = () => {
-  //   Auth.logout();
-  //   this.props.history.replace('/signup');
-  // };
-
-  // goToEditProfile = () => {
-  //   this.props.history.replace('/profile');
-  // };
   render() {
     console.log(process.env.REACT_APP_SECRET_CODE);
     return (
@@ -22,10 +14,6 @@ class App extends Component {
         <div className="App-header">
           < Category />
         </div>
-        {/* <p className="App-intro">
-          <button type="button" className="btn btn-primary" onClick={this.goToEditProfile}>Go to Profile</button>
-          <button type="button" className="btn btn-danger" onClick={this.handleLogout}>Logout</button>
-        </p> */}
       </div> 
     );
   }
