@@ -8,6 +8,7 @@ const app = express();
 const db = require('./models');
 const axios = require('axios');
 const PORT = process.env.PORT || 3001;
+// const io = require("socket.io")(server);
 
 // Setting CORS so that any website can
 // Access our API
@@ -34,20 +35,21 @@ const isAuthenticated = exjwt({
 });
 
 // API Call for product data
-  let productType = "foundation";
-  const queryUrl = `http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${productType}`;
 
-  axios.get(queryUrl)
-    .then(response => {
-      for (let i = 0; i < 4; i++) {
-        let brand = response.data[i].brand;
-        console.log(brand);
-        
-      }
-    })
-    .catch(error => {
-      console.log(error);
-})
+let productType = "foundation";
+const queryUrl = `http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${productType}`;
+
+axios.get(queryUrl)
+  .then(response => {
+    for (let i = 0; i < 4; i++) {
+      let brand = response.data[i].brand;
+      console.log(brand);
+
+    }
+  })
+  .catch(error => {
+    console.log(error);
+  })
 
 
 
@@ -75,8 +77,8 @@ app.post('/api/signup', (req, res) => {
 });
 
 // Update Route
-app.post('/api/update', (req,res) => {
-  switch (req.body.piece){
+app.post('/api/update', (req, res) => {
+  switch (req.body.piece) {
     case 'image':
     db.User.findOneAndUpdate({username:req.body.username},{image:req.body.data})
     .then(data => res.json(data))
@@ -101,6 +103,46 @@ app.get('/api/user/:id', isAuthenticated, (req, res) => {
     }
   }).catch(err => res.status(400).send(err));
 });
+
+app.post('/api/google/:zipcode', (req, res) => {
+
+  let zip = req.params.zipcode;
+  const placesApiKey = "AIzaSyD5YTMyDlZYKKMMrlYIguDdqT68DxBrLx4";
+  let geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:${zip}&key=${placesApiKey}`;
+  const storeList = [];
+
+  axios.get(geocodeUrl).then(async response => {
+    let result = response.data.results[0];
+    let lattitude = result.geometry.location.lat;
+    let longitude = result.geometry.location.lng;
+    console.log(`Lat: ${lattitude} | Long: ${longitude}`);
+
+    function getStores(lal, long, key) {
+      return new Promise((resolve, reject) => {
+        let placesUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lal},${long}&radius=15000&type=beauty_salon&key=${key}`;
+        axios.get(placesUrl).then(response => {
+          let storesNearby = (response.data.results);
+
+          // for loop through JSON response retrieve place info
+          for (let i = 0; i < 5; i++) {
+
+            let store = {
+              name: storesNearby[i].name,
+              address: storesNearby[i].vicinity,
+              rating: storesNearby[i].rating
+            }
+            storeList.push(store);
+          };
+          resolve(storeList)
+        }).catch(error => reject(error));
+      })
+    }
+
+    let storeData = await getStores(lattitude, longitude, placesApiKey);
+    res.send(storeData);
+
+  });
+})
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -127,6 +169,31 @@ app.use(function (err, req, res, next) {
 app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
+
+// SOCKET.IO CHAT INITIATION 
+// io.on('connection', (socket) => {
+// 	console.log('New user connected')
+
+// 	//default username
+// 	socket.username = "Anon"
+
+//     //listen for change_username
+//     socket.on('change_username', (data) => {
+//         socket.username = data.username
+//     })
+
+//     //listen for new_message
+//     socket.on('new_message', (data) => {
+//         //broadcast the new message
+//         io.sockets.emit('new_message', {message : data.message, username : socket.username});
+//     })
+
+//     //listen for typing
+//     socket.on('typing', (data) => {
+//     	socket.broadcast.emit('typing', {username : socket.username})
+//     })
+// })
+
 
 app.listen(PORT, function () {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
