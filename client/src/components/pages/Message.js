@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
 import withAuth from './withAuth';
 import API from '../../utils/API';
+import {sockets} from '../../utils/sockets';
 
 class Message extends Component {
-
+  
   state = {
     username: "",
     email: "",
     image: "",
+    messages: []
   };
+  constructor(props) {
+    super(props);
+    sockets.listenForMessage(data => {
+      this.setState({messages: [...this.state.messages, data]})
+    }); 
+  }
+
 
   componentDidMount() {
     API.getUser(this.props.user.id).then(res => {
@@ -18,12 +27,45 @@ class Message extends Component {
           image: res.data.image,
         })
     })
+    
   }
+
+  handleInputChange = event => {
+    // Getting the value and name of the input which triggered the change
+    const {name, value} = event.target;
+    // Updating the input's state
+    this.setState({
+      [name]: value
+    });
+  };
+
+  submitForm = event => {
+    event.preventDefault();
+    sockets.sendMessage(this.state.message);
+    this.setState({message: ""});
+  };
 
   render() {
     return (
       <div className="container Profile">
-        <h1>Messages</h1>
+        <p>Received Messages:</p>
+        <ul>
+          {this.state.messages.map(message => <li key={message}>{message}</li>)}
+        </ul>
+        <form className="form-inline">
+          <div className="form-group">
+            <input
+              value={this.state.message}
+              name="message"
+              onChange={this.handleInputChange}
+              type="text"
+              placeholder="your message"
+              className="form-control"
+            />
+          </div>
+          <button type="submit" className="btn btn-primary" onClick={this.submitForm}>Submit</button>
+        </form>
+
       </div>
     )
   }

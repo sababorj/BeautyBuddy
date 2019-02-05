@@ -5,7 +5,7 @@ const exjwt = require('express-jwt');
 const mongoose = require('mongoose');
 const morgan = require('morgan'); // used to see requests
 const app = express();
-const server = require('https').Server(app);
+const server = require('http').createServer(app);
 const db = require('./models');
 const axios = require('axios');
 const PORT = process.env.PORT || 3001;
@@ -210,7 +210,12 @@ app.get("*", function (req, res) {
 
 // SOCKET.IO CHAT INITIATION 
 io.on('connection', (socket) => {
-	console.log('New user connected')
+  console.log('New user connected')
+   // we are listening to an event here called 'message'
+   socket.on('message', (message) => {
+    // and emitting the message event for any client listening to it
+    io.emit('message', message);
+  });
 })
 // 	//default username
 // 	socket.username = "Anon"
