@@ -13,7 +13,8 @@ class Profile extends Component {
       email: "",
       image: "",
       zipcode: "",
-      favBrand: ""
+      favBrand: "",
+      beautyPlaces: []
     }
 
     this.uploadPic = this.uploadPic.bind(this);
@@ -41,12 +42,15 @@ class Profile extends Component {
         this.getBeautyPlaces();
       };
     });
-    
+
   }
 
   getBeautyPlaces = () => {
     API.postZip(this.state.zipcode).then(res => {
-      console.log(res.data);
+      const beautyStores = res.data;
+      this.setState({
+        beautyPlaces: beautyStores
+      })
     });
   }
   uploadPic(e) {
@@ -68,9 +72,9 @@ class Profile extends Component {
   }
 
   updateZip = () => {
-   const newZip = prompt("please provide a five digit zipcode");
-   this.setState({ zipcode : newZip });
-   API.updateUser('zipcode', this.state.username, newZip)
+    const newZip = prompt("please provide a five digit zipcode");
+    this.setState({ zipcode: newZip });
+    API.updateUser('zipcode', this.state.username, newZip)
   }
 
   render() {
@@ -79,20 +83,21 @@ class Profile extends Component {
 
         <div className="row">
           <div className="col-sm-3 card mx-auto sidebar-prof mb-3">
-          <h6>Welcome {this.state.username}</h6>
+            <h6>Welcome {this.state.username}</h6>
             <div className="profile-image" style={{ backgroundImage: `url(${this.state.image})` }}>
             </div>
             <form onSubmit={this.uploadPic} >
-                <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
-                <button type="submit">Save Image</button>
-              </form>
+              <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
+              <button type="submit">Save Image</button>
+            </form>
+
             <div>Zip Code: {this.state.zipcode} </div>
             <button onClick={this.updateZip} >Alter Zipcode</button>
             <h6>Brands you are interested in:{this.state.favBrand}</h6>
           </div>
 
           <div className="col-md-8 bg-light center-flex">
-          <h4>Save or Shop</h4>
+            <h4>Save or Shop</h4>
             <div className="card-deck">
               <div className="card">
                 <img className="card-img-top" src="https://via.placeholder.com/140x100" alt="Card image cap" />
@@ -109,23 +114,26 @@ class Profile extends Component {
                 </div>
               </div>
               <div className="card">
-                <img className="card-img-top" src="https://via.placeholder.com/140x100" alt="Card image cap" />
+                <img className="card-img-top" src="/image/beautyplace.jpg" alt="Card image cap" />
                 <div className="card-body">
-                  <h5 className="card-title">Card title</h5>
-                  <p className="card-text">text</p>
+                  <h5 className="card-title">Beauty Places</h5>
+
+                  {this.state.beautyPlaces.map(yourPlaces => (
+                    <div key={yourPlaces.name}>
+                      <hr />
+                      <h6 className="nav-pages">{yourPlaces.name}</h6>
+                      <p>{yourPlaces.address}</p>
+                      <p>{yourPlaces.rating} Stars</p>
+
+                    </div>
+                  ))}
+
                 </div>
               </div>
             </div>
-
           </div>
-
-
-
-
-
         </div>
       </div>
-
     )
   }
 }
