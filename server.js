@@ -43,7 +43,6 @@ axios.get(queryUrl)
   .then(response => {
     for (let i = 0; i < 4; i++) {
       let brand = response.data[i].brand;
-      console.log(brand);
 
     }
   })
@@ -162,7 +161,6 @@ app.post('/api/google/:zipcode', (req, res) => {
 
           // for loop through JSON response retrieve place info
           for (let i = 0; i < 5; i++) {
-
             let store = {
               name: storesNearby[i].name,
               address: storesNearby[i].vicinity,

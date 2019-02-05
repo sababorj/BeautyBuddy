@@ -11,7 +11,8 @@ class Profile extends Component {
       email: "",
       image: "",
       zipcode: "",
-      favBrand: ""
+      favBrand: "",
+      beautyPlaces: []
     }
     this.uploadPic = this.uploadPic.bind(this);
 
@@ -40,13 +41,16 @@ class Profile extends Component {
         this.getShopItems();
       };
     });
+
   }
 
   getBeautyPlaces = () => {
-    API.postZip(this.state.zipcode)
-      .then(res => {
-        console.log(res.data);
-      });
+    API.postZip(this.state.zipcode).then(res => {
+      const beautyStores = res.data;
+      this.setState({
+        beautyPlaces: beautyStores
+      })
+    });
   }
 
   getShopItems = () => {
@@ -114,19 +118,26 @@ class Profile extends Component {
                 </div>
               </div>
               <div className="card">
-                <img className="card-img-top" src="https://via.placeholder.com/140x100" alt="Card image cap" />
+                <img className="card-img-top" src="/image/beautyplace.jpg" alt="Card image cap" />
                 <div className="card-body">
-                  <h5 className="card-title">Card title</h5>
-                  <p className="card-text">text</p>
+                  <h5 className="card-title">Beauty Places</h5>
+
+                  {this.state.beautyPlaces.map(yourPlaces => (
+                    <div key={yourPlaces.name}>
+                      <hr />
+                      <h6 className="nav-pages">{yourPlaces.name}</h6>
+                      <p>{yourPlaces.address}</p>
+                      <p>{yourPlaces.rating} Stars</p>
+
+                    </div>
+                  ))}
+
                 </div>
               </div>
             </div>
-
           </div>
-
         </div>
       </div>
-
     )
   }
 }
