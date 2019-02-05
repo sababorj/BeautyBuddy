@@ -40,14 +40,14 @@ class Category extends Component {
                                 </>
                             ))}
                         </div>
-                        <div class="card text-center">
+                        <div className="card text-center">
                             <div className="card-header">
                                 About Us
                         </div>
                             <div className="card-body">
-                                <h5 className="card-title">Special title treatment</h5>
-                                <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" className="btn btn-primary">Go somewhere</a>
+                                <h5 className="card-title">Always have your favorite beauty products at the tip of your hands!</h5>
+                                <p className="card-text">This will be edited</p>
+                                <a href="#" className="btn btn-primary">Subscribe</a>
                             </div>
                         </div>
                     </div>
