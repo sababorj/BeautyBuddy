@@ -7,7 +7,6 @@ body {
     font-family: "Raleway";
 }
 
-
 .category-image{
     height:300px;
     width: 300px;
@@ -38,6 +37,10 @@ body {
   .bg-light, .sidebar-prof {
     padding: 15px;
   }
+
+  /* .profile {
+    padding-left: 35px;
+  } */
 
 /*Login Page & Global Card Styling*/
 
@@ -101,23 +104,16 @@ body {
     margin-top: 20px;
 }
 
-.form {
-    width: 200px;
-    margin: 2px;
-    border: 1px solid darkcyan;
-    color: darkcyan
-}
-
-h6 {
-margin-top: 7px
-}
-
-.zipcode {
-    margin: 2px;
-    width: 200px;
-    text-align: center;
-}
-
 .profile-pad {
     padding: 20px;
+}
+
+form {
+padding-top: 5px;
+padding-bottom: 5px
+}
+
+button {
+    width: 200px;
+    padding-bottom: 2px
 }

@@ -31,8 +31,7 @@ const UserSchema = new Schema({
     default: 0
   },
   favBrand: {
-    type: [String],
-    default: ["benefit"]
+    type: [String]
   },
   createdAt: {
     type: Date,
