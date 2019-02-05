@@ -90,6 +90,7 @@ class Profile extends Component {
               <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
               <button type="submit">Save Image</button>
             </form>
+
             <div>Zip Code: {this.state.zipcode} </div>
             <button onClick={this.updateZip} >Alter Zipcode</button>
             <h6>Brands you are interested in:{this.state.favBrand}</h6>
@@ -115,7 +116,7 @@ class Profile extends Component {
               <div className="card">
                 <img className="card-img-top" src="/image/beautyplace.jpg" alt="Card image cap" />
                 <div className="card-body">
-                <h5 className="card-title">Beauty Places</h5>
+                  <h5 className="card-title">Beauty Places</h5>
 
                   {this.state.beautyPlaces.map(yourPlaces => (
                     <div key={yourPlaces.name}>
@@ -123,18 +124,16 @@ class Profile extends Component {
                       <h6 className="nav-pages">{yourPlaces.name}</h6>
                       <p>{yourPlaces.address}</p>
                       <p>{yourPlaces.rating} Stars</p>
-                      
+
                     </div>
                   ))}
 
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
-
     )
   }
 }
