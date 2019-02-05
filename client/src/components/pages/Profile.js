@@ -66,7 +66,7 @@ class Profile extends Component {
       <div className="container">
 
         <div className="row">
-          <div className="col-sm-3 card mx-auto bg-light mb-3">
+          <div className="col-sm-3 card mx-auto sidebar-prof mb-3">
             <div className="profile-image" style={{ backgroundImage: `url(${this.state.image})` }}>
               <form onSubmit={this.uploadPic} >
                 <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
@@ -78,34 +78,42 @@ class Profile extends Component {
             <p>Brands you are interested in:{this.state.favBrand}</p>
           </div>
 
-
-          <div className="col-md-8 card-columns bg-light">
-            <div className="card saved-rem">
-              <img src="..." className="card-img-top" alt="..." />
-              <div className="card-body">
-                <p className="card-text">SAVED 1</p>
+          <div className="col-md-8 bg-light center-flex">
+          <h4>Save or Shop</h4>
+            <div className="card-deck">
+              <div className="card">
+                <img className="card-img-top" src="https://via.placeholder.com/140x100" alt="Card image cap" />
+                <div className="card-body">
+                  <h5 className="card-title">Card title</h5>
+                  <p className="card-text">text</p>
+                </div>
               </div>
-            </div>
-
-            <div className="card saved-rem">
-              <img src="..." className="card-img-top" alt="..." />
-              <div className="card-body">
-                <p className="card-text">SAVED 2</p>
+              <div className="card">
+                <img className="card-img-top" src="https://via.placeholder.com/140x100" alt="Card image cap" />
+                <div className="card-body">
+                  <h5 className="card-title">Card title</h5>
+                  <p className="card-text">text.</p>
+                </div>
               </div>
-            </div>
-
-            <div className="card saved-rem">
-              <img src="..." className="card-img-top" alt="..." />
-              <div className="card-body">
-                <p className="card-text">SAVED 3</p>
+              <div className="card">
+                <img className="card-img-top" src="https://via.placeholder.com/140x100" alt="Card image cap" />
+                <div className="card-body">
+                  <h5 className="card-title">Card title</h5>
+                  <p className="card-text">text</p>
+                </div>
               </div>
             </div>
 
           </div>
-        </div>
 
-      </div >
-   )
+
+
+
+
+        </div>
+      </div>
+
+    )
   }
 }
 

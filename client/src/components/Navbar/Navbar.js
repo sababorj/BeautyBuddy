@@ -14,14 +14,14 @@ class Navbar extends Component {
             return (
                 <ul className="navbar-nav bg-white brand-h">
                     <li className="nav-item">
-                        <Link className="nav-link" to="/profile">PROFILE</Link>
+                        <Link className="nav-link nav-pages" to="/profile">PROFILE</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link nav-pages" href="/message">Message</a>
+                        <a className="nav-link nav-pages" href="/message">MESSAGE</a>
                     </li>
                     <li className="nav-item">
                         {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-                        <a className="nav-link" href="/" onClick={() => this.Auth.logout()}>Logout</a>
+                        <a className="nav-link nav-pages" href="/" onClick={() => this.Auth.logout()}>LOGOUT</a>
                     </li>
                 </ul>
             );
