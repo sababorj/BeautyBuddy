@@ -46,6 +46,7 @@ class Profile extends Component {
   getBeautyPlaces = () => {
     API.postZip(this.state.zipcode).then(res => {
       console.log(res.data);
+      
     })
   }
   uploadPic(e) {

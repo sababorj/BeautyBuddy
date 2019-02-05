@@ -35,6 +35,7 @@ const isAuthenticated = exjwt({
 });
 
 // API Call for product data
+
 let productType = "foundation";
 const queryUrl = `http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${productType}`;
 
@@ -76,12 +77,12 @@ app.post('/api/signup', (req, res) => {
 });
 
 // Update Route
-app.post('/api/update', (req,res) => {
-  switch (req.body.piece){
+app.post('/api/update', (req, res) => {
+  switch (req.body.piece) {
     case 'image':
-    db.User.findOneAndUpdate({username:req.body.username},{image:req.body.data})
-    .then(data => res.json(data))
-    .catch(err => res.status(400).json(err));
+      db.User.findOneAndUpdate({ username: req.body.username }, { image: req.body.data })
+        .then(data => res.json(data))
+        .catch(err => res.status(400).json(err));
   }
 })
 
@@ -98,26 +99,38 @@ app.get('/api/user/:id', isAuthenticated, (req, res) => {
 });
 
 app.post('/api/google/:zipcode', (req, res) => {
-  let zip = req.params.zipcode;
-  const placesApiKey = "AIzaSyD5YTMyDlZYKKMMrlYIguDdqT68DxBrLx4";
-  const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:${zip}&key=${placesApiKey}`;
   
-  axios.get(geocodeUrl).then(response => {
-    let result = response.data.results[0];
-    let lattitude = result.geometry.location.lat;
-    let longitude = result.geometry.location.lng;
-    console.log(`Lat: ${lattitude} | Long: ${longitude}`);
-    const placesUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lattitude},${longitude}&radius=15000&type=beauty_salon&key=${placesApiKey}`;
-    // axios.get(placesUrl).then(response => {
-    //   let nearbyResult = response.results;
-    //         // for loop through JSON response retrieve place info
-    //         for (var i = 0; i < 5; i++) {
-    //           let store = nearbyResult
-    //         }
-    // })
-  })
+    let zip = req.params.zipcode;
+    const placesApiKey = "AIzaSyD5YTMyDlZYKKMMrlYIguDdqT68DxBrLx4";
+    let geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:${zip}&key=${placesApiKey}`;
+    const storeList = [];
+    
+    axios.get(geocodeUrl).then(response => {
+      let result = response.data.results[0];
+      let lattitude = result.geometry.location.lat;
+      let longitude = result.geometry.location.lng;
+      console.log(`Lat: ${lattitude} | Long: ${longitude}`);
 
-  res.send(`Query: ${geocodeUrl}`);
+      let placesUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lattitude},${longitude}&radius=15000&type=beauty_salon&key=${placesApiKey}`;
+      axios.get(placesUrl).then(response => {
+        let storesNearby = (response.data.results);
+
+        // for loop through JSON response retrieve place info
+      for (var i = 0; i < 5; i++) {
+
+        let store = {
+        name: storesNearby[i].name,
+        address: storesNearby[i].vicinity,
+        rating: storesNearby[i].rating
+        }
+        storeList.push(store);
+      };
+
+      }).catch(error => console.log(error));
+    }).catch(error => console.log(error));
+  
+  console.log(storeList);
+  res.send(storeList);
 });
 
 // Serve up static assets (usually on heroku)
