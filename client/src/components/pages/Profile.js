@@ -37,11 +37,18 @@ class Profile extends Component {
           image: res.data.image,
           zipcode: res.data.zipcode,
           favBrand: res.data.favBrand
-        })
+        });
+        this.getBeautyPlaces();
       };
-    })
+    });
+    
   }
 
+  getBeautyPlaces = () => {
+    API.postZip(this.state.zipcode).then(res => {
+      console.log(res.data);
+    });
+  }
   uploadPic(e) {
     e.preventDefault();
     const data = new FormData();
