@@ -63,7 +63,8 @@ body {
 }
 
 .pearl {
-    background-image: url("https://www.tailoredoccasions.co.uk/opal-pocketfold.html");
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwVA7H2P85w-V1fmnG3Om-MJN9FgiyGSsUM-PB8smTpvyS1_yZ");
+height: 50%;
 }
 
 .shop-save {
@@ -84,3 +85,7 @@ body {
 .category-tag {
       text-align: center
   }
+
+.card-margin {
+    margin-top: 20px;
+}
