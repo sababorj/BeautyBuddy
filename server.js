@@ -99,39 +99,44 @@ app.get('/api/user/:id', isAuthenticated, (req, res) => {
 });
 
 app.post('/api/google/:zipcode', (req, res) => {
-  
-    let zip = req.params.zipcode;
-    const placesApiKey = "AIzaSyD5YTMyDlZYKKMMrlYIguDdqT68DxBrLx4";
-    let geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:${zip}&key=${placesApiKey}`;
-    const storeList = [];
-    
-    axios.get(geocodeUrl).then(response => {
-      let result = response.data.results[0];
-      let lattitude = result.geometry.location.lat;
-      let longitude = result.geometry.location.lng;
-      console.log(`Lat: ${lattitude} | Long: ${longitude}`);
 
-      let placesUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lattitude},${longitude}&radius=15000&type=beauty_salon&key=${placesApiKey}`;
-      axios.get(placesUrl).then(response => {
-        let storesNearby = (response.data.results);
+  let zip = req.params.zipcode;
+  const placesApiKey = "AIzaSyD5YTMyDlZYKKMMrlYIguDdqT68DxBrLx4";
+  let geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:${zip}&key=${placesApiKey}`;
+  const storeList = [];
 
-        // for loop through JSON response retrieve place info
-      for (var i = 0; i < 5; i++) {
+  axios.get(geocodeUrl).then(async response => {
+    let result = response.data.results[0];
+    let lattitude = result.geometry.location.lat;
+    let longitude = result.geometry.location.lng;
+    console.log(`Lat: ${lattitude} | Long: ${longitude}`);
 
-        let store = {
-        name: storesNearby[i].name,
-        address: storesNearby[i].vicinity,
-        rating: storesNearby[i].rating
-        }
-        storeList.push(store);
-      };
+    function getStores(lal, long, key) {
+      return new Promise((resolve, reject) => {
+        let placesUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lal},${long}&radius=15000&type=beauty_salon&key=${key}`;
+        axios.get(placesUrl).then(response => {
+          let storesNearby = (response.data.results);
 
-      }).catch(error => console.log(error));
-    }).catch(error => console.log(error));
-  
-  console.log(storeList);
-  res.send(storeList);
-});
+          // for loop through JSON response retrieve place info
+          for (let i = 0; i < 5; i++) {
+
+            let store = {
+              name: storesNearby[i].name,
+              address: storesNearby[i].vicinity,
+              rating: storesNearby[i].rating
+            }
+            storeList.push(store);
+          };
+          resolve(storeList)
+        }).catch(error => reject(error));
+      })
+    }
+
+    let storeData = await getStores(lattitude, longitude, placesApiKey);
+    res.send(storeData);
+
+  });
+})
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
