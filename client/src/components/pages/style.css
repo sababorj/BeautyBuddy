@@ -81,3 +81,21 @@ body {
 .category-tag {
       text-align: center
   }
+
+.form {
+    width: 200px;
+    margin: 2px;
+    border: 1px solid darkcyan;
+    color: darkcyan
+}
+
+h6 {
+margin-top: 7px
+}
+
+.zipcode {
+    margin: 2px;
+    width: 200px;
+    text-align: center;
+    color: saddlebrown
+}

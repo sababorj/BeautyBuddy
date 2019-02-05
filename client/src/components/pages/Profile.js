@@ -12,7 +12,6 @@ class Profile extends Component {
       username: "",
       email: "",
       image: "",
-      imageURL: "",
       zipcode: "",
       favBrand: ""
     }
@@ -28,7 +27,7 @@ class Profile extends Component {
           username: res.data.username,
           email: res.data.email,
           image: res.data.image,
-          zipcode: "No Zipcode is provided",
+          zipcode: "Not provided",
           favBrand: res.data.favBrand
         })
       } else {
@@ -61,21 +60,28 @@ class Profile extends Component {
     });
   }
 
+  updateZip = () => {
+   const newZip = prompt("please provide a five digit zipcode");
+   this.setState({ zipcode : newZip });
+   API.updateUser('zipcode', this.state.username, newZip)
+  }
+
   render() {
     return (
       <div className="container">
 
         <div className="row">
           <div className="col-sm-3 card mx-auto sidebar-prof mb-3">
+          <h6>Welcome {this.state.username}</h6>
             <div className="profile-image" style={{ backgroundImage: `url(${this.state.image})` }}>
-              <form onSubmit={this.uploadPic} >
-                <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
-                <button type="submit">save</button>
-              </form>
             </div>
-            <h6>Username: {this.state.username}</h6>
-            <h6>{this.state.zipcode}</h6>
-            <p>Brands you are interested in:{this.state.favBrand}</p>
+            <form onSubmit={this.uploadPic} >
+                <input className="form" ref={(ref) => { this.uploadInput = ref; }} type="file" />
+                <button className="form" type="submit">save</button>
+              </form>
+            <div className="zipcode">Zipcode: {this.state.zipcode} </div>
+            <button className="zipcode" onClick={this.updateZip} >Alter Zipcode</button>
+            <h6>Brands you are interested in:{this.state.favBrand}</h6>
           </div>
 
           <div className="col-md-8 bg-light center-flex">
