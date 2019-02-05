@@ -28,11 +28,11 @@ body {
       text-align: center;
       background-color: lightyellow;
   }
-  .container {
-      background-color: white;
-      padding-top: 50px;
-      margin-left: auto;
-      margin-right: auto;
+.home-container {
+    background-color: white;
+    padding-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
   }
       
   .bg-light, .sidebar-prof {
