@@ -8,7 +8,7 @@ class Item extends Component {
     }
 
     componentDidMount(){
-        console.log(this.props.location.state.productResult)
+        // console.log(this.props.location.state.productResult)
     }
 
     render() {

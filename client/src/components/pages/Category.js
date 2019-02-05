@@ -19,6 +19,7 @@ class Category extends Component {
                 pathname: '/item',
                 state: { productResult: item }
             });
+            console.log(this.state.type)
         });
 
     }
