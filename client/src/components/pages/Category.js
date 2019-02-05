@@ -14,12 +14,17 @@ class Category extends Component {
     }
 
     GoToItem = (name) => {
-        API.itemCall(name).then(item => {
-            this.props.history.replace({
-                pathname: '/item',
-                state: { productResult: item }
-            });
+        this.props.history.replace({
+            pathname: '/item',
+            state: { productName: name }
         });
+        // API.itemCall(name).then(item => {
+        //     console.log(this.props)
+        //     this.props.history.replace({
+        //         pathname: '/item',
+        //         state: { productResult: name }
+        //     });
+        // });
 
     }
 

@@ -54,7 +54,9 @@ class Profile extends Component {
   }
 
   getShopItems = () => {
-    API.fillShop("benefit")
+    API.fillShop("benefit").then(res => {
+      console.log(res.data)
+    })
   };
 
   uploadPic(e) {
