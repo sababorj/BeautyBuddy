@@ -5,10 +5,13 @@ const exjwt = require('express-jwt');
 const mongoose = require('mongoose');
 const morgan = require('morgan'); // used to see requests
 const app = express();
+const server = require('https').Server(app);
 const db = require('./models');
 const axios = require('axios');
 const PORT = process.env.PORT || 3001;
-// const io = require("socket.io")(server);
+
+
+const io = require('socket.io')(server);
 
 // Setting CORS so that any website can
 // Access our API
@@ -169,9 +172,9 @@ app.get("*", function (req, res) {
 });
 
 // SOCKET.IO CHAT INITIATION 
-// io.on('connection', (socket) => {
-// 	console.log('New user connected')
-
+io.on('connection', (socket) => {
+	console.log('New user connected')
+})
 // 	//default username
 // 	socket.username = "Anon"
 
@@ -193,6 +196,6 @@ app.get("*", function (req, res) {
 // })
 
 
-app.listen(PORT, function () {
+server.listen(PORT, function () {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
 });
