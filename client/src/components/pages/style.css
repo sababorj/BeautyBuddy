@@ -1,7 +1,7 @@
 /* Global Styles*/
 
 body {
-    background-image: url("https://picjumbo.com/wp-content/uploads/makeup-brushes-on-white-marble-background_free_stock_photos_picjumbo_DSC06754-2210x1473.jpg");
+    background-image: url("https://picjumbo.com/wp-content/uploads/makeup-brushes-on-white-marble-background_free_stock_photos_picjumbo_DSC06754-1570x1047.jpg");
     background-size: 100%;
     width: 100%;
     font-family: sans-serif;
@@ -33,10 +33,19 @@ body {
       padding-top: 50px;
       margin-left: auto;
       margin-right: auto;
+  }
       
+  .bg-light, .sidebar-prof {
+    padding: 15px;
   }
 
 /*Login Page & Global Card Styling*/
+
+.center-flex {
+    justify-content: center;
+    margin: 20px;
+    padding: 10px;
+}
 
 .white-text {
     color:white;
@@ -71,14 +80,12 @@ body {
   display: inline-block;
 }
 
-  .upload-btn {
+.upload-btn {
       color: white;
       border: 0ch;
       background-color: cadetblue
   }
-  .category-tag {
+  
+.category-tag {
       text-align: center
   }
-.black {
-    background-color: black;
-}
