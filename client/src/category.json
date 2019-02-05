@@ -1,12 +1,12 @@
 [
     {
         "id":1,
-        "name": "",
+        "name": "Eye",
         "image": "/image/eyemakep.jpg"
     },
     {
         "id":2,
-        "name": "",
+        "name": "NAN",
         "image": "/image/light-yellow.jpg"
     },
 
@@ -22,7 +22,7 @@
     },
     {
         "id":5,
-        "name": "",
+        "name": "NAN",
         "image": "/image/light-yellow.jpg"
     },
     {
