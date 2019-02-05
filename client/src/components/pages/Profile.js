@@ -13,7 +13,8 @@ class Profile extends Component {
       email: "",
       image: "",
       zipcode: "",
-      favBrand: ""
+      favBrand: "",
+      beautyPlaces: []
     }
 
     this.uploadPic = this.uploadPic.bind(this);
@@ -41,12 +42,15 @@ class Profile extends Component {
         this.getBeautyPlaces();
       };
     });
-    
+
   }
 
   getBeautyPlaces = () => {
     API.postZip(this.state.zipcode).then(res => {
-      console.log(res.data);
+      const beautyStores = res.data;
+      this.setState({
+        beautyPlaces: beautyStores
+      })
     });
   }
   uploadPic(e) {
@@ -130,11 +134,6 @@ class Profile extends Component {
             </div>
 
           </div>
-
-
-
-
-
         </div>
       </div>
 
