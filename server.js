@@ -125,7 +125,7 @@ app.post('/api/update', async (req, res) => {
       break;
     case 'zipcode':
       try {
-        const data = db.User.findOneAndUpdate({ username: req.body.username }, { zipcode: req.body.data })
+        const data = await db.User.findOneAndUpdate({ username: req.body.username }, { zipcode: req.body.data })
         res.json(data)
       } catch (error) {
         res.status(400).json(err)
