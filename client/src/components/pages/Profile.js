@@ -94,7 +94,7 @@ class Profile extends Component {
           <div className="col-md-4 bg-light">
             <div className="card-deck">
               <div className="card">
-                <img className="card-img-top" src="https://via.placeholder.com/140x100" alt="Card image cap" />
+                <img className="card-img-top" src="https://via.placeholder.com/100x100" alt="Card image cap" />
                 <div className="card-body">
                   <h5 className="card-title">Card title</h5>
                   <p className="card-text">text</p>
