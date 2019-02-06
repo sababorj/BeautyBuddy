@@ -10,8 +10,8 @@ class Profile extends Component {
       username: "",
       email: "",
       image: "",
-      zipcode: "",
-      favBrand: "",
+      zipcode: "_",
+      favBrand: "_",
       beautyPlaces: []
     }
     this.uploadPic = this.uploadPic.bind(this);
@@ -20,16 +20,6 @@ class Profile extends Component {
 
   componentDidMount() {
     API.getUser(this.props.user.id).then(res => {
-      if (res.data.zipcode === 0) {
-        this.setState({
-          username: res.data.username,
-          email: res.data.email,
-          image: res.data.image,
-          zipcode: "No Zipcode",
-          favBrand: res.data.favBrand
-        })
-        this.getShopItems();
-      } else {
         this.setState({
           username: res.data.username,
           email: res.data.email,
@@ -38,8 +28,9 @@ class Profile extends Component {
           favBrand: res.data.favBrand
         });
         this.getBeautyPlaces();
-        this.getShopItems();
-      };
+        if(this.state.zipcode !== "_"){
+          this.getShopItems();
+        }
     });
 
   }
@@ -98,8 +89,7 @@ class Profile extends Component {
             </form>
             <div>Zip Code: {this.state.zipcode} </div>
             <button onClick={this.updateZip} >Alter Zipcode</button>
-            <h6>Your Brands</h6>
-            <p>{this.state.favBrand}</p>
+            <h6>Favorate brands: {this.state.favBrand}</h6>
           </div>
 
           <div className="col-md-8 bg-light center-flex">
