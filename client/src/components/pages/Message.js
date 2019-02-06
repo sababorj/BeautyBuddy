@@ -115,7 +115,7 @@ class Message extends Component {
               onChange={this.handleInputChange}
               type="textarea"
               placeholder="your message"
-              className="form-control write_msg"
+              className="form-control-lg write_msg"
             />
           </div>
           <button type="submit" className="msg_send_btn" type="button" onClick={this.submitForm}><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
