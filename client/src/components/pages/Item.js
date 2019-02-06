@@ -10,7 +10,7 @@ class Item extends Component {
             items: [],
         };
     }
-
+   
     componentDidMount() {
         // console.log(this.props)
         API
