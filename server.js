@@ -120,19 +120,26 @@ app.post('/api/getShop', (req, res) => {
 app.post('/api/update', async (req, res) => {
   switch (req.body.piece) {
     case 'image':
-    
+
       try {
         const data = await db.User.findOneAndUpdate({ username: req.body.username }, { image: req.body.data })
         res.json(data)
-        console.log("store")
       } catch (error) {
         res.status(400).json(err)
       }
       break;
     case 'zipcode':
-    console.log("store")
       try {
         const data = await db.User.findOneAndUpdate({ username: req.body.username }, { zipcode: req.body.data })
+        res.json(data)
+      } catch (error) {
+        res.status(400).json(err)
+      }
+      break;
+    case 'favBrand':
+      try {
+        const data = await db.User.findOneAndUpdate({ username: req.body.username }, { favBrand: req.body.data })
+        console.log(data)
         res.json(data)
       } catch (error) {
         res.status(400).json(err)
