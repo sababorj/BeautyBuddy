@@ -15,24 +15,24 @@ class Profile extends Component {
       beautyPlaces: [],
       shop: []
       // brandArray: ["almay","alva","anna sui","annabelle","benefit","boosh","burt's bees","butter london",
-// "c'est moi","cargo cosmetics","china glaze","clinique","coastal classic creation",
-// "colourpop
-// "covergirl
-// "dalish
-// "deciem
-// "dior
-// "dr. hauschka
-// "e.l.f.
-// "essie
-// "fenty
-// "glossier
-// "green people
-// "iman
-// "l'oreal
-// "lotus cosmetics usa
-// "maia's mineral galaxy
-// "marcelle
-// "marienatie]
+      // "c'est moi","cargo cosmetics","china glaze","clinique","coastal classic creation",
+      // "colourpop
+      // "covergirl
+      // "dalish
+      // "deciem
+      // "dior
+      // "dr. hauschka
+      // "e.l.f.
+      // "essie
+      // "fenty
+      // "glossier
+      // "green people
+      // "iman
+      // "l'oreal
+      // "lotus cosmetics usa
+      // "maia's mineral galaxy
+      // "marcelle
+      // "marienatie]
     }
     this.uploadPic = this.uploadPic.bind(this);
 
@@ -91,43 +91,48 @@ class Profile extends Component {
   }
 
   changeInput = (e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     this.setState({
-     [name]: value
+      [name]: value
     })
   }
 
   updateZip = () => {
-    API.updateUser('zipcode', this.state.username, this.state.zipcode )
-    .then((response)=> {
-      this.getBeautyPlaces()
-    })
+    API.updateUser('zipcode', this.state.username, this.state.zipcode)
+      .then((response) => {
+        this.getBeautyPlaces()
+      })
   }
 
   render() {
     return (
       <div className="container">
 
-        <div className="row">
-          <div className="col-sm-3 card mx-auto mb-3">
-            <h6>Welcome {this.state.username}</h6>
-            <div className="profile-image" style={{ backgroundImage: `url(${this.state.image})` }}>
+        <div className="row drop">
+          <div className="col-sm-4">
+            <div className="card mx-auto mb-3 sidebar-prof">
+              <h5>Welcome {this.state.username}</h5>
+              <div className="profile-image" style={{ backgroundImage: `url(${this.state.image})` }}>
+              </div>
+              <p className="pad-it">User: {this.state.username}<br></br>
+                Zip Code: {this.state.zipcode}<br></br>
+                Your Brand: {this.state.favBrand}</p>
+              <div className="pad-it">
+              <form onSubmit={this.uploadPic} >
+                <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
+                <button type="submit" className="btn btn-sm btn-outline-secondary">Save Image</button>
+              </form>
+            
+                <input name="zipcode" type="text" value={this.state.zipcode} onChange={this.changeInput} placeholder="Alter Zipcode"></input>
+                <button onClick={this.updateZip} className="btn btn-sm btn-outline-secondary">Update Zip</button>
+                <select className="selectpicker" >
+                  <option selected>Choose Another Brand</option>
+                  <option>almay</option>
+                </select>
+              </div>
             </div>
-            <form onSubmit={this.uploadPic} >
-              <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
-              <button type="submit">Save Image</button>
-            </form>
-            <div>Zip Code: {this.state.zipcode} </div>
-            <input name="zipcode" type="text" value={this.state.zipcode} onChange={this.changeInput} placeholder="Alter Zipcode"></input>
-            <button onClick={this.updateZip} >save new zipcode</button>
-            <h6>Favorate brand: {this.state.favBrand}</h6>
-            <select className="selectpicker" >
-            <option selected>Choose Another Brand</option>
-              <option>almay</option>
-            </select>
-
           </div>
-          <div className="col-md-4 bg-light">
+          <div className="col-sm-4 bg-light">
             <div className="card-deck">
               <div className="card">
                 <img className="card-img-top" src="/image/beautyplace.jpg" alt="Card image cap" />
@@ -137,8 +142,8 @@ class Profile extends Component {
                     <div>
                       <hr />
                       <a href={item.product_link} target="blank">
-                      <div className="yourMakeup" style={{ backgroundImage: `url(${item.image_link})` }}>
-                      </div>
+                        <div className="yourMakeup" style={{ backgroundImage: `url(${item.image_link})` }}>
+                        </div>
                       </a>
                       <p>Item: {item.name}</p>
                       <p>Brand: {item.brand}</p>
@@ -150,7 +155,7 @@ class Profile extends Component {
             </div>
           </div>
 
-          <div className="col-md-4 bg-light">
+          <div className="col-sm-4 bg-light">
             <div className="card">
               <img className="card-img-top" src="/image/beautyplace.jpg" alt="Card image cap" />
               <div className="card-body">

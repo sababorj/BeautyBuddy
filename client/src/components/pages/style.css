@@ -4,7 +4,7 @@ body {
     background-image: url("https://picjumbo.com/wp-content/uploads/makeup-brushes-on-white-marble-background_free_stock_photos_picjumbo_DSC06754-1570x1047.jpg");
     background-size: 100%;
     width: 100%;
-    font-family: "Raleway";
+    font-family: 'Montserrat', sans-serif;
 }
 
 .category-image{
@@ -15,19 +15,21 @@ body {
     margin: auto;
     margin-bottom: 20px;
   }
-  .profile-image, .yourMakeup {
+
+.profile-image, .yourMakeup {
     height: 200px;
     width: 200px;
     background-repeat: no-repeat;
     background-size: contain;
   }
-  .header{
-      font-size: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      text-align: center;
-      background-color: lightyellow;
-  }
+.header{
+    font-size: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+    background-color: lightyellow;
+}
+
 .home-container {
     background-color: white;
     padding-top: 50px;
@@ -36,9 +38,14 @@ body {
   }
       
   .bg-light, .sidebar-prof {
-    padding: 15px;
+    padding: 10px;
+    border: solid 1px #ffcccc;
+
   }
 
+.prof-header {
+    font-weight: bold;
+}
   /* .profile {
     padding-left: 35px;
   } */
@@ -74,6 +81,15 @@ body {
     margin-top: 15vh;
     margin-bottom: 50vh;
     max-width: 25rem;
+}
+
+.drop {
+    margin-top:5vh;
+    margin-bottom: 5vh;
+}
+
+.pad-it {
+    margin-top: 1vh;
 }
 
 /* .pearl {
