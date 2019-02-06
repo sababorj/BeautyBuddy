@@ -58,12 +58,11 @@ class Profile extends Component {
   };
 
   updateBrand = (e) => {
+    e.preventDefault();
     this.setState({
-      favBrand : e.target.value
-    }) 
-    console.log(e.target.value)
-    console.log(this.state.favBrand)
-    API.updateUser('favBrand', this.state.username, this.state.favBrand)
+      favBrand: e.target.value
+    })
+    API.updateUser('favBrand', this.state.username, e.target.value)
   }
 
   uploadPic(e) {
@@ -116,10 +115,10 @@ class Profile extends Component {
             <button onClick={this.updateZip} >save new zipcode</button>
             <h6>Favorate brand: {this.state.favBrand}</h6>
             <select className="selectpicker" onChange={this.updateBrand}>
-            <option selected>Choose Another Brand</option>
-            {this.state.brandArray.map(item => (
-              <option value={item} >{item}</option>
-            ))}
+              <option defaultValue>Choose Another Brand</option>
+              {this.state.brandArray.map(item => (
+                <option value={item} key={item}>{item}</option>
+              ))}
             </select>
 
           </div>
@@ -129,8 +128,8 @@ class Profile extends Component {
                 <img className="card-img-top" src="/image/beautyplace.jpg" alt="Card image cap" />
                 <div className="card-body">
                   <h5 className="card-title">Your Shop</h5>
-                  {this.state.shop.map(item => (
-                    <div>
+                  {this.state.shop.map((item, i) => (
+                    <div key={i}>
                       <hr />
                       <a href={item.product_link} target="blank">
                       <div className="yourMakeup" style={{ backgroundImage: `url(${item.image_link})` }}>
