@@ -13,6 +13,7 @@ class Profile extends Component {
       zipcode: "_",
       favBrand: "_",
       beautyPlaces: [],
+<<<<<<< HEAD
       shop: []
       // brandArray: ["almay","alva","anna sui","annabelle","benefit","boosh","burt's bees","butter london",
       // "c'est moi","cargo cosmetics","china glaze","clinique","coastal classic creation",
@@ -33,6 +34,13 @@ class Profile extends Component {
       // "maia's mineral galaxy
       // "marcelle
       // "marienatie]
+=======
+      shop: [],
+      brandArray: ["almay","alva","anna sui","annabelle","benefit","boosh","burt's bees","butter london",
+      "c'est moi","cargo cosmetics","china glaze","clinique","coastal classic creation","colourpop",
+      "covergirl","dalish","deciem","dior","dr. hauschka","e.l.f.","essie","fenty","glossier","green people",
+      "iman","l'oreal","lotus cosmetics usa","maia's mineral galaxy","marcelle","marienatie"]
+>>>>>>> 978f30c9a73017521aa55431c18b25576bab6160
     }
     this.uploadPic = this.uploadPic.bind(this);
 
@@ -47,6 +55,7 @@ class Profile extends Component {
         zipcode: res.data.zipcode,
         favBrand: res.data.favBrand
       });
+      if(this.state.favBrand !== "_")
       this.getBeautyPlaces();
       if (this.state.zipcode !== "_") {
         this.getShopItems();
@@ -66,11 +75,19 @@ class Profile extends Component {
 
   getShopItems = () => {
     API.fillShop("benefit").then(res => {
-      console.log(res.data)
       const shop = res.data
       this.setState({ shop: shop })
     })
   };
+
+  updateBrand = (e) => {
+    this.setState({
+      favBrand : e.target.value
+    }) 
+    console.log(e.target.value)
+    console.log(this.state.favBrand)
+    API.updateUser('favBrand', this.state.username, this.state.favBrand)
+  }
 
   uploadPic(e) {
     e.preventDefault();
@@ -147,7 +164,7 @@ class Profile extends Component {
                       </a>
                       <p>Item: {item.name}</p>
                       <p>Brand: {item.brand}</p>
-                      <p>Price: {item.price}</p>
+                      <p>Price: ${item.price}</p>
                     </div>
                   ))}
                 </div>

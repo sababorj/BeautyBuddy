@@ -1,7 +1,7 @@
 /* Global Styles*/
 
 body {
-    background-image: url("https://picjumbo.com/wp-content/uploads/makeup-brushes-on-white-marble-background_free_stock_photos_picjumbo_DSC06754-1570x1047.jpg");
+    background-image: url("https://i0.wp.com/78.media.tumblr.com/953b8d8bede22657dd7393a102a98bb0/tumblr_oxxezr9Nfq1woohnbo1_1280.jpg");
     background-size: 100%;
     width: 100%;
     font-family: 'Montserrat', sans-serif;
@@ -15,28 +15,57 @@ body {
     margin: auto;
     margin-bottom: 20px;
   }
-
-.profile-image, .yourMakeup {
+  .profile-image {
     height: 200px;
     width: 200px;
-    background-repeat: no-repeat;
     background-size: contain;
   }
-.header{
-    font-size: 50px;
-    padding-top: 50px;
-    padding-bottom: 50px;
+  .header{
+      font-size: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      text-align: center;
+      background-color: lightyellow;
+  }
+  .white-bk {
+      background-color: white;
+      padding-top: 50px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 20px;
+      padding-bottom: 50px;
+  }
+.white-bk1 {
+    padding-top: 20px;
+    background-color: rgb(255, 238, 240);
+    margin-left: 70px;
+    margin-right: 70px;
+
+}
+  .card-body {
+      background-color:white; 
+      margin-left: 70px;
+      margin-right: 70px;
+  }
+
+img {
+    width: 100%;
+  }
+
+.picheading {
     text-align: center;
+    font-weight: 500;
     background-color: lightyellow;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
-.home-container {
-    background-color: white;
-    padding-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
+  .seperate {
+      margin-top: 20px;
+      margin-bottom: 20px;
   }
-      
+
+
   .bg-light, .sidebar-prof {
     padding: 10px;
     border: solid 1px #ffcccc;
@@ -96,7 +125,7 @@ body {
     background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwVA7H2P85w-V1fmnG3Om-MJN9FgiyGSsUM-PB8smTpvyS1_yZ");
     height: 50%;
     background-size: cover;
-} */
+}
 
 .shop-save {
     width: 75%;
