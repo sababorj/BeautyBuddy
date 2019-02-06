@@ -5,10 +5,13 @@ const exjwt = require('express-jwt');
 const mongoose = require('mongoose');
 const morgan = require('morgan'); // used to see requests
 const app = express();
+const server = require('http').createServer(app);
 const db = require('./models');
 const axios = require('axios');
 const PORT = process.env.PORT || 3001;
-// const io = require("socket.io")(server);
+
+
+const io = require('socket.io')(server);
 
 // Setting CORS so that any website can
 // Access our API
@@ -166,7 +169,7 @@ app.post('/api/google/:zipcode', (req, res) => {
           let storesNearby = (response.data.results);
 
           // for loop through JSON response retrieve place info
-          for (let i = 0; i < 5; i++) {
+          for (let i = 0; i < 6; i++) {
             let store = {
               name: storesNearby[i].name,
               address: storesNearby[i].vicinity,
@@ -212,30 +215,15 @@ app.get("*", function (req, res) {
 });
 
 // SOCKET.IO CHAT INITIATION 
-// io.on('connection', (socket) => {
-// 	console.log('New user connected')
+io.on('connection', (socket) => {
+  console.log('New user connected')
+   // we are listening to an event here called 'message'
+   socket.on('message', (message) => {
+    // and emitting the message event for any client listening to it
+    io.emit('message', message);
+  });
+})
 
-// 	//default username
-// 	socket.username = "Anon"
-
-//     //listen for change_username
-//     socket.on('change_username', (data) => {
-//         socket.username = data.username
-//     })
-
-//     //listen for new_message
-//     socket.on('new_message', (data) => {
-//         //broadcast the new message
-//         io.sockets.emit('new_message', {message : data.message, username : socket.username});
-//     })
-
-//     //listen for typing
-//     socket.on('typing', (data) => {
-//     	socket.broadcast.emit('typing', {username : socket.username})
-//     })
-// })
-
-
-app.listen(PORT, function () {
+server.listen(PORT, function () {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
 });

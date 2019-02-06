@@ -10,21 +10,30 @@ class Item extends Component {
             items: []
         }
     }
-
-    componentDidMount(){
-        console.log(this.props)
+   
+    componentDidMount() {
+        // console.log(this.props)
         API
             .itemCall(this.props.location.state.productName || "Eye")
             .then(res => {
-                console.log(res.data);
-            })
+                this.setState({ items: res.data })
+                console.log(this.state.items);
+            });
     }
 
     render() {
         return (
-            <div> Item </div>
-        );
-    }
-}
+           
+            this.state.items.map(yourItems => (
+                <div key={yourItems.name}>
 
-export default Item;
+                    <h6 className="nav-pages">{yourItems.name}</h6>
+                    <p>{yourItems.brand}</p>
+                    <p>${yourItems.price}</p>
+                </div>
+
+            )
+            ))}
+    }
+
+    export default Item;
