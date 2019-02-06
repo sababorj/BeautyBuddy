@@ -163,7 +163,7 @@ app.post('/api/google/:zipcode', (req, res) => {
           let storesNearby = (response.data.results);
 
           // for loop through JSON response retrieve place info
-          for (let i = 0; i < 5; i++) {
+          for (let i = 0; i < 6; i++) {
             let store = {
               name: storesNearby[i].name,
               address: storesNearby[i].vicinity,
@@ -217,26 +217,6 @@ io.on('connection', (socket) => {
     io.emit('message', message);
   });
 })
-// 	//default username
-// 	socket.username = "Anon"
-
-//     //listen for change_username
-//     socket.on('change_username', (data) => {
-//         socket.username = data.username
-//     })
-
-//     //listen for new_message
-//     socket.on('new_message', (data) => {
-//         //broadcast the new message
-//         io.sockets.emit('new_message', {message : data.message, username : socket.username});
-//     })
-
-//     //listen for typing
-//     socket.on('typing', (data) => {
-//     	socket.broadcast.emit('typing', {username : socket.username})
-//     })
-// })
-
 
 server.listen(PORT, function () {
   console.log(`🌎 ==> Server now on port ${PORT}!`);

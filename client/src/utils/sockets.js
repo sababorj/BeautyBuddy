@@ -3,6 +3,7 @@ import openSocket from 'socket.io-client';
 const socket = openSocket();
 
 const sockets = {
+
     listenForMessage: (callback) => {
         // us listening for any event for message
         socket.on('message', (data) => {

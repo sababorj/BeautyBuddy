@@ -15,7 +15,7 @@ class Message extends Component {
     super(props);
     sockets.listenForMessage(data => {
       this.setState({messages: [...this.state.messages, data]})
-    }); 
+    });
   }
 
 
@@ -24,10 +24,10 @@ class Message extends Component {
         this.setState({
           username: res.data.username,
           email: res.data.email,
-          image: res.data.image,
+          image: res.data.image
         })
     })
-    
+    console.log(this.state);
   }
 
   handleInputChange = event => {
@@ -49,9 +49,9 @@ class Message extends Component {
     return (
       <div className="container Profile">
         <p>Received Messages:</p>
-        <ul>
-          {this.state.messages.map(message => <li key={message}>{message}</li>)}
-        </ul>
+        <div>
+          {this.state.messages.map(message => <p key={message}>{message}</p>)}
+        </div>
         <form className="form-inline">
           <div className="form-group">
             <input
