@@ -14,6 +14,25 @@ class Profile extends Component {
       favBrand: "_",
       beautyPlaces: [],
       shop: []
+      // brandArray: ["almay","alva","anna sui","annabelle","benefit","boosh","burt's bees","butter london",
+// "c'est moi","cargo cosmetics","china glaze","clinique","coastal classic creation",
+// "colourpop
+// "covergirl
+// "dalish
+// "deciem
+// "dior
+// "dr. hauschka
+// "e.l.f.
+// "essie
+// "fenty
+// "glossier
+// "green people
+// "iman
+// "l'oreal
+// "lotus cosmetics usa
+// "maia's mineral galaxy
+// "marcelle
+// "marienatie]
     }
     this.uploadPic = this.uploadPic.bind(this);
 
@@ -71,10 +90,18 @@ class Profile extends Component {
     });
   }
 
+  changeInput = (e) => {
+    const {name, value} = e.target;
+    this.setState({
+     [name]: value
+    })
+  }
+
   updateZip = () => {
-    const newZip = prompt("please provide a five digit zipcode");
-    this.setState({ zipcode: newZip });
-    API.updateUser('zipcode', this.state.username, newZip)
+    API.updateUser('zipcode', this.state.username, this.state.zipcode )
+    .then((response)=> {
+      this.getBeautyPlaces()
+    })
   }
 
   render() {
@@ -91,8 +118,14 @@ class Profile extends Component {
               <button type="submit">Save Image</button>
             </form>
             <div>Zip Code: {this.state.zipcode} </div>
-            <button onClick={this.updateZip} >Alter Zipcode</button>
-            <h6>Favorate brands: {this.state.favBrand}</h6>
+            <input name="zipcode" type="text" value={this.state.zipcode} onChange={this.changeInput} placeholder="Alter Zipcode"></input>
+            <button onClick={this.updateZip} >save new zipcode</button>
+            <h6>Favorate brand: {this.state.favBrand}</h6>
+            <select className="selectpicker" >
+            <option selected>Choose Another Brand</option>
+              <option>almay</option>
+            </select>
+
           </div>
           <div className="col-md-4 bg-light">
             <div className="card-deck">

@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const path = require('path');
 const jwt = require('jsonwebtoken');
@@ -34,7 +35,7 @@ mongoose.set('useCreateIndex', true);
 
 // Init the express-jwt middleware
 const isAuthenticated = exjwt({
-  secret: 'all sorts of code up in here'
+  secret: process.env.SERVER_SECRET
 });
 
 // API Call for product data
@@ -62,7 +63,7 @@ app.post('/api/login', (req, res) => {
   }).then(user => {
     user.verifyPassword(req.body.password, (err, isMatch) => {
       if (isMatch && !err) {
-        let token = jwt.sign({ id: user._id, email: user.email }, 'all sorts of code up in here', { expiresIn: 129600 }); // Sigining the token
+        let token = jwt.sign({ id: user._id, email: user.email }, process.env.SERVER_SECRET, { expiresIn: 129600 }); // Sigining the token
         res.json({ success: true, message: "Token Issued!", token: token, user: user });
       } else {
         res.status(401).json({ success: false, message: "Authentication failed. Wrong password." });
@@ -119,14 +120,17 @@ app.post('/api/getShop', (req, res) => {
 app.post('/api/update', async (req, res) => {
   switch (req.body.piece) {
     case 'image':
+    
       try {
         const data = await db.User.findOneAndUpdate({ username: req.body.username }, { image: req.body.data })
         res.json(data)
+        console.log("store")
       } catch (error) {
         res.status(400).json(err)
       }
       break;
     case 'zipcode':
+    console.log("store")
       try {
         const data = await db.User.findOneAndUpdate({ username: req.body.username }, { zipcode: req.body.data })
         res.json(data)
@@ -152,7 +156,7 @@ app.get('/api/user/:id', isAuthenticated, (req, res) => {
 app.post('/api/google/:zipcode', (req, res) => {
 
   let zip = req.params.zipcode;
-  const placesApiKey = "AIzaSyD5YTMyDlZYKKMMrlYIguDdqT68DxBrLx4";
+  const placesApiKey = process.env.API_KEY;
   let geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:${zip}&key=${placesApiKey}`;
   const storeList = [];
 
