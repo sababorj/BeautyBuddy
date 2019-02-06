@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import AuthService from './AuthService';
 import type from '../../category.json';
 import './style.css';
-import API from '../../utils/API';
 
 class Category extends Component {
     constructor() {

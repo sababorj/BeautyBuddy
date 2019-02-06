@@ -149,3 +149,13 @@ button {
     width: 200px;
     padding-bottom: 2px
 }
+
+label {
+    color: darkcyan
+}
+
+.save {
+    color: brown;
+    font-weight: bold;
+    background-color: blanchedalmond
+}
