@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import AuthService from './AuthService';
 import type from '../../category.json';
 import './style.css';
-import API from '../../utils/API';
 
 class Category extends Component {
     constructor() {
@@ -52,7 +51,7 @@ class Category extends Component {
                             <div className="card-body">
                                 <h5 className="card-title">Always have your favorite beauty products at the tip of your hands!</h5>
                                 <p className="card-text">This will be edited</p>
-                                <a href="#" className="btn btn-primary">Subscribe</a>
+                                <button className="btn btn-primary">Subscribe</button>
                             </div>
                         </div>
                     </div>
