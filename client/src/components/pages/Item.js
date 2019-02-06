@@ -31,7 +31,7 @@ class Item extends Component {
                                 <div className="card">
                                     <div className="card-body">
                                         <div key={yourItems.name}>
-                                            <a href={yourItems.product_link} target="blank">
+                                            <a href="/signup">
                                                 <div className="yourMakeup" style={{ backgroundImage: `url(${yourItems.image_link})` }}>
                                                 </div>
                                             </a>
