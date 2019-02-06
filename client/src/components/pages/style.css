@@ -118,3 +118,7 @@ button {
     width: 200px;
     padding-bottom: 2px
 }
+
+label {
+    color: darkcyan
+}

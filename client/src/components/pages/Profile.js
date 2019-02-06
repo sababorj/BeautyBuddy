@@ -20,6 +20,7 @@ class Profile extends Component {
       "iman","l'oreal","lotus cosmetics usa","maia's mineral galaxy","marcelle","marienatie"]
     }
     this.uploadPic = this.uploadPic.bind(this);
+    this.updateBrand = this.updateBrand.bind(this);
 
   }
 
@@ -51,18 +52,22 @@ class Profile extends Component {
   }
 
   getShopItems = () => {
-    API.fillShop("benefit").then(res => {
-      const shop = res.data
+    API.fillShop(this.state.favBrand).then(res => {
+      const shop = res.data.filter(item => item)
+      console.log(shop)
       this.setState({ shop: shop })
     })
   };
 
-  updateBrand = (e) => {
-    e.preventDefault();
+  updateBrand(event) {
     this.setState({
-      favBrand: e.target.value
+      favBrand: event.target.value
     })
-    API.updateUser('favBrand', this.state.username, e.target.value)
+  }
+
+  updateUser = () => {
+    API.updateUser('favBrand', this.state.username, this.state.favBrand)
+    this.getShopItems();
   }
 
   uploadPic(e) {
@@ -111,16 +116,17 @@ class Profile extends Component {
               <button type="submit">Save Image</button>
             </form>
             <div>Zip Code: {this.state.zipcode} </div>
+            <label htmlFor="zipcode"><strong>change zipcode below</strong></label>
             <input name="zipcode" type="text" value={this.state.zipcode} onChange={this.changeInput} placeholder="Alter Zipcode"></input>
-            <button onClick={this.updateZip} >save new zipcode</button>
+            <button onClick={this.updateZip} >Save New Zipcode</button>
             <h6>Favorate brand: {this.state.favBrand}</h6>
-            <select className="selectpicker" onChange={this.updateBrand}>
-              <option defaultValue>Choose Another Brand</option>
+            <label htmlFor="brand"><strong>change barnd below</strong></label>
+            <select className="selectpicker" name="brand" onChange={this.updateBrand} value={this.state.favBrand}>
               {this.state.brandArray.map(item => (
                 <option value={item} key={item}>{item}</option>
               ))}
             </select>
-
+            <button onClick={this.updateUser} type="button">Save New Brand</button>
           </div>
           <div className="col-md-4 bg-light">
             <div className="card-deck">
@@ -131,7 +137,7 @@ class Profile extends Component {
                   {this.state.shop.map((item, i) => (
                     <div key={i}>
                       <hr />
-                      <a href={item.product_link} target="blank">
+                      <a href={item.product_link || "https://www.google.com"} target="blank">
                       <div className="yourMakeup" style={{ backgroundImage: `url(${item.image_link})` }}>
                       </div>
                       </a>
