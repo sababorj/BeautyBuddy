@@ -142,7 +142,7 @@ class Profile extends Component {
                       </a>
                       <p>Item: {item.name}</p>
                       <p>Brand: {item.brand}</p>
-                      <p>Price: {item.price}</p>
+                      <p>Price: ${item.price}</p>
                     </div>
                   ))}
                 </div>

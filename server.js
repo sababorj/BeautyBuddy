@@ -220,8 +220,9 @@ app.get("*", function (req, res) {
 
 // SOCKET.IO CHAT INITIATION 
 io.on('connection', (socket) => {
-  console.log(`New user connected ${socket.id}`)
-  socket.username = 
+  
+  socket.username = 'your name';
+  console.log(`New user connected ${socket.id}, ${socket.username}`);
    // we are listening to an event here called 'message'
    socket.on('message', (message) => {
     // and emitting the message event for any client listening to it
