@@ -72,6 +72,7 @@ class Profile extends Component {
     const newZip = prompt("please provide a five digit zipcode");
     this.setState({ zipcode: newZip });
     API.updateUser('zipcode', this.state.username, newZip)
+    
   }
 
   render() {
