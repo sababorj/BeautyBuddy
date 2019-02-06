@@ -79,7 +79,7 @@ class Profile extends Component {
       <div className="container">
 
         <div className="row">
-          <div className="col-sm-3 card mx-auto sidebar-prof mb-3">
+          <div className="col-sm-3 card mx-auto mb-3">
             <h6>Welcome {this.state.username}</h6>
             <div className="profile-image" style={{ backgroundImage: `url(${this.state.image})` }}>
             </div>
@@ -91,45 +91,40 @@ class Profile extends Component {
             <button onClick={this.updateZip} >Alter Zipcode</button>
             <h6>Favorate brands: {this.state.favBrand}</h6>
           </div>
-
-          <div className="col-md-8 bg-light center-flex">
-            <h4>Save or Shop</h4>
+          <div className="col-md-4 bg-light">
             <div className="card-deck">
               <div className="card">
-                <img className="card-img-top" src="https://via.placeholder.com/140x100" alt="Card image cap" />
+                <img className="card-img-top" src="https://via.placeholder.com/100x100" alt="Card image cap" />
                 <div className="card-body">
                   <h5 className="card-title">Card title</h5>
                   <p className="card-text">text</p>
                 </div>
               </div>
-              <div className="card">
-                <img className="card-img-top" src="https://via.placeholder.com/140x100" alt="Card image cap" />
-                <div className="card-body">
-                  <h5 className="card-title">Card title</h5>
-                  <p className="card-text">text.</p>
-                </div>
-              </div>
-              <div className="card">
-                <img className="card-img-top" src="/image/beautyplace.jpg" alt="Card image cap" />
-                <div className="card-body">
-                  <h5 className="card-title">Beauty Places</h5>
+            </div>
+          </div>
 
-                  {this.state.beautyPlaces.map(yourPlaces => (
-                    <div key={yourPlaces.name}>
-                      <hr />
-                      <h6 className="nav-pages">{yourPlaces.name}</h6>
-                      <p>{yourPlaces.address}</p>
-                      <p>{yourPlaces.rating} Stars</p>
+        <div className="col-md-4 bg-light">
+          <div className="card">
+            <img className="card-img-top" src="/image/beautyplace.jpg" alt="Card image cap" />
+            <div className="card-body">
+              <h5 className="card-title">Beauty Places</h5>
 
-                    </div>
-                  ))}
+              {this.state.beautyPlaces.map(yourPlaces => (
+                <div key={yourPlaces.name}>
+                  <hr />
+                  <h6 className="nav-pages">{yourPlaces.name}</h6>
+                  <p>{yourPlaces.address}</p>
+                  <p>{yourPlaces.rating} Stars</p>
 
                 </div>
-              </div>
+              ))}
+
             </div>
           </div>
         </div>
       </div>
+      </div >
+
     )
   }
 }
