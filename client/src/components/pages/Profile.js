@@ -51,7 +51,7 @@ class Profile extends Component {
   }
 
   getShopItems = () => {
-    API.fillShop(this.state.favBrand).then(res => {
+    API.fillShop("benefit").then(res => {
       const shop = res.data
       this.setState({ shop: shop })
     })
@@ -59,8 +59,10 @@ class Profile extends Component {
 
   updateBrand = (e) => {
     this.setState({
-      favBrand : [e.target.value]
+      favBrand : e.target.value
     }) 
+    console.log(e.target.value)
+    console.log(this.state.favBrand)
     API.updateUser('favBrand', this.state.username, this.state.favBrand)
   }
 
@@ -129,13 +131,14 @@ class Profile extends Component {
                   <h5 className="card-title">Your Shop</h5>
                   {this.state.shop.map(item => (
                     <div>
+                      <hr />
+                      <a href={item.product_link} target="blank">
                       <div className="yourMakeup" style={{ backgroundImage: `url(${item.image_link})` }}>
                       </div>
+                      </a>
                       <p>Item: {item.name}</p>
                       <p>Brand: {item.brand}</p>
                       <p>Price: {item.price}</p>
-
-                      <hr />
                     </div>
                   ))}
                 </div>

@@ -139,6 +139,7 @@ app.post('/api/update', async (req, res) => {
     case 'favBrand':
       try {
         const data = await db.User.findOneAndUpdate({ username: req.body.username }, { favBrand: req.body.data })
+        console.log(data)
         res.json(data)
       } catch (error) {
         res.status(400).json(err)
@@ -179,7 +180,7 @@ app.post('/api/google/:zipcode', (req, res) => {
           let storesNearby = (response.data.results);
 
           // for loop through JSON response retrieve place info
-          for (let i = 0; i < 6; i++) {
+          for (let i = 0; i < 16; i++) {
             let store = {
               name: storesNearby[i].name,
               address: storesNearby[i].vicinity,
@@ -226,13 +227,14 @@ app.get("*", function (req, res) {
 
 // SOCKET.IO CHAT INITIATION 
 io.on('connection', (socket) => {
-  console.log('New user connected')
-  // we are listening to an event here called 'message'
-  socket.on('message', (message) => {
+  console.log(`New user connected ${socket.id}`)
+  socket.username = 
+   // we are listening to an event here called 'message'
+   socket.on('message', (message) => {
     // and emitting the message event for any client listening to it
     io.emit('message', message);
   });
-})
+});
 
 server.listen(PORT, function () {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
