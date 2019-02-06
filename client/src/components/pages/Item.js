@@ -24,16 +24,13 @@ class Item extends Component {
     render() {
         return (
             <div className="container">
-
                 <div className="row">
-                    <div className="col-md-4 bg-light">
-                        <div className="card-deck">
-                            <div className="card">
-                                <div className="card-body">
-                                    <h5 className="card-title">Your Shop</h5>
-                                    {this.state.items.map(yourItems => (
+                    {this.state.items.map(yourItems => (
+                        <div className="col-md-4 bg-light">
+                            <div className="card-deck">
+                                <div className="card">
+                                    <div className="card-body">
                                         <div key={yourItems.name}>
-                                            <hr />
                                             <a href={yourItems.product_link} target="blank">
                                                 <div className="yourMakeup" style={{ backgroundImage: `url(${yourItems.image_link})` }}>
                                                 </div>
@@ -42,13 +39,11 @@ class Item extends Component {
                                             <p>{yourItems.brand}</p>
                                             <p>${yourItems.price}</p>
                                         </div>
-
-                                    ))}
-
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         )
