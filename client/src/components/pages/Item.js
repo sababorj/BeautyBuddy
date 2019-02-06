@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import API from '../../utils/API';
-// import AuthService from './AuthService';
 
 class Item extends Component {
     constructor() {
         super();
         // this.Auth = new AuthService();
+        
         this.state = {
-            items: []
-        }
+            items: [],
+        };
     }
    
     componentDidMount() {
