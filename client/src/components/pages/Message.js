@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import withAuth from './withAuth';
 import API from '../../utils/API';
-import { sockets } from '../../utils/sockets';
-import "../pages/message.css";
+import {sockets} from '../../utils/sockets';
+import "./message.css";
 
 class Message extends Component {
 
