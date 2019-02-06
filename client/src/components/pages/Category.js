@@ -48,7 +48,7 @@ class Category extends Component {
                         <br></br>
                         <br></br>
                         {/* <div className="card text-center seperate "> */}
-                            <div className="card-header white-bk1">
+                            <div className="card-header white-bk1 about-us">
                                 About Us
                         {/* </div> */}
                         </div>

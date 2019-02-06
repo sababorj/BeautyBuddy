@@ -8,13 +8,14 @@ body {
 }
 
 .category-image{
-    height:300px;
-    width: 300px;
+    height: 250px;
+    width: 250px;
     text-align: center;
     background-repeat: no-repeat;
     margin: auto;
     margin-bottom: 20px;
   }
+  
   .profile-image {
     height: 200px;
     width: 200px;
@@ -44,9 +45,12 @@ body {
 }
   .card-body {
       background-color:white; 
-      margin-left: 70px;
-      margin-right: 70px;
   }
+
+.about-us {
+    margin-left: 70px;
+    margin-right: 70px;
+}
 
 img {
     width: 100%;
@@ -163,3 +167,5 @@ button {
     width: 200px;
     padding-bottom: 2px
 }
+
+*/

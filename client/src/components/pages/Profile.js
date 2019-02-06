@@ -13,34 +13,11 @@ class Profile extends Component {
       zipcode: "_",
       favBrand: "_",
       beautyPlaces: [],
-<<<<<<< HEAD
-      shop: []
-      // brandArray: ["almay","alva","anna sui","annabelle","benefit","boosh","burt's bees","butter london",
-      // "c'est moi","cargo cosmetics","china glaze","clinique","coastal classic creation",
-      // "colourpop
-      // "covergirl
-      // "dalish
-      // "deciem
-      // "dior
-      // "dr. hauschka
-      // "e.l.f.
-      // "essie
-      // "fenty
-      // "glossier
-      // "green people
-      // "iman
-      // "l'oreal
-      // "lotus cosmetics usa
-      // "maia's mineral galaxy
-      // "marcelle
-      // "marienatie]
-=======
       shop: [],
       brandArray: ["almay","alva","anna sui","annabelle","benefit","boosh","burt's bees","butter london",
       "c'est moi","cargo cosmetics","china glaze","clinique","coastal classic creation","colourpop",
       "covergirl","dalish","deciem","dior","dr. hauschka","e.l.f.","essie","fenty","glossier","green people",
       "iman","l'oreal","lotus cosmetics usa","maia's mineral galaxy","marcelle","marienatie"]
->>>>>>> 978f30c9a73017521aa55431c18b25576bab6160
     }
     this.uploadPic = this.uploadPic.bind(this);
 
