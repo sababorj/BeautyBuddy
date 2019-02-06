@@ -113,12 +113,12 @@ class Profile extends Component {
             </div>
             <form onSubmit={this.uploadPic} >
               <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
-              <button type="submit">Save Image</button>
+              <button className="save" type="submit">Save Image</button>
             </form>
             <div>Zip Code: {this.state.zipcode} </div>
             <label htmlFor="zipcode"><strong>change zipcode below</strong></label>
             <input name="zipcode" type="text" value={this.state.zipcode} onChange={this.changeInput} placeholder="Alter Zipcode"></input>
-            <button onClick={this.updateZip} >Save New Zipcode</button>
+            <button onClick={this.updateZip} className="save">Save New Zipcode</button>
             <h6>Favorate brand: {this.state.favBrand}</h6>
             <label htmlFor="brand"><strong>change barnd below</strong></label>
             <select className="selectpicker" name="brand" onChange={this.updateBrand} value={this.state.favBrand}>
@@ -126,7 +126,7 @@ class Profile extends Component {
                 <option value={item} key={item}>{item}</option>
               ))}
             </select>
-            <button onClick={this.updateUser} type="button">Save New Brand</button>
+            <button onClick={this.updateUser} type="button" className="save">Save New Brand</button>
           </div>
           <div className="col-md-4 bg-light">
             <div className="card-deck">
