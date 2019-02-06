@@ -5,12 +5,12 @@ class Item extends Component {
     constructor() {
         super();
         // this.Auth = new AuthService();
-        
+
         this.state = {
             items: [],
         };
     }
-   
+
     componentDidMount() {
         // console.log(this.props)
         API
@@ -23,17 +23,36 @@ class Item extends Component {
 
     render() {
         return (
-           
-            this.state.items.map(yourItems => (
-                <div key={yourItems.name}>
+            <div className="container">
 
-                    <h6 className="nav-pages">{yourItems.name}</h6>
-                    <p>{yourItems.brand}</p>
-                    <p>${yourItems.price}</p>
+                <div className="row">
+                    <div className="col-md-4 bg-light">
+                        <div className="card-deck">
+                            <div className="card">
+                                <div className="card-body">
+                                    <h5 className="card-title">Your Shop</h5>
+                                    {this.state.items.map(yourItems => (
+                                        <div key={yourItems.name}>
+                                            <hr />
+                                            <a href={yourItems.product_link} target="blank">
+                                                <div className="yourMakeup" style={{ backgroundImage: `url(${yourItems.image_link})` }}>
+                                                </div>
+                                            </a>
+                                            <h6 className="nav-pages">{yourItems.name}</h6>
+                                            <p>{yourItems.brand}</p>
+                                            <p>${yourItems.price}</p>
+                                        </div>
+
+                                    ))}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-            )
-            ))}
+            </div>
+        )
     }
+}
 
-    export default Item;
+export default Item;

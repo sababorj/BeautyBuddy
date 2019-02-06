@@ -15,24 +15,24 @@ class Profile extends Component {
       beautyPlaces: [],
       shop: []
       // brandArray: ["almay","alva","anna sui","annabelle","benefit","boosh","burt's bees","butter london",
-// "c'est moi","cargo cosmetics","china glaze","clinique","coastal classic creation",
-// "colourpop
-// "covergirl
-// "dalish
-// "deciem
-// "dior
-// "dr. hauschka
-// "e.l.f.
-// "essie
-// "fenty
-// "glossier
-// "green people
-// "iman
-// "l'oreal
-// "lotus cosmetics usa
-// "maia's mineral galaxy
-// "marcelle
-// "marienatie]
+      // "c'est moi","cargo cosmetics","china glaze","clinique","coastal classic creation",
+      // "colourpop
+      // "covergirl
+      // "dalish
+      // "deciem
+      // "dior
+      // "dr. hauschka
+      // "e.l.f.
+      // "essie
+      // "fenty
+      // "glossier
+      // "green people
+      // "iman
+      // "l'oreal
+      // "lotus cosmetics usa
+      // "maia's mineral galaxy
+      // "marcelle
+      // "marienatie]
     }
     this.uploadPic = this.uploadPic.bind(this);
 
@@ -91,17 +91,17 @@ class Profile extends Component {
   }
 
   changeInput = (e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     this.setState({
-     [name]: value
+      [name]: value
     })
   }
 
   updateZip = () => {
-    API.updateUser('zipcode', this.state.username, this.state.zipcode )
-    .then((response)=> {
-      this.getBeautyPlaces()
-    })
+    API.updateUser('zipcode', this.state.username, this.state.zipcode)
+      .then((response) => {
+        this.getBeautyPlaces()
+      })
   }
 
   render() {
@@ -122,7 +122,7 @@ class Profile extends Component {
             <button onClick={this.updateZip} >save new zipcode</button>
             <h6>Favorate brand: {this.state.favBrand}</h6>
             <select className="selectpicker" >
-            <option selected>Choose Another Brand</option>
+              <option selected>Choose Another Brand</option>
               <option>almay</option>
             </select>
 
@@ -137,8 +137,8 @@ class Profile extends Component {
                     <div>
                       <hr />
                       <a href={item.product_link} target="blank">
-                      <div className="yourMakeup" style={{ backgroundImage: `url(${item.image_link})` }}>
-                      </div>
+                        <div className="yourMakeup" style={{ backgroundImage: `url(${item.image_link})` }}>
+                        </div>
                       </a>
                       <p>Item: {item.name}</p>
                       <p>Brand: {item.brand}</p>
