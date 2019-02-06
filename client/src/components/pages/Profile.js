@@ -135,13 +135,14 @@ class Profile extends Component {
                   <h5 className="card-title">Your Shop</h5>
                   {this.state.shop.map(item => (
                     <div>
+                      <hr />
+                      <a href={item.product_link} target="blank">
                       <div className="yourMakeup" style={{ backgroundImage: `url(${item.image_link})` }}>
                       </div>
+                      </a>
                       <p>Item: {item.name}</p>
                       <p>Brand: {item.brand}</p>
                       <p>Price: {item.price}</p>
-
-                      <hr />
                     </div>
                   ))}
                 </div>

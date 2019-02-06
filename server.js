@@ -173,7 +173,7 @@ app.post('/api/google/:zipcode', (req, res) => {
           let storesNearby = (response.data.results);
 
           // for loop through JSON response retrieve place info
-          for (let i = 0; i < 6; i++) {
+          for (let i = 0; i < 16; i++) {
             let store = {
               name: storesNearby[i].name,
               address: storesNearby[i].vicinity,
@@ -220,13 +220,14 @@ app.get("*", function (req, res) {
 
 // SOCKET.IO CHAT INITIATION 
 io.on('connection', (socket) => {
-  console.log('New user connected')
+  console.log(`New user connected ${socket.id}`)
+  socket.username = 
    // we are listening to an event here called 'message'
    socket.on('message', (message) => {
     // and emitting the message event for any client listening to it
     io.emit('message', message);
   });
-})
+});
 
 server.listen(PORT, function () {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
