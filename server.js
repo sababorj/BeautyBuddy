@@ -170,7 +170,7 @@ app.post('/api/google/:zipcode', (req, res) => {
           let storesNearby = (response.data.results);
 
           // for loop through JSON response retrieve place info
-          for (let i = 0; i < 6; i++) {
+          for (let i = 0; i < 16; i++) {
             let store = {
               name: storesNearby[i].name,
               address: storesNearby[i].vicinity,
