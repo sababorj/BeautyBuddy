@@ -13,26 +13,11 @@ class Profile extends Component {
       zipcode: "_",
       favBrand: "_",
       beautyPlaces: [],
-      shop: []
-      // brandArray: ["almay","alva","anna sui","annabelle","benefit","boosh","burt's bees","butter london",
-// "c'est moi","cargo cosmetics","china glaze","clinique","coastal classic creation",
-// "colourpop
-// "covergirl
-// "dalish
-// "deciem
-// "dior
-// "dr. hauschka
-// "e.l.f.
-// "essie
-// "fenty
-// "glossier
-// "green people
-// "iman
-// "l'oreal
-// "lotus cosmetics usa
-// "maia's mineral galaxy
-// "marcelle
-// "marienatie]
+      shop: [],
+      brandArray: ["almay","alva","anna sui","annabelle","benefit","boosh","burt's bees","butter london",
+      "c'est moi","cargo cosmetics","china glaze","clinique","coastal classic creation","colourpop",
+      "covergirl","dalish","deciem","dior","dr. hauschka","e.l.f.","essie","fenty","glossier","green people",
+      "iman","l'oreal","lotus cosmetics usa","maia's mineral galaxy","marcelle","marienatie"]
     }
     this.uploadPic = this.uploadPic.bind(this);
 
@@ -47,6 +32,7 @@ class Profile extends Component {
         zipcode: res.data.zipcode,
         favBrand: res.data.favBrand
       });
+      if(this.state.favBrand !== "_")
       this.getBeautyPlaces();
       if (this.state.zipcode !== "_") {
         this.getShopItems();
@@ -65,12 +51,18 @@ class Profile extends Component {
   }
 
   getShopItems = () => {
-    API.fillShop("benefit").then(res => {
-      console.log(res.data)
+    API.fillShop(this.state.favBrand).then(res => {
       const shop = res.data
       this.setState({ shop: shop })
     })
   };
+
+  updateBrand = (e) => {
+    this.setState({
+      favBrand : [e.target.value]
+    }) 
+    API.updateUser('favBrand', this.state.username, this.state.favBrand)
+  }
 
   uploadPic(e) {
     e.preventDefault();
@@ -121,9 +113,11 @@ class Profile extends Component {
             <input name="zipcode" type="text" value={this.state.zipcode} onChange={this.changeInput} placeholder="Alter Zipcode"></input>
             <button onClick={this.updateZip} >save new zipcode</button>
             <h6>Favorate brand: {this.state.favBrand}</h6>
-            <select className="selectpicker" >
+            <select className="selectpicker" onChange={this.updateBrand}>
             <option selected>Choose Another Brand</option>
-              <option>almay</option>
+            {this.state.brandArray.map(item => (
+              <option value={item} >{item}</option>
+            ))}
             </select>
 
           </div>
