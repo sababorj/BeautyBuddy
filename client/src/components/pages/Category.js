@@ -35,7 +35,7 @@ class Category extends Component {
                 </div>
                 <div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
                     <div className="container">
-                        <div className="row">
+                        <div className="row white-bk">
                             {this.state.type.map(item => (
                                 <>
                                     {/* <h1 key={item.id} className="category-tag">{item.name}</h1> */}
@@ -44,21 +44,31 @@ class Category extends Component {
                                 </>
                             ))}
                         </div>
-                        <div className="card text-center">
-                            <div className="card-header">
+                        <br></br>
+                        <br></br>
+                        {/* <div className="card text-center seperate "> */}
+                            <div className="card-header white-bk1">
                                 About Us
+                        {/* </div> */}
                         </div>
-                            <div className="card-body">
-                                <h5 className="card-title">Always have your favorite beauty products at the tip of your hands!</h5>
-                                <p className="card-text">This will be edited</p>
-                                <button className="btn btn-primary">Subscribe</button>
-                            </div>
+                        <div className="card-body">
+                            <h5 className="card-title">Always have your favorite beauty products at the tip of your hands!</h5>
+                            <p className="card-text">This will be edited</p>
+                            <a href="#" className="btn btn-primary">Subscribe</a>
+                        </div>
+                        <br></br>
+                        <br></br>
+                        <div className="row picheading">
+                        <h1>Follow Us on Instagram #BeautyBuddies</h1>
+                        </div>
+                        <div className="row seperate1">
+                            <img src="./image/stockimg.png" alt="Stock Pretty Images" />
                         </div>
                     </div>
                 </div>
-            </div>
-        );
-    }
-}
-
+                </div>
+                );
+            }
+        }
+        
 export default Category;

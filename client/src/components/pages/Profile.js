@@ -89,17 +89,17 @@ class Profile extends Component {
   }
 
   changeInput = (e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     this.setState({
-     [name]: value
+      [name]: value
     })
   }
 
   updateZip = () => {
-    API.updateUser('zipcode', this.state.username, this.state.zipcode )
-    .then((response)=> {
-      this.getBeautyPlaces()
-    })
+    API.updateUser('zipcode', this.state.username, this.state.zipcode)
+      .then((response) => {
+        this.getBeautyPlaces()
+      })
   }
 
   render() {
@@ -137,13 +137,13 @@ class Profile extends Component {
                   {this.state.shop.map((item, i) => (
                     <div key={i}>
                       <hr />
-                      <a href={item.product_link || "https://www.google.com"} target="blank">
-                      <div className="yourMakeup" style={{ backgroundImage: `url(${item.image_link})` }}>
-                      </div>
+                      <a href={item.product_link} target="blank">
+                        <div className="yourMakeup" style={{ backgroundImage: `url(${item.image_link})` }}>
+                        </div>
                       </a>
                       <p>Item: {item.name}</p>
                       <p>Brand: {item.brand}</p>
-                      <p>Price: {item.price}</p>
+                      <p>Price: ${item.price}</p>
                     </div>
                   ))}
                 </div>
