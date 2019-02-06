@@ -15,9 +15,10 @@ body {
     margin: auto;
     margin-bottom: 20px;
   }
-  .profile-image {
+  .profile-image, .blahblah {
     height: 200px;
     width: 200px;
+    background-repeat: no-repeat;
     background-size: contain;
   }
   .header{
