@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import withAuth from './withAuth';
 import API from '../../utils/API';
-import "../pages/style.css";
+import "./style.css";
 
 class Profile extends Component {
   constructor(props) {
