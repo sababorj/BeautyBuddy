@@ -108,7 +108,7 @@ class Profile extends Component {
 
         <div className="row drop">
           <div className="col-sm-4">
-            <div className="card mx-auto mb-3 sidebar-prof center-flex">
+            <div className="card mx-auto mb-3 sidebar-prof">
               <h5 className="prof-header center-flex">Welcome {this.state.username}</h5>
               <div className="profile-image center-flex" style={{ backgroundImage: `url(${this.state.image})` }}>
               </div>
@@ -136,7 +136,7 @@ class Profile extends Component {
            
 
           </div>
-          <div className="col-sm-4 bg-light">
+          <div className="col-md-4 bg-light">
             <div className="card-deck">
               <div className="card">
                 <img className="card-img-top" src="/image/marble-makeup.png" alt="Card image cap" />
@@ -146,7 +146,7 @@ class Profile extends Component {
                     <div key={i}>
                       <hr />
                       <a href={item.product_link} target="blank">
-                        <div className="yourMakeup" style={{ backgroundImage: `url(${item.image_link})` }}>
+                        <div className="yourMakeup center" style={{ backgroundImage: `url(${item.image_link})` }}>
                         </div>
                       </a>
                       <p>Item: {item.name}</p>
@@ -159,7 +159,7 @@ class Profile extends Component {
             </div>
           </div>
 
-          <div className="col-sm-4 bg-light">
+          <div className="col-md-4 bg-light">
             <div className="card">
               <img className="card-img-top" src="/image/salon.jpg" alt="Card image cap" />
               <div className="card-body">
