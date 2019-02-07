@@ -14,12 +14,13 @@ class Profile extends Component {
       favBrand: "_",
       beautyPlaces: [],
       shop: [],
-      brandArray: ["almay","alva","anna sui","annabelle","benefit","boosh","burt's bees","butter london",
-      "c'est moi","cargo cosmetics","china glaze","clinique","coastal classic creation","colourpop",
-      "covergirl","dalish","deciem","dior","dr. hauschka","e.l.f.","essie","fenty","glossier","green people",
-      "iman","l'oreal","lotus cosmetics usa","maia's mineral galaxy","marcelle","marienatie"]
+      brandArray: ["almay", "alva", "anna sui", "annabelle", "benefit", "boosh", "burt's bees", "butter london",
+        "c'est moi", "cargo cosmetics", "china glaze", "clinique", "coastal classic creation", "colourpop",
+        "covergirl", "dalish", "deciem", "dior", "dr. hauschka", "e.l.f.", "essie", "fenty", "glossier", "green people",
+        "iman", "l'oreal", "lotus cosmetics usa", "maia's mineral galaxy", "marcelle", "marienatie"]
     }
     this.uploadPic = this.uploadPic.bind(this);
+    this.updateBrand = this.updateBrand.bind(this);
 
   }
 
@@ -32,8 +33,8 @@ class Profile extends Component {
         zipcode: res.data.zipcode,
         favBrand: res.data.favBrand
       });
-      if(this.state.favBrand !== "_")
-      this.getBeautyPlaces();
+      if (this.state.favBrand !== "_")
+        this.getBeautyPlaces();
       if (this.state.zipcode !== "_") {
         this.getShopItems();
       }
@@ -51,19 +52,22 @@ class Profile extends Component {
   }
 
   getShopItems = () => {
-    API.fillShop("benefit").then(res => {
-      const shop = res.data
+    API.fillShop(this.state.favBrand).then(res => {
+      const shop = res.data.filter(item => item)
+      console.log(shop)
       this.setState({ shop: shop })
     })
   };
 
-  updateBrand = (e) => {
+  updateBrand(event) {
     this.setState({
-      favBrand : e.target.value
-    }) 
-    console.log(e.target.value)
-    console.log(this.state.favBrand)
+      favBrand: event.target.value
+    })
+  }
+
+  updateUser = () => {
     API.updateUser('favBrand', this.state.username, this.state.favBrand)
+    this.getShopItems();
   }
 
   uploadPic(e) {
@@ -112,19 +116,27 @@ class Profile extends Component {
                 Zip Code: {this.state.zipcode}<br></br>
                 Your Brand: {this.state.favBrand}</p>
               <div className="pad-it">
-              <form onSubmit={this.uploadPic} >
-                <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
-                <button type="submit" className="btn btn-sm btn-outline-secondary">Save Image</button>
-              </form>
-            
+                <form onSubmit={this.uploadPic} >
+                  <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
+                  <button className="save" type="submit">Save Image</button>
+                </form>
+                <label htmlFor="zipcode"><strong>change zipcode below</strong></label>
                 <input name="zipcode" type="text" value={this.state.zipcode} onChange={this.changeInput} placeholder="Alter Zipcode"></input>
                 <button onClick={this.updateZip} className="btn btn-sm btn-outline-secondary">Update Zip</button>
-                <select className="selectpicker" >
-                  <option selected>Choose Another Brand</option>
-                  <option>almay</option>
+                <label htmlFor="brand"><strong>change barnd below</strong></label>
+                <select className="selectpicker" name="brand" onChange={this.updateBrand} value={this.state.favBrand}>
+                  {this.state.brandArray.map(item => (
+                    <option value={item} key={item}>{item}</option>
+                  ))}
                 </select>
+                <button onClick={this.updateUser} type="button" className="save">Save New Brand</button>
               </div>
             </div>
+
+           
+            <button onClick={this.updateZip} className="save">Save New Zipcode</button>
+
+
           </div>
           <div className="col-sm-4 bg-light">
             <div className="card-deck">
@@ -132,8 +144,8 @@ class Profile extends Component {
                 <img className="card-img-top" src="/image/beautyplace.jpg" alt="Card image cap" />
                 <div className="card-body">
                   <h5 className="card-title">Your Shop</h5>
-                  {this.state.shop.map(item => (
-                    <div>
+                  {this.state.shop.map((item, i) => (
+                    <div key={i}>
                       <hr />
                       <a href={item.product_link} target="blank">
                         <div className="yourMakeup" style={{ backgroundImage: `url(${item.image_link})` }}>

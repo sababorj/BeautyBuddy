@@ -169,3 +169,12 @@ button {
 }
 
 */
+label {
+    color: darkcyan
+}
+
+.save {
+    color: brown;
+    font-weight: bold;
+    background-color: blanchedalmond
+}
