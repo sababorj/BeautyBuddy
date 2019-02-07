@@ -40,7 +40,7 @@ class Navbar extends Component {
         return (
             <nav className="navbar navbar-expand-lg brand-h bg-white">
                 <div className="container">
-                    <Link className="navbar-brand brand-h" to="/">BeautyBuddy</Link>
+                    <Link className="navbar-brand brand-h" to="/"><img src="./image/bb-logo-nav.png" /> </Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
