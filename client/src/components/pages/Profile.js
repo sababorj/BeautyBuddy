@@ -108,40 +108,38 @@ class Profile extends Component {
 
         <div className="row drop">
           <div className="col-sm-4">
-            <div className="card mx-auto mb-3 sidebar-prof">
-              <h5>Welcome {this.state.username}</h5>
-              <div className="profile-image" style={{ backgroundImage: `url(${this.state.image})` }}>
+            <div className="card mx-auto mb-3 sidebar-prof center-flex">
+              <h5 className="prof-header center-flex">Welcome {this.state.username}</h5>
+              <div className="profile-image center-flex" style={{ backgroundImage: `url(${this.state.image})` }}>
               </div>
-              <p className="pad-it">User: {this.state.username}<br></br>
+              <p className="pad-it center-flex">User: {this.state.username}<br></br>
                 Zip Code: {this.state.zipcode}<br></br>
                 Your Brand: {this.state.favBrand}</p>
               <div className="pad-it">
                 <form onSubmit={this.uploadPic} >
                   <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
-                  <button className="save" type="submit">Save Image</button>
+                  <button className="btn btn-md btn-outline-secondary" type="submit">Save Image</button>
                 </form>
-                <label htmlFor="zipcode"><strong>change zipcode below</strong></label>
+                <label htmlFor="zipcode"><br></br><strong>Update Zip Code</strong></label>
                 <input name="zipcode" type="text" value={this.state.zipcode} onChange={this.changeInput} placeholder="Alter Zipcode"></input>
-                <button onClick={this.updateZip} className="btn btn-sm btn-outline-secondary">Update Zip</button>
-                <label htmlFor="brand"><strong>change barnd below</strong></label>
+                <button onClick={this.updateZip} className="btn btn-md btn-outline-secondary">Update Zip</button>
+                <label htmlFor="brand"><br></br><strong>Choose Brand to Shop</strong></label>
                 <select className="selectpicker" name="brand" onChange={this.updateBrand} value={this.state.favBrand}>
                   {this.state.brandArray.map(item => (
                     <option value={item} key={item}>{item}</option>
                   ))}
                 </select>
-                <button onClick={this.updateUser} type="button" className="save">Save New Brand</button>
+                <button onClick={this.updateUser} type="button" className="btn btn-md btn-outline-secondary">Save New Brand</button>
               </div>
             </div>
 
            
-            <button onClick={this.updateZip} className="save">Save New Zipcode</button>
-
 
           </div>
           <div className="col-sm-4 bg-light">
             <div className="card-deck">
               <div className="card">
-                <img className="card-img-top" src="/image/beautyplace.jpg" alt="Card image cap" />
+                <img className="card-img-top" src="/image/marble-makeup.png" alt="Card image cap" />
                 <div className="card-body">
                   <h5 className="card-title">Your Shop</h5>
                   {this.state.shop.map((item, i) => (
@@ -163,7 +161,7 @@ class Profile extends Component {
 
           <div className="col-sm-4 bg-light">
             <div className="card">
-              <img className="card-img-top" src="/image/beautyplace.jpg" alt="Card image cap" />
+              <img className="card-img-top" src="/image/salon.jpg" alt="Card image cap" />
               <div className="card-body">
                 <h5 className="card-title">Beauty Places</h5>
 

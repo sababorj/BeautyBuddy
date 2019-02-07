@@ -70,11 +70,18 @@ img {
   }
 
 
-  .bg-light, .sidebar-prof {
-    padding: 10px;
-    border: solid 1px #ffcccc;
+/*Profile*/
 
-  }
+.input-wrapper {
+    display: block;
+    align-content: center;
+}
+
+.bg-light, .sidebar-prof {
+    padding: 10px;
+    border: solid 1px #c3847b;
+
+}
 
 .prof-header {
     font-weight: bold;
@@ -83,13 +90,13 @@ img {
     padding-left: 35px;
   } */
 
+
+  
 /*Login Page & Global Card Styling*/
 
 .center-flex {
     justify-content: center;
     margin: 20px;
-    align-content: center;
-    padding: 10px;
 }
 
 .profile-sidebar{ 
@@ -170,11 +177,5 @@ button {
 
 */
 label {
-    color: darkcyan
-}
-
-.save {
-    color: brown;
-    font-weight: bold;
-    background-color: blanchedalmond
+    color: #a76652;;
 }
