@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import AuthService from './AuthService';
 import type from '../../category.json';
 import './style.css';
-import API from '../../utils/API';
 
 class Category extends Component {
     constructor() {
@@ -32,7 +31,7 @@ class Category extends Component {
         return (
             <div>
                 <div className="header">
-                    <h1>Wink, Smile & Shine!</h1>
+                    <h1>Wink, Smile &amp; Shine!</h1>
                 </div>
                 <div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
                     <div className="container">
@@ -47,29 +46,29 @@ class Category extends Component {
                         </div>
                         <br></br>
                         <br></br>
-                        {/* <div className="card text-center seperate "> */}
-                            <div className="card-header white-bk1">
+                        <div className="card text-center">
+                            <div className="card-header text-center about-us">
                                 About Us
-                        {/* </div> */}
                         </div>
-                        <div className="card-body">
-                            <h5 className="card-title">Always have your favorite beauty products at the tip of your hands!</h5>
-                            <p className="card-text">This will be edited</p>
-                            <a href="#" className="btn btn-primary">Subscribe</a>
+                            <div className="card-body white-bk1">
+                                <h5 className="card-title">Always have your favorite beauty products at the tip of your hands!</h5>
+                                <p className="card-text">This will be edited</p>
+                                <a href="/" className="btn btn-md btn-outline-secondary">Subscribe</a>
+                            </div>
                         </div>
                         <br></br>
                         <br></br>
                         <div className="row picheading">
-                        <h1>Follow Us on Instagram #BeautyBuddies</h1>
+                            <h2 className="header">Follow Us on Instagram #BeautyBuddies</h2>
                         </div>
                         <div className="row seperate1">
                             <img src="./image/stockimg.png" alt="Stock Pretty Images" />
                         </div>
                     </div>
                 </div>
-                </div>
-                );
-            }
-        }
-        
+            </div>
+        );
+    }
+}
+
 export default Category;
