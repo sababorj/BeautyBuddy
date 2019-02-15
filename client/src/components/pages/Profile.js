@@ -103,7 +103,7 @@ class Profile extends Component {
   }
 
   saveItem = (index) => {
-    console.log(this.state.shop[index])
+    API.saveItem(this.state.username,this.state.shop[index].image_link,this.state.shop[index].product_link,this.state.shop[index].name,this.state.shop[index].brand,this.state.shop[index].price)
   }
 
   render() {
