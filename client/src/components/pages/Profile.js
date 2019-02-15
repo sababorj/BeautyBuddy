@@ -104,7 +104,7 @@ class Profile extends Component {
 
   render() {
     return (
-      <div className="container">
+      // <div className="container">
 
         <div className="row drop">
           <div className="col-sm-4">
@@ -179,7 +179,7 @@ class Profile extends Component {
             </div>
           </div>
         </div>
-      </div >
+      // </div >
 
     )
   }
