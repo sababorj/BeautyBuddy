@@ -13,6 +13,10 @@ export default {
     return axios.post('api/signup', { username: username, email: email, password: password });
   },
 
+  saveItem: (username, image_link,product_link,name, brand, price) => {
+    return axios.post('/api/saveItem', {username: username,image_link: image_link ,product_link: product_link, name: name, brand:brand, price:price });
+  },
+
   updateUser: (piece,username,data) => {
     return axios.post('/api/update', {piece: piece, username:username, data:data});
   },

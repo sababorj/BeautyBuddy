@@ -61,6 +61,14 @@ app.post('/api/signup', (req, res) => {
     .catch(err => res.status(400).json(err));
 });
 
+// Save Item
+app.post('/api/saveItem', (req, res) => {
+  console.log(req.body)
+  db.Item.create(req.body)
+  .then(data => res.json(data))
+  .catch(err => res.status(400).json(err))
+});
+
 
 // MakeUp API Routes
 productResult: [],

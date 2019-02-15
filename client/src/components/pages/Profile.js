@@ -102,6 +102,10 @@ class Profile extends Component {
       })
   }
 
+  saveItem = (index) => {
+    API.saveItem(this.state.username,this.state.shop[index].image_link,this.state.shop[index].product_link,this.state.shop[index].name,this.state.shop[index].brand,this.state.shop[index].price)
+  }
+
   render() {
     return (
       // <div className="container">
@@ -145,6 +149,7 @@ class Profile extends Component {
                   {this.state.shop.map((item, i) => (
                     <div key={i}>
                       <hr />
+                      <button className="btn btn-success save" onClick={() => {this.saveItem(i)}}>Save</button>
                       <a href={item.product_link} target="blank">
                         <div className="yourMakeup center" style={{ backgroundImage: `url(${item.image_link})` }}>
                         </div>
@@ -165,8 +170,8 @@ class Profile extends Component {
               <div className="card-body">
                 <h5 className="card-title">Beauty Places</h5>
 
-                {this.state.beautyPlaces.map(yourPlaces => (
-                  <div key={yourPlaces.name}>
+                {this.state.beautyPlaces.map((yourPlaces,i) => (
+                  <div key={i}>
                     <hr />
                     <h6 className="nav-pages">{yourPlaces.name}</h6>
                     <p>{yourPlaces.address}</p>
