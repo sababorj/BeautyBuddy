@@ -69,8 +69,7 @@ app.post('/api/signup', (req, res) => {
 
     try {
       response = await axios.get(queryUrl)
-      console.log(response.data)
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < response.data.length; i++) {
         productResult.push(response.data[i])
       }
       res.send(productResult);
@@ -84,7 +83,7 @@ app.post('/api/getShop', (req, res) => {
   const queryUrl = `http://makeup-api.herokuapp.com/api/v1/products.json?brand=${req.body.brand}`
   axios.get(queryUrl)
     .then(response => {
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < response.data.length; i++) {
         shop.push(response.data[i])
       }
       console.log(shop)
@@ -159,7 +158,7 @@ app.post('/api/google/:zipcode', (req, res) => {
           let storesNearby = (response.data.results);
 
           // for loop through JSON response retrieve place info
-          for (let i = 0; i < 11; i++) {
+          for (let i = 0; i < storesNearby.length; i++) {
             let store = {
               name: storesNearby[i].name,
               address: storesNearby[i].vicinity,
