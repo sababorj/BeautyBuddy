@@ -39,7 +39,6 @@ class Profile extends Component {
         this.getShopItems();
       }
     });
-
   }
 
   getBeautyPlaces = () => {
@@ -105,7 +104,6 @@ class Profile extends Component {
   render() {
     return (
       <div className="container">
-
         <div className="row drop">
           <div className="col-sm-4">
             <div className="card mx-auto mb-3 sidebar-prof">
@@ -132,9 +130,6 @@ class Profile extends Component {
                 <button onClick={this.updateUser} type="button" className="btn btn-md btn-outline-secondary">Save New Brand</button>
               </div>
             </div>
-
-           
-
           </div>
           <div className="col-md-4 bg-light">
             <div className="card-deck">

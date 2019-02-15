@@ -38,24 +38,6 @@ const isAuthenticated = exjwt({
   secret: process.env.SERVER_SECRET
 });
 
-// API Call for product data
-
-let productType = "foundation";
-const queryUrl = `http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${productType}`;
-
-axios.get(queryUrl)
-  .then(response => {
-    for (let i = 0; i < 4; i++) {
-      let brand = response.data[i].brand;
-
-    }
-  })
-  .catch(error => {
-    console.log(error);
-  })
-
-
-
 // LOGIN ROUTE
 app.post('/api/login', (req, res) => {
   db.User.findOne({
@@ -79,10 +61,7 @@ app.post('/api/signup', (req, res) => {
     .catch(err => res.status(400).json(err));
 });
 
-
 // MakeUp API Routes
-productResult: [],
-
   app.post('/api/getItem', async (req, res) => {
     const productResult = [];
     const queryUrl = `http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${req.body.category}`;
@@ -203,7 +182,6 @@ app.post('/api/google/:zipcode', (req, res) => {
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-
 
 app.get('/', isAuthenticated /* Using the express jwt MW here */, (req, res) => {
   res.send('You are authenticated'); //Sending some response when authenticated
