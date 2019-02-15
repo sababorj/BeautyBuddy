@@ -96,34 +96,17 @@ app.post('/api/getShop', (req, res) => {
 
 // Update Route
 app.post('/api/update', async (req, res) => {
-  switch (req.body.piece) {
-    case 'image':
 
-      try {
-        const data = await db.User.findOneAndUpdate({ username: req.body.username }, { image: req.body.data })
-        res.json(data)
-      } catch (error) {
-        res.status(400).json(err)
-      }
-      break;
-    case 'zipcode':
-      try {
-        const data = await db.User.findOneAndUpdate({ username: req.body.username }, { zipcode: req.body.data })
-        res.json(data)
-      } catch (error) {
-        res.status(400).json(err)
-      }
-      break;
-    case 'favBrand':
-      try {
-        const data = await db.User.findOneAndUpdate({ username: req.body.username }, { favBrand: req.body.data })
-        console.log(data)
-        res.json(data)
-      } catch (error) {
-        res.status(400).json(err)
-      }
-      break;
+  async function updateProfile(piece) {
+    console.log(piece)
+    try {
+      let data = await db.User.findOneAndUpdate({ username: req.body.username }, { [piece]: req.body.data })
+      res.json(data)
+    } catch (error) {
+      res.status(400).json(err)
+    }
   }
+  updateProfile(req.body.piece);
 })
 
 // Any route with isAuthenticated is protected and you need a valid token
@@ -203,11 +186,11 @@ app.get("*", function (req, res) {
 
 // SOCKET.IO CHAT INITIATION 
 io.on('connection', (socket) => {
-  
+
   socket.username = 'your name';
   console.log(`New user connected ${socket.id}, ${socket.username}`);
-   // we are listening to an event here called 'message'
-   socket.on('message', (message) => {
+  // we are listening to an event here called 'message'
+  socket.on('message', (message) => {
     // and emitting the message event for any client listening to it
     io.emit('message', message);
   });
