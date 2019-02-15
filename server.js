@@ -173,7 +173,6 @@ app.post('/api/google/:zipcode', (req, res) => {
 
     let storeData = await getStores(lattitude, longitude, placesApiKey);
     res.send(storeData);
-
   });
 })
 

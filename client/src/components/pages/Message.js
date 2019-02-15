@@ -118,7 +118,7 @@ class Message extends Component {
                     className="form-control-lg write_msg"
                   />
                 </div>
-                <button type="submit" className="msg_send_btn" onClick={this.submitForm}><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                <button type="submit" className="msg_send_btn" onClick={this.submitForm}><i class="fas fa-paper-plane" aria-hidden="true"></i></button>
               </form>
 
             </div>
