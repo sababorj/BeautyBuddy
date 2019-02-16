@@ -62,17 +62,6 @@ app.post('/api/signup', (req, res) => {
     .catch(err => res.status(400).json(err));
 });
 
-<<<<<<< HEAD
-=======
-// Save Item
-app.post('/api/saveItem', (req, res) => {
-  console.log(req.body)
-  db.Item.create(req.body)
-    .then(data => res.json(data))
-    .catch(err => res.status(400).json(err))
-});
-
->>>>>>> bf80ac3f75256d5a45e0b92a281dad2121e2bffd
 
 // Get image URL from database
 app.post('/api/face', (req, res) => {
