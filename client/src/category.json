@@ -7,7 +7,7 @@
     {
         "id":2,
         "name": "NAN",
-        "image": "/image/light-yellow.jpg"
+        "image": "/image/bee.png"
     },
 
     {
@@ -18,12 +18,12 @@
     {
         "id":4,
         "name": "Nail",
-        "image": "/image/blacknail.jpg"
+        "image": "/image/blacknail.png"
     },
     {
         "id":5,
         "name": "NAN",
-        "image": "/image/light-yellow.jpg"
+        "image": "/image/bee2copy.png"
     },
     {
         "id":6,

@@ -31,7 +31,7 @@ class Category extends Component {
         return (
             <div>
                 <div className="header">
-                    <h1>Wink, Smile &amp; Shine!</h1>
+                    <h1>Shop, Smile &amp; Shine!</h1>
                 </div>
                 <div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
                     <div className="container">
@@ -51,8 +51,8 @@ class Category extends Component {
                                 About Us
                         </div>
                             <div className="card-body white-bk1">
-                                <h5 className="card-title">Always have your favorite beauty products at the tip of your hands!</h5>
-                                <p className="card-text">This will be edited</p>
+                                <h5 className="card-title">Always have your favorite beauty products at the tip of your fingers!</h5>
+                                <p className="card-text">Whether you are wanting to look for eye, lip, skin or nail producuts...Beauty Buddy has it all! No need to look any where else. We have made it easy for you!</p>
                                 <a href="/" className="btn btn-md btn-outline-secondary">Subscribe</a>
                             </div>
                         </div>

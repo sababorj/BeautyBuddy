@@ -38,24 +38,6 @@ const isAuthenticated = exjwt({
   secret: process.env.SERVER_SECRET
 });
 
-// API Call for product data
-
-let productType = "foundation";
-const queryUrl = `http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${productType}`;
-
-axios.get(queryUrl)
-  .then(response => {
-    for (let i = 0; i < 4; i++) {
-      let brand = response.data[i].brand;
-
-    }
-  })
-  .catch(error => {
-    console.log(error);
-  })
-
-
-
 // LOGIN ROUTE
 app.post('/api/login', (req, res) => {
   db.User.findOne({
@@ -79,19 +61,32 @@ app.post('/api/signup', (req, res) => {
     .catch(err => res.status(400).json(err));
 });
 
+// Save Item
+app.post('/api/saveItem', (req, res) => {
+  console.log(req.body)
+  db.Item.create(req.body)
+  .then(data => res.json(data))
+  .catch(err => res.status(400).json(err))
+});
+
+
+app.post('/api/face', async (req,res) => {
+  console.log(req.body.username)
+  db.User.findOne({username: req.body.username}, (err, data) => {
+    res.json(data.image)
+  }) 
+})
 
 // MakeUp API Routes
 productResult: [],
-
   app.post('/api/getItem', async (req, res) => {
     const productResult = [];
     const queryUrl = `http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${req.body.category}`;
-    // const promise = new Promise(res, rej)
 
     try {
       response = await axios.get(queryUrl)
       console.log(response.data)
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < response.data.length; i++) {
         productResult.push(response.data[i])
       }
       res.send(productResult);
@@ -105,10 +100,9 @@ app.post('/api/getShop', (req, res) => {
   const queryUrl = `http://makeup-api.herokuapp.com/api/v1/products.json?brand=${req.body.brand}`
   axios.get(queryUrl)
     .then(response => {
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < response.data.length; i++) {
         shop.push(response.data[i])
       }
-      console.log(shop)
       res.send(shop);
     })
     .catch(error => {
@@ -118,34 +112,17 @@ app.post('/api/getShop', (req, res) => {
 
 // Update Route
 app.post('/api/update', async (req, res) => {
-  switch (req.body.piece) {
-    case 'image':
 
-      try {
-        const data = await db.User.findOneAndUpdate({ username: req.body.username }, { image: req.body.data })
-        res.json(data)
-      } catch (error) {
-        res.status(400).json(err)
-      }
-      break;
-    case 'zipcode':
-      try {
-        const data = await db.User.findOneAndUpdate({ username: req.body.username }, { zipcode: req.body.data })
-        res.json(data)
-      } catch (error) {
-        res.status(400).json(err)
-      }
-      break;
-    case 'favBrand':
-      try {
-        const data = await db.User.findOneAndUpdate({ username: req.body.username }, { favBrand: req.body.data })
-        console.log(data)
-        res.json(data)
-      } catch (error) {
-        res.status(400).json(err)
-      }
-      break;
+  async function updateProfile(piece) {
+    console.log(piece)
+    try {
+      let data = await db.User.findOneAndUpdate({ username: req.body.username }, { [piece]: req.body.data })
+      res.json(data)
+    } catch (error) {
+      res.status(400).json(err)
+    }
   }
+  updateProfile(req.body.piece);
 })
 
 // Any route with isAuthenticated is protected and you need a valid token
@@ -180,7 +157,7 @@ app.post('/api/google/:zipcode', (req, res) => {
           let storesNearby = (response.data.results);
 
           // for loop through JSON response retrieve place info
-          for (let i = 0; i < 10; i++) {
+          for (let i = 0; i < storesNearby.length; i++) {
             let store = {
               name: storesNearby[i].name,
               address: storesNearby[i].vicinity,
@@ -227,11 +204,11 @@ app.get("*", function (req, res) {
 
 // SOCKET.IO CHAT INITIATION 
 io.on('connection', (socket) => {
-  
+
   socket.username = 'your name';
   console.log(`New user connected ${socket.id}, ${socket.username}`);
-   // we are listening to an event here called 'message'
-   socket.on('message', (message) => {
+  // we are listening to an event here called 'message'
+  socket.on('message', (message) => {
     // and emitting the message event for any client listening to it
     io.emit('message', message);
   });

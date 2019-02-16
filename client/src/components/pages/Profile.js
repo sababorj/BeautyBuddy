@@ -82,10 +82,16 @@ class Profile extends Component {
     }).then((response) => {
       response.json().then((body) => {
         this.setState({ image: body.s3Url });
-        console.log(this.state)
+        // console.log(this.state)
         API.updateUser('image', this.state.username, body.s3Url)
+        .then( async(response) => {
+          const image = await API.facialRecognition(this.state.username)
+          console.log(image.data)
+          // from here send the url to your API Method
+        })
       })
     });
+   
   }
 
   changeInput = (e) => {
@@ -102,9 +108,13 @@ class Profile extends Component {
       })
   }
 
+  saveItem = (index) => {
+    API.saveItem(this.state.username,this.state.shop[index].image_link,this.state.shop[index].product_link,this.state.shop[index].name,this.state.shop[index].brand,this.state.shop[index].price)
+  }
+
   render() {
     return (
-      <div className="container">
+      // <div className="container">
 
         <div className="row drop">
           <div className="col-sm-4">
@@ -145,6 +155,7 @@ class Profile extends Component {
                   {this.state.shop.map((item, i) => (
                     <div key={i}>
                       <hr />
+                      <button className="btn btn-success save" onClick={() => {this.saveItem(i)}}>Save</button>
                       <a href={item.product_link} target="blank">
                         <div className="yourMakeup center" style={{ backgroundImage: `url(${item.image_link})` }}>
                         </div>
@@ -165,8 +176,8 @@ class Profile extends Component {
               <div className="card-body">
                 <h5 className="card-title">Beauty Places</h5>
 
-                {this.state.beautyPlaces.map(yourPlaces => (
-                  <div key={yourPlaces.name}>
+                {this.state.beautyPlaces.map((yourPlaces,i) => (
+                  <div key={i}>
                     <hr />
                     <h6 className="nav-pages">{yourPlaces.name}</h6>
                     <p>{yourPlaces.address}</p>
@@ -179,7 +190,7 @@ class Profile extends Component {
             </div>
           </div>
         </div>
-      </div >
+      // </div >
 
     )
   }
