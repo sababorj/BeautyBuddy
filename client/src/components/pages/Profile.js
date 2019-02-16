@@ -17,8 +17,9 @@ class Profile extends Component {
       brandArray: ["almay", "alva", "anna sui", "annabelle", "benefit", "boosh", "burt's bees", "butter london",
         "c'est moi", "cargo cosmetics", "china glaze", "clinique", "coastal classic creation", "colourpop",
         "covergirl", "dalish", "deciem", "dior", "dr. hauschka", "e.l.f.", "essie", "fenty", "glossier", "green people",
-        "iman", "l'oreal", "lotus cosmetics usa", "maia's mineral galaxy", "marcelle", "marienatie"]
-    }
+        "iman", "l'oreal", "lotus cosmetics usa", "maia's mineral galaxy", "marcelle", "marienatie"],
+      saveItem: []
+      }
     this.uploadPic = this.uploadPic.bind(this);
     this.updateBrand = this.updateBrand.bind(this);
 
