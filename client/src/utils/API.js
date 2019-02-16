@@ -17,6 +17,10 @@ export default {
     return axios.post('/api/update', {piece: piece, username:username, data:data});
   },
 
+  facialRecognition: (username) => {
+    return axios.post('/api/face', username);
+  },
+
  
 
   itemCall: function (category) {
