@@ -79,21 +79,7 @@ app.post('/api/face', async (req,res) => {
 
 // MakeUp API Routes
 productResult: [],
-  app.post('/api/getItem', async (req, res) => {
-    const productResult = [];
-    const queryUrl = `http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${req.body.category}`;
-
-    try {
-      response = await axios.get(queryUrl)
-      console.log(response.data)
-      for (let i = 0; i < response.data.length; i++) {
-        productResult.push(response.data[i])
-      }
-      res.send(productResult);
-    } catch (error) {
-      console.log(error);
-    }
-  })
+require('./routes/makeUpRoutes')(app);
 
 app.post('/api/getShop', (req, res) => {
   const shop = [];
@@ -155,7 +141,6 @@ app.post('/api/google/:zipcode', (req, res) => {
         let placesUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lal},${long}&radius=15000&type=beauty_salon&key=${key}`;
         axios.get(placesUrl).then(response => {
           let storesNearby = (response.data.results);
-
           // for loop through JSON response retrieve place info
           for (let i = 0; i < storesNearby.length; i++) {
             let store = {
