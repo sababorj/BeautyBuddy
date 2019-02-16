@@ -85,7 +85,7 @@ app.post('/api/faceAnalyze', (req, res) => {
   facepp.setApiKey(process.env.FACE_KEY);
   facepp.setApiSecret(process.env.FACE_SECRET);
   var parameters = {
-    return_attributes: 'emotion',
+    return_attributes: 'gender',
     image_base64: req.body.image
   };
   console.log(parameters)
