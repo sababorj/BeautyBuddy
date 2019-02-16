@@ -61,14 +61,6 @@ app.post('/api/signup', (req, res) => {
     .catch(err => res.status(400).json(err));
 });
 
-// Save Item
-app.post('/api/saveItem', (req, res) => {
-  console.log(req.body)
-  db.Item.create(req.body)
-  .then(data => res.json(data))
-  .catch(err => res.status(400).json(err))
-});
-
 
 app.post('/api/face', async (req,res) => {
   console.log(req.body.username)
@@ -78,7 +70,6 @@ app.post('/api/face', async (req,res) => {
 })
 
 // MakeUp API Routes
-productResult: [],
 require('./routes/makeUpRoutes')(app);
 
 app.post('/api/getShop', (req, res) => {
@@ -97,19 +88,7 @@ app.post('/api/getShop', (req, res) => {
 })
 
 // Update Route
-app.post('/api/update', async (req, res) => {
-
-  async function updateProfile(piece) {
-    console.log(piece)
-    try {
-      let data = await db.User.findOneAndUpdate({ username: req.body.username }, { [piece]: req.body.data })
-      res.json(data)
-    } catch (error) {
-      res.status(400).json(err)
-    }
-  }
-  updateProfile(req.body.piece);
-})
+require('./routes/updateRoutes')(app)
 
 // Any route with isAuthenticated is protected and you need a valid token
 // to access
