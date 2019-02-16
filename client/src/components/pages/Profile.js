@@ -82,10 +82,16 @@ class Profile extends Component {
     }).then((response) => {
       response.json().then((body) => {
         this.setState({ image: body.s3Url });
-        console.log(this.state)
+        // console.log(this.state)
         API.updateUser('image', this.state.username, body.s3Url)
+        .then( async(response) => {
+          const image = await API.facialRecognition(this.state.username)
+          console.log(image.data)
+          // from here send the url to your API Method
+        })
       })
     });
+   
   }
 
   changeInput = (e) => {
