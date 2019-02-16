@@ -70,13 +70,18 @@ app.post('/api/saveItem', (req, res) => {
 });
 
 
+app.post('/api/face', async (req,res) => {
+  console.log(req.body.username)
+  db.User.findOne({username: req.body.username}, (err, data) => {
+    res.json(data.image)
+  }) 
+})
+
 // MakeUp API Routes
 productResult: [],
-
   app.post('/api/getItem', async (req, res) => {
     const productResult = [];
     const queryUrl = `http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${req.body.category}`;
-    // const promise = new Promise(res, rej)
 
     try {
       response = await axios.get(queryUrl)
@@ -98,7 +103,6 @@ app.post('/api/getShop', (req, res) => {
       for (let i = 0; i < response.data.length; i++) {
         shop.push(response.data[i])
       }
-      console.log(shop)
       res.send(shop);
     })
     .catch(error => {

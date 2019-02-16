@@ -21,7 +21,9 @@ export default {
     return axios.post('/api/update', {piece: piece, username:username, data:data});
   },
 
- 
+  facialRecognition: (username) => {
+    return axios.post('/api/face',{username: username});
+  },
 
   itemCall: function (category) {
     // return new Promise((resolve, reject) => {
@@ -38,4 +40,5 @@ export default {
     return axios.post('/api/getShop', { brand : brands});
   },
   
+  // From here call your facial rout from the server with given image
 };
