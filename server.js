@@ -62,14 +62,6 @@ app.post('/api/signup', (req, res) => {
     .catch(err => res.status(400).json(err));
 });
 
-// Save Item
-app.post('/api/saveItem', (req, res) => {
-  console.log(req.body)
-  db.Item.create(req.body)
-    .then(data => res.json(data))
-    .catch(err => res.status(400).json(err))
-});
-
 
 // Get image URL from database
 app.post('/api/face', (req, res) => {
@@ -99,52 +91,13 @@ app.post('/api/faceAnalyze', (req, res) => {
 
 
 // MakeUp API Routes
-productResult: [],
-  app.post('/api/getItem', async (req, res) => {
-    const productResult = [];
-    const queryUrl = `http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${req.body.category}`;
+require('./routes/makeUpRoutes')(app);
 
-    try {
-      response = await axios.get(queryUrl)
-      console.log(response.data)
-      for (let i = 0; i < response.data.length; i++) {
-        productResult.push(response.data[i])
-      }
-      res.send(productResult);
-    } catch (error) {
-      console.log(error);
-    }
-  })
+// Place API Routes
+require('./routes/placeRoutes')(app);
 
-app.post('/api/getShop', (req, res) => {
-  const shop = [];
-  const queryUrl = `http://makeup-api.herokuapp.com/api/v1/products.json?brand=${req.body.brand}`
-  axios.get(queryUrl)
-    .then(response => {
-      for (let i = 0; i < response.data.length; i++) {
-        shop.push(response.data[i])
-      }
-      res.send(shop);
-    })
-    .catch(error => {
-      console.log(error);
-    })
-})
-
-// Update Route
-app.post('/api/update', async (req, res) => {
-
-  async function updateProfile(piece) {
-    console.log(piece)
-    try {
-      let data = await db.User.findOneAndUpdate({ username: req.body.username }, { [piece]: req.body.data })
-      res.json(data)
-    } catch (error) {
-      res.status(400).json(err)
-    }
-  }
-  updateProfile(req.body.piece);
-})
+// Update and Save Routes
+require('./routes/updateRoutes')(app)
 
 // Any route with isAuthenticated is protected and you need a valid token
 // to access
@@ -157,45 +110,6 @@ app.get('/api/user/:id', isAuthenticated, (req, res) => {
     }
   }).catch(err => res.status(400).send(err));
 });
-
-app.post('/api/google/:zipcode', (req, res) => {
-
-  let zip = req.params.zipcode;
-  const placesApiKey = process.env.API_KEY;
-  let geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:${zip}&key=${placesApiKey}`;
-  const storeList = [];
-
-  axios.get(geocodeUrl).then(async response => {
-    let result = response.data.results[0];
-    let lattitude = result.geometry.location.lat;
-    let longitude = result.geometry.location.lng;
-    console.log(`Lat: ${lattitude} | Long: ${longitude}`);
-
-    function getStores(lal, long, key) {
-      return new Promise((resolve, reject) => {
-        let placesUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lal},${long}&radius=15000&type=beauty_salon&key=${key}`;
-        axios.get(placesUrl).then(response => {
-          let storesNearby = (response.data.results);
-
-          // for loop through JSON response retrieve place info
-          for (let i = 0; i < storesNearby.length; i++) {
-            let store = {
-              name: storesNearby[i].name,
-              address: storesNearby[i].vicinity,
-              rating: storesNearby[i].rating
-            }
-            storeList.push(store);
-          };
-          resolve(storeList)
-        }).catch(error => reject(error));
-      })
-    }
-
-    let storeData = await getStores(lattitude, longitude, placesApiKey);
-    res.send(storeData);
-
-  });
-})
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
