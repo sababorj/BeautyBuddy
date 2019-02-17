@@ -10,7 +10,7 @@ const server = require('http').createServer(app);
 const db = require('./models');
 const axios = require('axios');
 const PORT = process.env.PORT || 3001;
-var facepp = require('face-plusplus-node');
+
 
 
 const io = require('socket.io')(server);
@@ -63,32 +63,8 @@ app.post('/api/signup', (req, res) => {
 });
 
 
-// Get image URL from database
-app.post('/api/face', (req, res) => {
-  console.log(req.body.username)
-  db.User.findOne({ username: req.body.username }, (err, data) => {
-    res.json(data.image)
-  })
-})
-
-
-// Facial Recognition API
-app.post('/api/faceAnalyze', (req, res) => {
-  facepp.setApiKey(process.env.FACE_KEY);
-  facepp.setApiSecret(process.env.FACE_SECRET);
-  var parameters = {
-    return_attributes: 'emotion',
-    image_base64: req.body.image
-  };
-  console.log(parameters)
-
-
-  facepp.post('/detect', parameters, function(err, res) {
-    console.log(res);
-  })
-});
-
-
+// Face Routes
+require('./routes/faceRoutes')(app);
 
 // MakeUp API Routes
 require('./routes/makeUpRoutes')(app);

@@ -15,4 +15,19 @@ module.exports = function(app) {
           console.log(error);
         }
       })
+
+      app.post('/api/getShop', (req, res) => {
+        const shop = [];
+        const queryUrl = `http://makeup-api.herokuapp.com/api/v1/products.json?brand=${req.body.brand}`
+        axios.get(queryUrl)
+          .then(response => {
+            for (let i = 0; i < response.data.length; i++) {
+              shop.push(response.data[i])
+            }
+            res.send(shop);
+          })
+          .catch(error => {
+            console.log(error);
+          })
+      })
 }
