@@ -39,6 +39,7 @@ class Profile extends Component {
       if (this.state.zipcode !== "_") {
         this.getShopItems();
       }
+      this.getSavedItems(this.state.username)
     });
 
   }
@@ -57,6 +58,13 @@ class Profile extends Component {
       const shop = res.data.filter(item => item)
       console.log(shop)
       this.setState({ shop: shop })
+    })
+  };
+
+  getSavedItems = () => {
+    API.findSaveItems(this.state.username).then(res => {
+      const save = res.data.filter(item => item)
+      console.log(save)
     })
   };
 
