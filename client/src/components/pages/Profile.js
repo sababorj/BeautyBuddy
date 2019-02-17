@@ -39,6 +39,7 @@ class Profile extends Component {
       if (this.state.zipcode !== "_") {
         this.getShopItems();
       }
+      this.getSavedItems(this.state.username)
     });
 
   }
@@ -55,8 +56,15 @@ class Profile extends Component {
   getShopItems = () => {
     API.fillShop(this.state.favBrand).then(res => {
       const shop = res.data.filter(item => item)
-      console.log(shop)
       this.setState({ shop: shop })
+    })
+  };
+
+  getSavedItems = () => {
+    API.findSaveItems(this.state.username).then(res => {
+      const save = res.data.filter(item => item)
+      this.setState({ saveItem : save })
+      console.log(this.state.saveItem)
     })
   };
 
@@ -121,13 +129,12 @@ class Profile extends Component {
 
   updateZip = () => {
     API.updateUser('zipcode', this.state.username, this.state.zipcode)
-      .then((response) => {
-        this.getBeautyPlaces()
-      })
+      .then((response) => this.getBeautyPlaces())
   }
 
   saveItem = (index) => {
     API.saveItem(this.state.username, this.state.shop[index].image_link, this.state.shop[index].product_link, this.state.shop[index].name, this.state.shop[index].brand, this.state.shop[index].price)
+    .then((response) => this.getSavedItems(this.state.username))
   }
 
   render() {
@@ -158,11 +165,23 @@ class Profile extends Component {
                 ))}
               </select>
               <button onClick={this.updateUser} type="button" className="btn btn-md btn-outline-secondary">Save New Brand</button>
+              <hr />
+              <h4 className="card-title">Your Saved Items</h4>
+                {this.state.saveItem.map((item, i) => (
+                  <div key={i}>
+                    <button className="btn btn-success save" onClick={() => { this.saveItem(i) }}>Save</button>
+                    <a href={item.product_link} target="blank">
+                      <div className="yourMakeup center" style={{ backgroundImage: `url(${item.image_link})` }}>
+                      </div>
+                    </a>
+                    <p>Item: {item.name}</p>
+                    <p>Brand: {item.brand}</p>
+                    <p>Price: ${item.price}</p>
+                    <hr />
+                  </div>
+                ))}  
             </div>
           </div>
-
-
-
         </div>
         <div className="col-md-4 bg-light">
           <div className="card-deck">

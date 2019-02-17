@@ -11,8 +11,6 @@ const db = require('./models');
 const axios = require('axios');
 const PORT = process.env.PORT || 3001;
 
-
-
 const io = require('socket.io')(server);
 
 // Setting CORS so that any website can

@@ -44,5 +44,7 @@ export default {
     return axios.post('/api/getShop', { brand : brands});
   },
   
-
+  findSaveItems(username) {
+    return axios.post('/api/getSaved', { username: username})
+  }
 };
