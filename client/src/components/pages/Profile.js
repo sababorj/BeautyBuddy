@@ -160,7 +160,7 @@ class Profile extends Component {
               <h4 className="card-title">Your Saved Items</h4>
                 {this.state.saveItem.map((item, i) => (
                   <div key={i}>
-                    <button className="btn btn-success save" onClick={() => { this.UnsaveItem(i) }}>UnSave</button>
+                    <button className="btn btn-danger save" onClick={() => { this.UnsaveItem(i) }}>UnSave</button>
                     <a href={item.product_link} target="blank">
                       <div className="yourMakeup center" style={{ backgroundImage: `url(${item.image_link})` }}>
                       </div>
