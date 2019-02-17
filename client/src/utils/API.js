@@ -44,9 +44,5 @@ export default {
     return axios.post('/api/getShop', { brand : brands});
   },
   
-  // From here call your facial rout from the server with given image
-
-
-
 
 };
