@@ -115,12 +115,17 @@ class Profile extends Component {
 
   updateZip = () => {
     API.updateUser('zipcode', this.state.username, this.state.zipcode)
-      .then((response) => this.getBeautyPlaces())
+      .then(response => this.getBeautyPlaces())
   }
 
   saveItem = (index) => {
     API.saveItem(this.state.username, this.state.shop[index].image_link, this.state.shop[index].product_link, this.state.shop[index].name, this.state.shop[index].brand, this.state.shop[index].price)
-    .then((response) => this.getSavedItems(this.state.username))
+    .then(response => this.getSavedItems(this.state.username))
+  }
+
+  UnsaveItem = (index) => {
+    API.UnSave(this.state.username, this.state.saveItem[index].name)
+    .then(response => this.getSavedItems(this.state.username))
   }
 
   render() {
@@ -155,7 +160,7 @@ class Profile extends Component {
               <h4 className="card-title">Your Saved Items</h4>
                 {this.state.saveItem.map((item, i) => (
                   <div key={i}>
-                    <button className="btn btn-success save" onClick={() => { this.saveItem(i) }}>Save</button>
+                    <button className="btn btn-danger save" onClick={() => { this.UnsaveItem(i) }}>UnSave</button>
                     <a href={item.product_link} target="blank">
                       <div className="yourMakeup center" style={{ backgroundImage: `url(${item.image_link})` }}>
                       </div>
