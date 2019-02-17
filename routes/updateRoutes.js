@@ -21,4 +21,11 @@ module.exports = function(app){
         .then(data => res.json(data))
         .catch(err => res.status(400).json(err))
       });
+
+      // Get saved Items for the user
+      app.post('/api/getSaved', async(req,res) => {
+        console.log(req.body)
+        const data = await db.Item.find({username: req.body.username})
+        res.json(data)
+      })
 }
