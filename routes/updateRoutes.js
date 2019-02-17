@@ -16,7 +16,6 @@ module.exports = function(app){
 
       // Save Item
       app.post('/api/saveItem', (req, res) => {
-        console.log(req.body)
         db.Item.create(req.body)
         .then(data => res.json(data))
         .catch(err => res.status(400).json(err))
@@ -24,8 +23,13 @@ module.exports = function(app){
 
       // Get saved Items for the user
       app.post('/api/getSaved', async(req,res) => {
-        console.log(req.body)
         const data = await db.Item.find({username: req.body.username})
         res.json(data)
+      });
+
+      app.post('/api/unsave', async(req,res) => {
+        const response = await db.Item.findOneAndRemove({username: req.body.username},{name: req.body.name})
+        console.log(response);
+        res.json(response)
       })
 }
