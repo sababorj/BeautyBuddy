@@ -16,9 +16,10 @@ A step by step series of examples that tell you how to get a development env run
 JavaScript, JavaScript React framework
 Mongo DB Database
 Express.js API Routing
-Node.js - Server side
+Node.js - Server side runtime environment
 BootStrap CSS - Styling & Responsivness
 Socket.io - Messaging Functionality
+Adobe Photoshop & Illustrator for graphics
 
 ## Versioning
 GitHub & Git
