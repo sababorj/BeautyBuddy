@@ -13,11 +13,25 @@ export default {
     return axios.post('api/signup', { username: username, email: email, password: password });
   },
 
+  saveItem: (username, image_link,product_link,name, brand, price) => {
+    return axios.post('/api/saveItem', {username: username,image_link:image_link ,product_link:product_link, name: name, brand:brand, price:price });
+  },
+
+  UnSave: (username, name) => {
+    return axios.post('/api/unsave', {username:username, name:name});
+  },
+
   updateUser: (piece,username,data) => {
     return axios.post('/api/update', {piece: piece, username:username, data:data});
   },
 
- 
+  face: (username) => {
+    return axios.post('/api/face',{username: username});
+  },
+
+  facialRecognition: (image) => {
+    return axios.post('/api/faceAnalyze', {image:image});
+  },
 
   itemCall: function (category) {
     // return new Promise((resolve, reject) => {
@@ -34,4 +48,7 @@ export default {
     return axios.post('/api/getShop', { brand : brands});
   },
   
+  findSaveItems(username) {
+    return axios.post('/api/getSaved', { username: username})
+  }
 };
