@@ -170,6 +170,17 @@ img {
   margin: 10px;
 }
 
+.scrolling-wrapper {
+  -webkit-overflow-scrolling: touch;
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+  
+}
+
 .shop-save-studios {
   padding: 10px;
   margin-left: 2rem;

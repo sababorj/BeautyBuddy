@@ -190,18 +190,18 @@ class Profile extends Component {
             </div>
           </div>
           <div className="col-md bg-light">
-            <div className="row">
+            <div className="row scrolling-wrapper">
               {/* <img className="card-img-top" src="/image/marble-makeup.png" alt="Card image cap" /> */}
               <div>
                 <h5 className="shop-save-studios">Your Shop</h5>
                 <div>
-                  <div className="card-deck">
+                  <div className="scrolling-wrapper">
                     {this.state.shop.map((item, i) => (
                       <div key={i}>
                         <hr />
 
                         <div className="card items-cards">
-                          <img alt="items" className="yourMakeup center" style={{ backgroundImage: `url(${item.image_link})` }} />
+                          <img className="yourMakeup center" style={{ backgroundImage: `url(${item.image_link})` }} />
                           <div className="card-body">
                             <p>Item: {item.name}</p>
                             <p>Brand: {item.brand}</p>
