@@ -6,11 +6,12 @@ const exjwt = require('express-jwt');
 const mongoose = require('mongoose');
 const morgan = require('morgan'); // used to see requests
 const app = express();
-const server = require('http').createServer(app);
+const PORT = process.env.PORT || 3001;
+const server = app.listen(PORT);
 const db = require('./models');
 const axios = require('axios');
-const PORT = process.env.PORT || 3001;
-const io = require('socket.io')(server);
+const socketio = require('socket.io');
+const io = socketio(server);
 
 // Setting CORS so that any website can
 // Access our API
@@ -120,6 +121,6 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(PORT, function () {
-  console.log(`🌎 ==> Server now on port ${PORT}!`);
-});
+// server.listen(PORT, function () {
+//   console.log(`🌎 ==> Server now on port ${PORT}!`);
+// });
