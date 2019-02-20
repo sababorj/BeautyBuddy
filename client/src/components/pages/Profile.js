@@ -144,11 +144,13 @@ class Profile extends Component {
 
   render() {
     return (
-      // <div className="container">
-
       <div>
+
+
         <div className="row drop">
           <div className="col-sm-1"></div>
+
+          {/* Profile Sidebar */}
           <div className="col-sm-3">
             <div className="card mx-auto mb-3 sidebar-prof">
               <h5 className="prof-header center-flex">Welcome {this.state.username}</h5>
@@ -179,6 +181,10 @@ class Profile extends Component {
               </div>
             </div>
           </div>
+
+
+
+
 
           {/* SHOP BRANDS */}
 
@@ -238,51 +244,45 @@ class Profile extends Component {
                     </div>
                   </div>
                 </div>
+                </div>
 
                 {/* STUDIOS */}
 
 
+                <div className="row scrolling-wrapper card-sections">
+                  <div>
+                    <h5 className="prof-header center-flex">Studios and Salons</h5>
+                    <div>
+                      <div className="scrolling-wrapper">
+                        {this.state.beautyPlaces.map((yourPlaces, i) => (
+                          <div key={i}>
+                            <hr />
+                            <div className="card-group">
+                              <div className="card items-cards text-center">
+                                 <div className="card-body">
+                                  <h6 className="nav-pages">{yourPlaces.name}</h6>
+                                  <p>{yourPlaces.address}</p>
+                                  <p>{yourPlaces.rating} Stars</p>
+                                  <button className="btn btn-block btn-light save" href="www.google.com/maps">Directions</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
 
-                {/* <div className="col-md-4 bg-light">
-            <div className="card">
-              <img className="card-img-top" src="/image/salon.jpg" alt="Card image cap" />
-              <div className="card-body">
-                <h5 className="card-title">Beauty Places</h5>
-
-                {this.state.beautyPlaces.map((yourPlaces, i) => (
-                  <div key={i}>
-                    <hr />
-                    <h6 className="nav-pages">{yourPlaces.name}</h6>
-                    <p>{yourPlaces.address}</p>
-                    <p>{yourPlaces.rating} Stars</p>
-
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                ))}
 
+
+                </div>
               </div>
             </div>
-          </div> */}
-
-
-
-
-
-
-
-
-
-
-              </div>
-            </div>
-            <div className="col-1"></div>
-
-
 
           </div>
+          <div className="col-1"></div>
 
-
-        </div >
-      </div >
+        </div>              
 
     )
   }
