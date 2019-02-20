@@ -111,18 +111,31 @@ app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
+
 // SOCKET.IO CHAT INITIATION 
 io.on('connection', (socket) => {
-
+  // console.log(socket.handshake)
   console.log(`🌎 ==> Server now on port ${PORT}!`);
   console.log(`New user connected ${socket.id}`);
-  // we are listening to an event here called 'message'
-  socket.on('message', (message) => {
-    // and emitting the message event for any client listening to it
-    io.emit('message', message);
+  db.Namespace.find({}).then(nsData => {
+    socket.emit('nsList', nsData);
+    // io.of(nsData.endpoint).on('connection', (nsSocket) => {
+    //   console.log(nsSocket.handshake)
+      // const username = nsSocket.handshake.query.username;
+    // });
+
+    // we are listening to an event here called 'message'
+    socket.on('message', (message) => {
+      const fullMsg = {
+        message: message,
+        time: Date.now().toLocaleString(),
+        sender: "anon",
+        avatar: "https://via.placeholder.com/200"
+      };
+      console.log(fullMsg);
+      // and emitting the message event for any client listening to it
+      io.emit('message', message);
+    });
+
   });
 });
-
-// server.listen(PORT, function () {
-//   console.log(`🌎 ==> Server now on port ${PORT}!`);
-// });
