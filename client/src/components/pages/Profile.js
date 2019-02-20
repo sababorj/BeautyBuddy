@@ -93,28 +93,14 @@ class Profile extends Component {
         this.setState({ image: body.s3Url });
         // console.log(this.state)
         API.updateUser('image', this.state.username, body.s3Url)
-          .then(async (response) => {
-            const image = await API.face(this.state.username)
-            console.log(image.data)
-            API.facialRecognition(image.data)
-              .then(response => {
-                console.log(response)
-                // The base64 data of the image
-                const base64Image = e.target.result;
-
-                // // / / Upload images in binary mode
-                // // / / Turn base64 into binary
-                // let image = API.face.dataURItoBlob(base64Image);
-                // // / / According to the individual needs to fill in the parameters, here are all written, including age and gender, etc., see the official document for details
-                // let attributes = 'gender';
-                // // Upload the image and get the result
-                // let dataDic = { 'image_file': image, 'return_landmark': 2, 'return_attributes': attributes };
-                // console.log(image)
-                // console.log(attributes)
-                // console.log(dataDic)
-                // console.log(response)
-              })
-          })
+        //   .then(async (response) => {
+        //     const image = await API.face(this.state.username)
+        //     console.log(image.data)
+        //     API.facialRecognition(image.data)
+        //   .then(response =>{
+        //     console.log(response);
+        //   })
+        // })
       })
     });
 
