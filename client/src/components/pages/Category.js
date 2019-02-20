@@ -48,12 +48,12 @@ class Category extends Component {
                         <br></br>
                         <div className="card text-center">
                             <div className="card-header text-center about-us">
-                                About Us
+                                Who We Are
                         </div>
                             <div className="card-body white-bk1">
-                                <h5 className="card-title">Always have your favorite beauty products at the tip of your fingers!</h5>
-                                <p className="card-text">Whether you are wanting to look for eye, lip, skin or nail producuts...Beauty Buddy has it all! No need to look any where else. We have made it easy for you!</p>
-                                <a href="/" className="btn btn-md btn-outline-secondary">Subscribe</a>
+                                <h5 className="card-title">The Beauty Buddies!</h5>
+                                <p className="card-text">Beauty Buddy is the journaled resource hub for luxury and designer cosmetics, all falling under The Beauty Buddy umbrella. Beauty Buddy features in-depth products, reviews, photos, swatches, and even video tutorials. Focused on providing beautiful peeople all over the world with insight on new and trendy products. It serves as a trusted guide when navigating through the oftentimes overwhelming world of luxury beauty products and goods.</p>
+                                <p>Always have your favorite beauty products at the tip of your fingers!</p>
                             </div>
                         </div>
                         <br></br>
