@@ -148,7 +148,8 @@ class Profile extends Component {
 
       <div>
         <div className="row drop">
-          <div className="col-sm-4">
+          <div className="col-sm-1"></div>
+          <div className="col-sm-3">
             <div className="card mx-auto mb-3 sidebar-prof">
               <h5 className="prof-header center-flex">Welcome {this.state.username}</h5>
               <div className="profile-image center-flex" style={{ backgroundImage: `url(${this.state.image})` }}>
@@ -158,68 +159,91 @@ class Profile extends Component {
                 Your Brand: {this.state.favBrand}</p>
               <div className="pad-it">
                 <form onSubmit={this.uploadPic} >
-                  <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
-                  <button className="btn btn-md btn-outline-secondary" type="submit">Save Image</button>
+                  <input ref={(ref) => { this.uploadInput = ref; }} type="file" className="btn btn-sm btn-light" />
+                  <button className="btn btn-sm btn-light" type="submit">Save Image</button>
                 </form>
-                <label htmlFor="zipcode" className="profile-labels"><br></br><strong>Update Zip Code</strong></label>
-                <input name="zipcode" type="text" value={this.state.zipcode} onChange={this.changeInput} placeholder="Alter Zipcode"></input>
-                <button onClick={this.updateZip} className="btn btn-md btn-outline-secondary">Update Zip</button><br></br>
-                <label htmlFor="brand" className="profile-labels"><br></br><strong>Shop By Brand</strong></label>
-                <select className="selectpicker" name="brand" onChange={this.updateBrand} value={this.state.favBrand}>
-                  {this.state.brandArray.map(item => (
-                    <option value={item} key={item}>{item}</option>
-                  ))}
-                </select>
-                <button onClick={this.updateUser} type="button" className="btn btn-md btn-outline-secondary">Save New Brand</button>
-                <hr />
-                <h4 className="card-title">Your Saved Items</h4>
-                {this.state.saveItem.map((item, i) => (
-                  <div key={i}>
-                    <button className="btn btn-danger save" onClick={() => { this.UnsaveItem(i) }}>UnSave</button>
-                    <a href={item.product_link} target="blank">
-                      <div className="yourMakeup center" style={{ backgroundImage: `url(${item.image_link})` }}>
-                      </div>
-                    </a>
-                    <p>Item: {item.name}</p>
-                    <p>Brand: {item.brand}</p>
-                    <p>Price: ${item.price}</p>
-                    <hr />
-                  </div>
-                ))}
+
+                <p className="my-profile">
+                  <label htmlFor="zipcode" className="profile-labels"><br></br><strong>Update Zip Code</strong></label>
+                  <br></br><input name="zipcode" type="text" value={this.state.zipcode} onChange={this.changeInput} placeholder="Alter Zipcode"></input>
+                  <br></br><button onClick={this.updateZip} className="btn btn-sm btn-light">Update Zip</button><br></br>
+                  <br></br><label htmlFor="brand" className="profile-labels"><br></br><strong>Shop By Brand</strong></label>
+                  <br></br><select className="selectpicker" name="brand" onChange={this.updateBrand} value={this.state.favBrand}>
+                    {this.state.brandArray.map(item => (
+                      <option value={item} key={item}>{item}</option>
+                    ))}
+                  </select>
+                  <br></br><button onClick={this.updateUser} type="button" className="btn btn-md btn-outline-secondary">Save New Brand</button>
+                  <hr />
+                </p>
               </div>
             </div>
           </div>
-          <div className="col-md bg-light">
-            <div className="row scrolling-wrapper">
-              {/* <img className="card-img-top" src="/image/marble-makeup.png" alt="Card image cap" /> */}
-              <div>
-                <h5 className="shop-save-studios">Your Shop</h5>
-                <div>
-                  <div className="scrolling-wrapper">
-                    {this.state.shop.map((item, i) => (
-                      <div key={i}>
-                        <hr />
 
-                        <div className="card items-cards">
-                          <img className="yourMakeup center" style={{ backgroundImage: `url(${item.image_link})` }} />
-                          <div className="card-body">
-                            <p>Item: {item.name}</p>
-                            <p>Brand: {item.brand}</p>
-                            <p>Price: ${item.price}</p>
-                            <button className="btn btn-success save" onClick={() => { this.saveItem(i) }}>Save</button>
-                            <a href={item.product_link} target="blank"> </a>
+          {/* SHOP BRANDS */}
+
+          <div className="col-7 all-white ">
+            <div>
+              <div className="row scrolling-wrapper card-sections " id="main">
+                <div>
+                  <h5 className="prof-header center-flex">Shop Your Brands</h5>
+                  <div>
+                    <div className="scrolling-wrapper">
+                      {this.state.shop.map((item, i) => (
+                        <div key={i}>
+                          <hr />
+                          <div className="card-group">
+                            <div className="card items-cards text-center">
+                              <div className="products-thumbs yourMakeup" style={{ backgroundImage: `url(${item.image_link})` }} />
+                              <div className="card-body">
+                                <p>{item.name}</p>
+                                <p>${item.price}0</p>
+                                <button className="btn btn-light btn-block save" onClick={() => { this.saveItem(i) }}>Save</button>
+                                <a href={item.product_link} target="blank"></a>
+                                <a href={item.product_link} target="blank"> </a>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
 
-          {/* <div className="col-md-4 bg-light">
+              {/* WISHLIST */}
+              <div className="row scrolling-wrapper card-sections">
+                <div>
+                  <h5 className="prof-header center-flex">Your Wishlist</h5>
+                  <div>
+                    <div className="scrolling-wrapper">
+                      {this.state.saveItem.map((item, i) => (
+                        <div key={i}>
+                          <hr />
+                          <div className="card-group">
+                            <div className="card items-cards text-center">
+                              <a href={item.product_link} target="blank"><img className="yourMakeup center" style={{ backgroundImage: `url(${item.image_link})` }} />
+                              </a><div className="card-body">
+                                <p>Item: {item.name}</p>
+                                <p>Price: ${item.price}</p>
+                                <button className="btn btn-block btn-light save" onClick={() => { this.UnsaveItem(i) }}>Remove</button>
+                                <a href={item.product_link} target="blank"></a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* STUDIOS */}
+
+
+
+                {/* <div className="col-md-4 bg-light">
             <div className="card">
               <img className="card-img-top" src="/image/salon.jpg" alt="Card image cap" />
               <div className="card-body">
@@ -240,13 +264,24 @@ class Profile extends Component {
           </div> */}
 
 
-          <div className="row drop">
+
+
+
+
+
+
+
+
+              </div>
+            </div>
+            <div className="col-1"></div>
+
 
 
           </div>
 
 
-        </div>
+        </div >
       </div >
 
     )

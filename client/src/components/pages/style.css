@@ -36,7 +36,13 @@ body {
     padding-right: 50px;
   }
 
-  
+
+  .all-white{
+    background-color: white;
+    border: solid 1px #a76652;
+    margin-left: 20px;
+  }
+
 .white-bk1 {
     padding-top: 20px;
     background-color: rgb(255, 238, 240);
@@ -46,7 +52,7 @@ body {
 
 .card-body {
   background-color:white; 
-  }
+}
 
 .about-us {
     background-color: lightyellow;
@@ -80,10 +86,20 @@ img {
 .yourMakeup {
     height: 150px;
     width: 150px;
-    align-content: center;
     background-repeat: no-repeat;	
     background-size: contain;	  
   }
+
+
+  #main {
+    display: flex;
+  }
+
+ .products-thumbs {
+  align-content: center;
+  justify-content: center;
+  margin-left: 30%;
+  } 
 
 .profile-image {
     height: 200px;
@@ -96,12 +112,19 @@ img {
     align-content: center;
 }
 
+input, form {
+  border: none;
+  border-color: transparent;
+}
 .bg-light, .sidebar-prof {
     padding: 10px;
     border: solid 1px #c3847b;
-
+    background: white;
 }
 
+.my-profile {
+  align-content: center;
+}
 .prof-header {
     font-weight: bold;
 }
@@ -120,6 +143,7 @@ img {
 .profile-sidebar{ 
     text-align:center;
     align-content:center;
+    background-color: white;
 }
 .white-text {
     color:white;
@@ -160,12 +184,17 @@ img {
   color: black;
 }
 
+
 /* Profile Cards Scroller*/
 
-.card {
+.container-max {
+  max-width: 1800px;
+}
+.item-cards {
   margin-bottom: 2rem;
   border: 0;
   display: flex;
+  align-content: center;
   max-width: 18rem;
   margin: 10px;
 }
@@ -176,8 +205,9 @@ img {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    overflow-x: auto;
+    overflow-x: ;
     overflow-y: hidden;
+    margin: 20px;
   
 }
 
@@ -185,80 +215,22 @@ img {
   padding: 10px;
   margin-left: 2rem;
 }
+
 /* .card-text {
   font-size: 85%;
 }
+*/
 
 .items-cards {
   width: 18rem;
-} */
+  border: none;
+} 
 
-.beauty-scroller {
-  display: flex;
-  overflow-x: scroll;
+img {
+  border: none;
 }
 
-/*Carousel*/
 
-@media (min-width: 768px) {
-    /* show 3 items */
-    .carousel-inner .active,
-    .carousel-inner .active + .carousel-item,
-    .carousel-inner .active + .carousel-item + .carousel-item {
-      display: block;
-    }
-  
-    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
-    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item,
-    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
-      transition: none;
-    }
-  
-    .carousel-inner .carousel-item-next,
-    .carousel-inner .carousel-item-prev {
-      position: relative;
-      transform: translate3d(0, 0, 0);
-    }
-  
-    .carousel-inner .active.carousel-item + .carousel-item + .carousel-item + .carousel-item {
-      position: absolute;
-      top: 0;
-      right: -33.3333%;
-      z-index: -1;
-      display: block;
-      visibility: visible;
-    }
-  
-    /* left or forward direction */
-    .active.carousel-item-left + .carousel-item-next.carousel-item-left,
-    .carousel-item-next.carousel-item-left + .carousel-item,
-    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item,
-    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
-      position: relative;
-      transform: translate3d(-100%, 0, 0);
-      visibility: visible;
-    }
-  
-    /* farthest right hidden item must be abso position for animations */
-    .carousel-inner .carousel-item-prev.carousel-item-right {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      display: block;
-      visibility: visible;
-    }
-  
-    /* right or prev direction */
-    .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
-    .carousel-item-prev.carousel-item-right + .carousel-item,
-    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item,
-    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
-      position: relative;
-      transform: translate3d(100%, 0, 0);
-      visibility: visible;
-      display: block;
-      visibility: visible;
-    }
-  }
-  
+.places {
+  max-width: 300px;
+}
