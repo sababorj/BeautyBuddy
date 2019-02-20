@@ -12,7 +12,7 @@ class Navbar extends Component {
     showNavigation = () => {
         if (this.Auth.loggedIn()) {
             return (
-                <ul className="navbar-nav bg-white brand-h">
+                <ul className="navbar-nav navbar-expand-xl bg-white brand-h d-flex flex-row">
                     <li className="nav-item">
                         <Link className="nav-link nav-pages" to="/profile">PROFILE</Link>
                     </li>
@@ -38,9 +38,9 @@ class Navbar extends Component {
 
     render() {
         return (
-            <nav className="navbar navbar-expand-lg brand-h bg-white">
+            <nav className="navbar navbar-expand-xl brand-h bg-white d-flex flex-row">
                 <div className="container">
-                    <Link className="navbar-brand brand-h" to="/"><img src="./image/bb-logo-nav.png" /> </Link>
+                    <Link className="navbar-brand brand-h p-2" to="/"><img src="./image/bb-logo-nav.png" /> </Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>

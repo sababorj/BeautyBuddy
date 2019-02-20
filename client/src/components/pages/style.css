@@ -1,4 +1,8 @@
 /* Global Styles*/
+img {
+  border: none;
+  border: transparent;
+}
 
 body {
     background-image: url("https://i0.wp.com/78.media.tumblr.com/953b8d8bede22657dd7393a102a98bb0/tumblr_oxxezr9Nfq1woohnbo1_1280.jpg");
@@ -36,7 +40,13 @@ body {
     padding-right: 50px;
   }
 
-  
+
+  .all-white{
+    background-color: white;
+    border: solid 1px #a76652;
+    margin-left: 20px;
+  }
+
 .white-bk1 {
     padding-top: 20px;
     background-color: rgb(255, 238, 240);
@@ -46,7 +56,7 @@ body {
 
 .card-body {
   background-color:white; 
-  }
+}
 
 .about-us {
     background-color: lightyellow;
@@ -80,10 +90,20 @@ img {
 .yourMakeup {
     height: 150px;
     width: 150px;
-    align-content: center;
     background-repeat: no-repeat;	
     background-size: contain;	  
+    border: none;
   }
+
+  #main {
+    display: flex;
+  }
+
+ .products-thumbs {
+  align-content: center;
+  justify-content: center;
+  margin-left: 30%;
+  } 
 
 .profile-image {
     height: 200px;
@@ -96,12 +116,20 @@ img {
     align-content: center;
 }
 
+input, form {
+  border: none;
+  border-color: transparent;
+}
 .bg-light, .sidebar-prof {
     padding: 10px;
     border: solid 1px #c3847b;
-
+    background: white;
 }
 
+.my-profile {
+  align-content: center;
+  padding: 20px;
+}
 .prof-header {
     font-weight: bold;
 }
@@ -120,6 +148,7 @@ img {
 .profile-sidebar{ 
     text-align:center;
     align-content:center;
+    background-color: white;
 }
 .white-text {
     color:white;
@@ -150,9 +179,53 @@ img {
     margin-top: 1vh;
 }
 
-label {
+.profile-labels {
     color: #a76652;;
 }
 .save{
     float: right;
+}
+.login-labels {
+  color: black;
+}
+
+
+/* Profile Cards Scroller*/
+
+.container-max {
+  max-width: 1800px;
+}
+.item-cards {
+  margin-bottom: 2rem;
+  border: 0;
+  display: flex;
+  align-content: center;
+  max-width: 18rem;
+  margin: 10px;
+}
+
+.scrolling-wrapper {
+  -webkit-overflow-scrolling: touch;
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-y: hidden;
+    margin: 20px;
+  
+}
+
+.shop-save-studios {
+  padding: 10px;
+  margin-left: 2rem;
+}
+
+.items-cards {
+  width: 18rem;
+  border: none;
+} 
+
+
+.places {
+  max-width: 300px;
 }
