@@ -60,6 +60,7 @@ app.post('/api/signup', (req, res) => {
     .catch(err => res.status(400).json(err));
 });
 
+require('./scripts/seedDB')(app);
 // Face Routes
 require('./routes/faceRoutes')(app);
 
