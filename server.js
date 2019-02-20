@@ -6,13 +6,12 @@ const exjwt = require('express-jwt');
 const mongoose = require('mongoose');
 const morgan = require('morgan'); // used to see requests
 const app = express();
-const server = require('http').createServer(app);
+const PORT = process.env.PORT || 3001;
+const server = app.listen(PORT);
 const db = require('./models');
 const axios = require('axios');
-const PORT = process.env.PORT || 3001;
-
-
-const io = require('socket.io')(server);
+const socketio = require('socket.io');
+const io = socketio(server);
 
 // Setting CORS so that any website can
 // Access our API
@@ -38,24 +37,6 @@ const isAuthenticated = exjwt({
   secret: process.env.SERVER_SECRET
 });
 
-// API Call for product data
-
-let productType = "foundation";
-const queryUrl = `http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${productType}`;
-
-axios.get(queryUrl)
-  .then(response => {
-    for (let i = 0; i < 4; i++) {
-      let brand = response.data[i].brand;
-
-    }
-  })
-  .catch(error => {
-    console.log(error);
-  })
-
-
-
 // LOGIN ROUTE
 app.post('/api/login', (req, res) => {
   db.User.findOne({
@@ -79,74 +60,19 @@ app.post('/api/signup', (req, res) => {
     .catch(err => res.status(400).json(err));
 });
 
+// Script adding namespace to database for socketio chat
+require('./scripts/seedDB')(app);
+// Face Routes
+// require('./routes/faceRoutes')(app);
 
 // MakeUp API Routes
-productResult: [],
+require('./routes/makeUpRoutes')(app);
 
-  app.post('/api/getItem', async (req, res) => {
-    const productResult = [];
-    const queryUrl = `http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${req.body.category}`;
-    // const promise = new Promise(res, rej)
+// Place API Routes
+require('./routes/placeRoutes')(app);
 
-    try {
-      response = await axios.get(queryUrl)
-      console.log(response.data)
-      for (let i = 0; i < 6; i++) {
-        productResult.push(response.data[i])
-      }
-      res.send(productResult);
-    } catch (error) {
-      console.log(error);
-    }
-  })
-
-app.post('/api/getShop', (req, res) => {
-  const shop = [];
-  const queryUrl = `http://makeup-api.herokuapp.com/api/v1/products.json?brand=${req.body.brand}`
-  axios.get(queryUrl)
-    .then(response => {
-      for (let i = 0; i < 6; i++) {
-        shop.push(response.data[i])
-      }
-      console.log(shop)
-      res.send(shop);
-    })
-    .catch(error => {
-      console.log(error);
-    })
-})
-
-// Update Route
-app.post('/api/update', async (req, res) => {
-  switch (req.body.piece) {
-    case 'image':
-
-      try {
-        const data = await db.User.findOneAndUpdate({ username: req.body.username }, { image: req.body.data })
-        res.json(data)
-      } catch (error) {
-        res.status(400).json(err)
-      }
-      break;
-    case 'zipcode':
-      try {
-        const data = await db.User.findOneAndUpdate({ username: req.body.username }, { zipcode: req.body.data })
-        res.json(data)
-      } catch (error) {
-        res.status(400).json(err)
-      }
-      break;
-    case 'favBrand':
-      try {
-        const data = await db.User.findOneAndUpdate({ username: req.body.username }, { favBrand: req.body.data })
-        console.log(data)
-        res.json(data)
-      } catch (error) {
-        res.status(400).json(err)
-      }
-      break;
-  }
-})
+// Update and Save Routes
+require('./routes/updateRoutes')(app)
 
 // Any route with isAuthenticated is protected and you need a valid token
 // to access
@@ -160,50 +86,10 @@ app.get('/api/user/:id', isAuthenticated, (req, res) => {
   }).catch(err => res.status(400).send(err));
 });
 
-app.post('/api/google/:zipcode', (req, res) => {
-
-  let zip = req.params.zipcode;
-  const placesApiKey = process.env.API_KEY;
-  let geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:${zip}&key=${placesApiKey}`;
-  const storeList = [];
-
-  axios.get(geocodeUrl).then(async response => {
-    let result = response.data.results[0];
-    let lattitude = result.geometry.location.lat;
-    let longitude = result.geometry.location.lng;
-    console.log(`Lat: ${lattitude} | Long: ${longitude}`);
-
-    function getStores(lal, long, key) {
-      return new Promise((resolve, reject) => {
-        let placesUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lal},${long}&radius=15000&type=beauty_salon&key=${key}`;
-        axios.get(placesUrl).then(response => {
-          let storesNearby = (response.data.results);
-
-          // for loop through JSON response retrieve place info
-          for (let i = 0; i < 11; i++) {
-            let store = {
-              name: storesNearby[i].name,
-              address: storesNearby[i].vicinity,
-              rating: storesNearby[i].rating
-            }
-            storeList.push(store);
-          };
-          resolve(storeList)
-        }).catch(error => reject(error));
-      })
-    }
-
-    let storeData = await getStores(lattitude, longitude, placesApiKey);
-    res.send(storeData);
-
-  });
-})
-
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-
 
 app.get('/', isAuthenticated /* Using the express jwt MW here */, (req, res) => {
   res.send('You are authenticated'); //Sending some response when authenticated
@@ -225,18 +111,32 @@ app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
+
 // SOCKET.IO CHAT INITIATION 
 io.on('connection', (socket) => {
-  
-  socket.username = 'your name';
-  console.log(`New user connected ${socket.id}, ${socket.username}`);
-   // we are listening to an event here called 'message'
-   socket.on('message', (message) => {
-    // and emitting the message event for any client listening to it
-    io.emit('message', message);
-  });
-});
-
-server.listen(PORT, function () {
+  // console.log(socket.handshake)
   console.log(`🌎 ==> Server now on port ${PORT}!`);
+  console.log(`New user connected ${socket.id}`);
+  db.Namespace.find({}).then(nsData => {
+    socket.emit('nsList', nsData);
+    // io.of(nsData.endpoint).on('connection', (nsSocket) => {
+    //   console.log(nsSocket.handshake)
+      // const username = nsSocket.handshake.query.username;
+    // });
+
+    // we are listening to an event here called 'message'
+    socket.on('message', (message) => {
+      const fullMsg = {
+        message: message,
+        time: Date.now().toLocaleString(),
+        sender: "anon",
+        avatar: "https://via.placeholder.com/200"
+      };
+      console.log(fullMsg);
+      
+      // and emitting the message event for any client listening to it
+      io.emit('message', message);
+    });
+
+  });
 });
