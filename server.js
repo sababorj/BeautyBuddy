@@ -133,6 +133,7 @@ io.on('connection', (socket) => {
         avatar: "https://via.placeholder.com/200"
       };
       console.log(fullMsg);
+      
       // and emitting the message event for any client listening to it
       io.emit('message', message);
     });
