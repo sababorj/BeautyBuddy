@@ -156,31 +156,32 @@ class Profile extends Component {
               <h5 className="prof-header center-flex">Welcome {this.state.username}</h5>
               <div className="profile-image center-flex" style={{ backgroundImage: `url(${this.state.image})` }}>
               </div>
-              <p className="pad-it center-flex">User: {this.state.username}<br></br>
-                Zip Code: {this.state.zipcode}<br></br>
-                Your Brand: {this.state.favBrand}</p>
+              <p className="pad-it center-flex">
+                Your Zip: {this.state.zipcode}<br></br>
+                Preferred Brand: {this.state.favBrand}</p>
               <div className="pad-it">
                 <form onSubmit={this.uploadPic} >
                   <input ref={(ref) => { this.uploadInput = ref; }} type="file" className="btn btn-sm btn-light" />
-                  <button className="btn btn-sm btn-light" type="submit">Save Image</button>
+                  <button className="btn btn-sm btn-light" type="submit">Save</button>
                 </form>
 
                 <p className="my-profile">
-                  <label htmlFor="zipcode" className="profile-labels"><br></br><strong>Update Zip Code</strong></label>
                   <br></br><input name="zipcode" type="text" value={this.state.zipcode} onChange={this.changeInput} placeholder="Alter Zipcode"></input>
-                  <br></br><button onClick={this.updateZip} className="btn btn-sm btn-light">Update Zip</button><br></br>
-                  <br></br><label htmlFor="brand" className="profile-labels"><br></br><strong>Shop By Brand</strong></label>
+                  <label htmlFor="zipcode" className="profile-labels"><br></br><strong>Zip Code</strong></label>
+                  <button onClick={this.updateZip} className="btn btn-sm btn-light">Update</button><br></br>
+
+                  <label htmlFor="brand" className="profile-labels"><br></br><strong>Shop By Brand</strong></label>
                   <br></br><select className="selectpicker" name="brand" onChange={this.updateBrand} value={this.state.favBrand}>
                     {this.state.brandArray.map(item => (
                       <option value={item} key={item}>{item}</option>
                     ))}
                   </select>
-                  <br></br><button onClick={this.updateUser} type="button" className="btn btn-md btn-outline-secondary">Save New Brand</button>
+                  <br></br><button onClick={this.updateUser} type="button" className="btn btn-sm btn-light">Save</button>
                   <hr />
                 </p>
               </div>
-            </div>
-          </div>
+           </div>          
+           </div>
 
 
 
@@ -244,45 +245,45 @@ class Profile extends Component {
                     </div>
                   </div>
                 </div>
-                </div>
+              </div>
 
-                {/* STUDIOS */}
+              {/* STUDIOS */}
 
 
-                <div className="row scrolling-wrapper card-sections">
+              <div className="row scrolling-wrapper card-sections">
+                <div>
+                  <h5 className="prof-header center-flex">Studios and Salons</h5>
                   <div>
-                    <h5 className="prof-header center-flex">Studios and Salons</h5>
-                    <div>
-                      <div className="scrolling-wrapper">
-                        {this.state.beautyPlaces.map((yourPlaces, i) => (
-                          <div key={i}>
-                            <hr />
-                            <div className="card-group">
-                              <div className="card items-cards text-center">
-                                 <div className="card-body">
-                                  <h6 className="nav-pages">{yourPlaces.name}</h6>
-                                  <p>{yourPlaces.address}</p>
-                                  <p>{yourPlaces.rating} Stars</p>
-                                  <button className="btn btn-block btn-light save" href="www.google.com/maps">Directions</button>
-                                </div>
+                    <div className="scrolling-wrapper">
+                      {this.state.beautyPlaces.map((yourPlaces, i) => (
+                        <div key={i}>
+                          <hr />
+                          <div className="card-group">
+                            <div className="card items-cards text-center">
+                              <div className="card-body">
+                                <h6 className="nav-pages">{yourPlaces.name}</h6>
+                                <p>{yourPlaces.address}</p>
+                                <p>{yourPlaces.rating} Stars</p>
+                                <button className="btn btn-block btn-light save" href="www.google.com/maps">Directions</button>
                               </div>
                             </div>
                           </div>
+                        </div>
 
-                        ))}
-                      </div>
+                      ))}
                     </div>
                   </div>
-
-
                 </div>
+
+
               </div>
             </div>
-
           </div>
-          <div className="col-1"></div>
 
-        </div>              
+        </div>
+        <div className="col-1"></div>
+
+      </div>
 
     )
   }
