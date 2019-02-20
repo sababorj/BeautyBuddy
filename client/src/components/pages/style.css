@@ -77,7 +77,6 @@ body {
 .all-white{
   background-color: white;
   border: solid 1px #a76652;
-  margin-left: 20px;
 }
 
 .white-bk1 {
@@ -142,9 +141,6 @@ body {
   border: none;
 }
 
-#main {
-  display: flex;
-}
 
 .products-thumbs {
   align-content: center;
@@ -215,10 +211,9 @@ body {
 
 /* Profile Cards & Scroller*/
 
-.container-max {
-  max-width: 1800px;
+.sec-titles {
+  margin-top: 5vh;
 }
-
 
 .shop-save-studios {
   padding: 10px;
@@ -244,9 +239,8 @@ body {
     flex-direction: row;
     flex-wrap: nowrap;
     overflow-y: hidden;
-    margin: 20px;
-    -webkit-scrollbar: ;
-  
+    margin: 15px;
+ 
 }
 
 /* Special Effects */
@@ -260,3 +254,17 @@ a:hover{
 color: #a76652;
 }
 /* Media Queries */
+
+@media (min-width: 1330px) {
+  .profile-image {
+    margin-left: 25%;
+  }
+
+}
+
+@media (min-width: 1277px) {
+  .profile-image {
+    margin-left: 25%;
+  }
+
+}

@@ -151,6 +151,7 @@ class Profile extends Component {
                 </form>
 
                 {/* Update User Info */}
+                <hr />
                 <p className="my-profile text-center">
                   <h5 className="prof-header text-center">My Info</h5>
                   <p className="pad-it center-flex">
@@ -165,7 +166,7 @@ class Profile extends Component {
                   <br></br>
 
                   <label htmlFor="zipcode" className="details-h">
-                  <strong>Zip Code</strong></label>
+                    <strong>Zip Code</strong></label>
                   <br></br>
                   <input name="zipcode" type="text" value={this.state.zipcode} onChange={this.changeInput} placeholder="Alter Zipcode" className="text-center">
                   </input>
@@ -179,104 +180,93 @@ class Profile extends Component {
                     ))}
                   </select>
                   <br></br><button onClick={this.updateUser} type="button" className="btn btn-block btn-light">Save</button>
-                  <hr />
                 </p>
               </div>
+              <hr />
+
             </div>
+
           </div>
 
 
 
-          {/* SHOP BRANDS */}
 
           <div className="col-7 all-white ">
             <div>
-              <div className="row scrollbar card-sections " id="main">
-                <div>
-                  <h5 className="prof-header center-flex">Shop Your Brands</h5>
-                  <div>
-                    <div className="scrollbar">
-                      {this.state.shop.map((item, i) => (
-                        <div key={i}>
-                          <hr />
-                          <div className="card-group">
-                            <div className="card items-cards text-center">
-                              <div className="products-thumbs yourMakeup" style={{ backgroundImage: `url(${item.image_link})` }} />
-                              <div className="card-body">
-                                <p>{item.name}</p>
-                                <p>${item.price}</p>
-                                <p><a href={item.product_link} target="blank">Learn More</a></p>
-                                <button className="btn btn-light btn-block save" onClick={() => { this.saveItem(i) }}>Save</button>
-                              </div>
-                            </div>
+
+
+              {/* SHOP BRANDS */}
+
+              <h5 className="prof-header sec-titles center-flex">Shop Your Brands</h5>
+              <div className="row scrollbar">
+                <div className="scrollbar">
+                  {this.state.shop.map((item, i) => (
+                    <div key={i}>
+                      <hr />
+                      <div className="card-group">
+                        <div className="card items-cards text-center">
+                          <div className="products-thumbs yourMakeup" style={{ backgroundImage: `url(${item.image_link})` }} />
+                          <div className="card-body">
+                            <p>{item.name}</p>
+                            <p>${item.price}</p>
+                            <p><a href={item.product_link} target="blank">Learn More</a></p>
+                            <button className="btn btn-light btn-block" onClick={() => { this.saveItem(i) }}>Save</button>
                           </div>
                         </div>
-
-                      ))}
+                      </div>
                     </div>
-                  </div>
+                  ))}
                 </div>
               </div>
 
               {/* WISHLIST */}
-              <div className="row scrollbar card-sections">
-                <div>
-                  <h5 className="prof-header center-flex">Your Wishlist</h5>
-                  <div>
-                    <div className="scrollbar">
-                      {this.state.saveItem.map((item, i) => (
-                        <div key={i}>
-                          <hr />
-                          <div className="card-group">
-                            <div className="card items-cards text-center">
-                              <div className="products-thumbs yourMakeup" style={{ backgroundImage: `url(${item.image_link})` }} />
-                              <div className="card-body">
-                                <p>{item.name}</p>
-                                <p>${item.price}</p>
-                                <p><a href={item.product_link} target="blank">Learn More</a></p>
 
-                                <button className="btn btn-block btn-light save" onClick={() => { this.UnsaveItem(i) }}>Remove</button>
-                              </div>
+                <h5 className="prof-header center-flex sec-titles">Your Wishlist</h5>
+                <div className="row scrollbar">
+                  <div className="scrollbar">
+                    {this.state.saveItem.map((item, i) => (
+                      <div key={i}>
+                        <hr />
+                        <div className="card-group">
+                          <div className="card items-cards text-center">
+                            <div className="products-thumbs yourMakeup" style={{ backgroundImage: `url(${item.image_link})` }} />
+                            <div className="card-body">
+                              <p>{item.name}</p>
+                              <p>${item.price}</p>
+                              <p><a href={item.product_link} target="blank">Learn More</a></p>
+                              <button className="btn btn-block" onClick={() => { this.UnsaveItem(i) }}>Remove</button>
                             </div>
                           </div>
                         </div>
-
-                      ))}
-                    </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              </div>
+
+
 
               {/* STUDIOS */}
-
-
-              <div className="row scrollbar card-sections">
-                <div>
-                  <h5 className="prof-header center-flex">Studios and Salons</h5>
-                  <div>
-                    <div className="scrollbar">
-                      {this.state.beautyPlaces.map((yourPlaces, i) => (
-                        <div key={i}>
-                          <hr />
-                          <div className="card-group">
-                            <div className="card mini items-cards text-center">
-                              <div className="card-body">
-                                <h6 className="nav-pages">{yourPlaces.name}</h6>
-                                <p>{yourPlaces.address}</p>
-                                <p>{yourPlaces.rating} Stars</p>
-                                <button className="btn btn-block btn-light save" href="https://www.google.com/maps">Directions</button>
-                              </div>
+                <h5 className="prof-header center-flex sec-titles">Studios and Salons</h5>
+                <div className="row scrollbar">
+                  <div className="scrollbar">
+                    {this.state.beautyPlaces.map((yourPlaces, i) => (
+                      <div key={i}>
+                        <hr />
+                        <div className="card-group">
+                          <div className="card mini items-cards text-center">
+                            <div className="card-body">
+                              <h6 className="nav-pages">{yourPlaces.name}</h6>
+                              <p>{yourPlaces.address}</p>
+                              <p>{yourPlaces.rating} Stars</p>
+                              <button className="btn btn-block" href="https://www.google.com/maps" target="blank">Directions</button>
                             </div>
                           </div>
                         </div>
+                      </div>
 
-                      ))}
-                    </div>
+                    ))}
                   </div>
                 </div>
-
-
-              </div>
             </div>
           </div>
 
