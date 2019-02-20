@@ -6,12 +6,12 @@ const exjwt = require('express-jwt');
 const mongoose = require('mongoose');
 const morgan = require('morgan'); // used to see requests
 const app = express();
-const server = require('http').createServer(app);
+const PORT = process.env.PORT || 3001;
+const server = app.listen(PORT);
 const db = require('./models');
 const axios = require('axios');
-const PORT = process.env.PORT || 3001;
-
-const io = require('socket.io')(server);
+const socketio = require('socket.io');
+const io = socketio(server);
 
 // Setting CORS so that any website can
 // Access our API
@@ -60,7 +60,8 @@ app.post('/api/signup', (req, res) => {
     .catch(err => res.status(400).json(err));
 });
 
-
+// Script adding namespace to database for socketio chat
+require('./scripts/seedDB')(app);
 // Face Routes
 // require('./routes/faceRoutes')(app);
 
@@ -90,7 +91,6 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-
 app.get('/', isAuthenticated /* Using the express jwt MW here */, (req, res) => {
   res.send('You are authenticated'); //Sending some response when authenticated
 });
@@ -111,18 +111,32 @@ app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
+
 // SOCKET.IO CHAT INITIATION 
 io.on('connection', (socket) => {
-
-  socket.username = 'your name';
-  console.log(`New user connected ${socket.id}, ${socket.username}`);
-  // we are listening to an event here called 'message'
-  socket.on('message', (message) => {
-    // and emitting the message event for any client listening to it
-    io.emit('message', message);
-  });
-});
-
-server.listen(PORT, function () {
+  // console.log(socket.handshake)
   console.log(`🌎 ==> Server now on port ${PORT}!`);
+  console.log(`New user connected ${socket.id}`);
+  db.Namespace.find({}).then(nsData => {
+    socket.emit('nsList', nsData);
+    // io.of(nsData.endpoint).on('connection', (nsSocket) => {
+    //   console.log(nsSocket.handshake)
+      // const username = nsSocket.handshake.query.username;
+    // });
+
+    // we are listening to an event here called 'message'
+    socket.on('message', (message) => {
+      const fullMsg = {
+        message: message,
+        time: Date.now().toLocaleString(),
+        sender: "anon",
+        avatar: "https://via.placeholder.com/200"
+      };
+      console.log(fullMsg);
+      
+      // and emitting the message event for any client listening to it
+      io.emit('message', message);
+    });
+
+  });
 });

@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import withAuth from './withAuth';
 import API from '../../utils/API';
-import {sockets} from '../../utils/sockets';
+import { sockets } from '../../utils/sockets';
 import "./message.css";
 
 class Message extends Component {
 
   state = {
     username: "",
-    email: "",
+    namespace: "",
     image: "",
     messages: []
   };
   constructor(props) {
     super(props);
+    sockets.listenForNamespace(data => {
+      this.setState({namespace: data[0].title});
+    });
     sockets.listenForMessage(data => {
       this.setState({ messages: [...this.state.messages, data] })
     });
@@ -24,7 +27,6 @@ class Message extends Component {
     API.getUser(this.props.user.id).then(res => {
       this.setState({
         username: res.data.username,
-        email: res.data.email,
         image: res.data.image
       })
     })
@@ -118,7 +120,7 @@ class Message extends Component {
                     className="form-control-lg write_msg"
                   />
                 </div>
-                <button type="submit" className="msg_send_btn" onClick={this.submitForm}><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                <button type="submit" className="msg_send_btn" onClick={this.submitForm}><i class="fas fa-paper-plane" aria-hidden="true"></i></button>
               </form>
 
             </div>

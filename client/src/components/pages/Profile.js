@@ -41,7 +41,6 @@ class Profile extends Component {
       }
       this.getSavedItems(this.state.username)
     });
-
   }
 
   getBeautyPlaces = () => {
