@@ -62,7 +62,7 @@ app.post('/api/signup', (req, res) => {
 
 
 // Face Routes
-require('./routes/faceRoutes')(app);
+// require('./routes/faceRoutes')(app);
 
 // MakeUp API Routes
 require('./routes/makeUpRoutes')(app);

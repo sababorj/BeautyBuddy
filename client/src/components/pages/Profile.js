@@ -93,14 +93,14 @@ class Profile extends Component {
         this.setState({ image: body.s3Url });
         // console.log(this.state)
         API.updateUser('image', this.state.username, body.s3Url)
-          .then(async (response) => {
-            const image = await API.face(this.state.username)
-            console.log(image.data)
-            API.facialRecognition(image.data)
-          .then(response =>{
-            console.log(response);
-          })
-        })
+        //   .then(async (response) => {
+        //     const image = await API.face(this.state.username)
+        //     console.log(image.data)
+        //     API.facialRecognition(image.data)
+        //   .then(response =>{
+        //     console.log(response);
+        //   })
+        // })
       })
     });
 
