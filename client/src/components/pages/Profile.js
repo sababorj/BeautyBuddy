@@ -171,7 +171,7 @@ class Profile extends Component {
                   <input name="zipcode" type="text" value={this.state.zipcode} onChange={this.changeInput} placeholder="Alter Zipcode" className="text-center">
                   </input>
 
-                  <button onClick={this.updateZip} className="btn btn-block btn-light">Update</button><br></br>
+                  <button onClick={this.updateZip} className="btn btn-block btn-light">Save</button><br></br>
 
                   <label htmlFor="brand" className="details-h"><br></br><strong>Shop By Brand</strong></label>
                   <br></br><select className="selectpicker" name="brand" onChange={this.updateBrand} value={this.state.favBrand}>
@@ -206,9 +206,8 @@ class Profile extends Component {
                               <div className="card-body">
                                 <p>{item.name}</p>
                                 <p>${item.price}</p>
+                                <p><a href={item.product_link} target="blank">Learn More</a></p>
                                 <button className="btn btn-light btn-block save" onClick={() => { this.saveItem(i) }}>Save</button>
-                                <a href={item.product_link} target="blank"></a>
-                                <a href={item.product_link} target="blank"> </a>
                               </div>
                             </div>
                           </div>

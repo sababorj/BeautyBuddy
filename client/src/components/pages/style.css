@@ -3,7 +3,7 @@
 /* Global Styles*/
 a {
   display: block;
-  color: #a76652;
+  color: black;
 }
 
 img {
@@ -257,6 +257,6 @@ body {
 }
 
 a:hover{
-color: pink;
+color: #a76652;
 }
 /* Media Queries */
