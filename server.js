@@ -60,6 +60,7 @@ app.post('/api/signup', (req, res) => {
     .catch(err => res.status(400).json(err));
 });
 
+// Script adding namespace to database for socketio chat
 require('./scripts/seedDB')(app);
 // Face Routes
 require('./routes/faceRoutes')(app);
@@ -113,8 +114,8 @@ app.get("*", function (req, res) {
 // SOCKET.IO CHAT INITIATION 
 io.on('connection', (socket) => {
 
-  socket.username = 'your name';
-  console.log(`New user connected ${socket.id}, ${socket.username}`);
+  console.log(`🌎 ==> Server now on port ${PORT}!`);
+  console.log(`New user connected ${socket.id}`);
   // we are listening to an event here called 'message'
   socket.on('message', (message) => {
     // and emitting the message event for any client listening to it
