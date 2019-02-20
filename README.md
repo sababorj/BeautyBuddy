@@ -25,8 +25,8 @@ Adobe Photoshop & Illustrator for graphics
 GitHub & Git
 
 # Authors
-Melanie Ryan - UI/UX, Bootstraping, Project Management, Heroku Makeup API | [See Melanie's GitHub](https://www.github.com/melanieryan18)
-Saba Borjian - WRITE WHAT YOU DID HERE | [See Saba's GitHub](https://www.github.com/)
+Melanie Ryan - UI/UX, Bootstraping, Front End Dev, Heroku Makeup API | [See Melanie's GitHub](https://www.github.com/melanieryan18)
+Saba Borjian - Backend Dev, API Routing & Database Integration | [See Saba's GitHub](https://www.github.com/)
 Annette Kalla - UI/UX, Bootstraping | [See Annette's GitHub](https://www.github.com/)
 Catherine Blake - Heroku Makeup API Routing, Socket.io | [See Cat's GitHub](https://www.github.com/)
 

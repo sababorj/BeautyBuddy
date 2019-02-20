@@ -1,7 +1,21 @@
+
+
 /* Global Styles*/
+a {
+  display: block;
+  color: black;
+}
+
 img {
   border: none;
   border: transparent;
+  width: 100%;
+}
+
+input, form, label {
+  border: none;
+  border-color: transparent;
+  align-content: center;
 }
 
 body {
@@ -11,7 +25,25 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-/* Cateogry Page*/
+/* Navigation Headers */
+.nav-pages {
+  font-family: 'Oswald', sans-serif;
+  color:black;
+}
+
+
+.btn {
+  font-family: 'Oswald', sans-serif;
+  color:black;
+  text-transform: uppercase;
+  background: transparent;
+}
+
+.profilecardbody {
+  font-size: 90%
+}
+
+/* Cateogry(Home) Page*/
 .category-image{
     height: 250px;
     width: 250px;
@@ -20,38 +52,38 @@ body {
     margin: auto;
     margin-bottom: 20px;
   }
+
   
-  .header{
-      font-size: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      text-align: center;
-      background-color: lightyellow;
+.header{
+  font-size: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+  background-color: lightyellow;
   }
   
-  .white-bk {
-    background-color: white;
-    padding-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-    padding-bottom: 50px;
-    padding-left: 50px;
-    padding-right: 50px;
-  }
+.white-bk {
+  background-color: white;
+  padding-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  padding-bottom: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
 
 
-  .all-white{
-    background-color: white;
-    border: solid 1px #a76652;
-    margin-left: 20px;
-  }
+.all-white{
+  background-color: white;
+  border: solid 1px #a76652;
+}
 
 .white-bk1 {
-    padding-top: 20px;
-    background-color: rgb(255, 238, 240);
-    margin-left: 70px;
-    margin-right: 70px;
+  padding-top: 20px;
+  background-color: rgb(255, 238, 240);
+  margin-left: 70px;
+  margin-right: 70px;
 }
 
 .card-body {
@@ -59,83 +91,106 @@ body {
 }
 
 .about-us {
-    background-color: lightyellow;
+  background-color: lightyellow;
 }
 
 .text-center {
-    align-content: center;
-    text-align: center;
+  align-content: center;
+  text-align: center;
 }
 
-img {
-    width: 100%;
-}
 
 .picheading {
-    text-align: center;
-    font-weight: 500;
-    background-color: lightyellow;
-    padding-top: 20px;
-    padding-bottom: 20px;
+  text-align: center;
+  font-weight: 500;
+  background-color: lightyellow;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-  .seperate {
-      margin-top: 20px;
-      margin-bottom: 20px;
-  }
+.seperate {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+.brand-h {
+  color: black;
+  font-weight: bold;
+  font-family: 'Fahkwang', sans-serif;
+}
+.drop-top {
+  margin-top: 15vh;
+  margin-bottom: 50vh;
+  max-width: 25rem;
+}
+
+.drop {
+  margin-top:5vh;
+  margin-bottom: 5vh;
+}
+
 
 
 /*Profile*/
-
 .yourMakeup {
-    height: 150px;
-    width: 150px;
-    background-repeat: no-repeat;	
-    background-size: contain;	  
-    border: none;
-  }
+  height: 150px;
+  width: 150px;
+  background-repeat: no-repeat;	
+  background-size: contain;	  
+  border: none;
+}
 
-  #main {
-    display: flex;
-  }
 
- .products-thumbs {
+.products-thumbs {
   align-content: center;
   justify-content: center;
   margin-left: 30%;
-  } 
+} 
 
 .profile-image {
-    height: 200px;
-    width: 200px;
-    background-size: contain;
-  }
+  height: 200px;
+  width: 200px;
+  background-size: contain;
+}
 
 .input-wrapper {
-    display: block;
-    align-content: center;
-}
-
-input, form {
-  border: none;
-  border-color: transparent;
-}
-.bg-light, .sidebar-prof {
-    padding: 10px;
-    border: solid 1px #c3847b;
-    background: white;
-}
-
-.my-profile {
+  display: block;
   align-content: center;
-  padding: 20px;
 }
+
+
+.bg-light, .my-profile, .sidebar-prof {
+  padding: 20px;
+  border: solid 1px #c3847b;
+  background: white;
+}
+
+
 .prof-header {
     font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+    color:black;
+    text-transform: uppercase;
 }
-  /* .profile {
-    padding-left: 35px;
-  } */
+
+.details-h {
+  font-weight: bold;
+  font-family: 'Oswald', sans-serif;
+  color:black;
+  text-transform: capitalize;
+}
+
+
+.details-header {
+  font-family: 'Oswald', sans-serif;
+  color:black;
+  text-transform: capitalize;
+}
+
+.profile-labels {
+  color: #a76652;;
+}
 
 
 /*Login Page & Global Card Styling*/
@@ -145,43 +200,7 @@ input, form {
     margin: 20px;
 }
 
-.profile-sidebar{ 
-    text-align:center;
-    align-content:center;
-    background-color: white;
-}
-.white-text {
-    color:white;
-}
 
-.nav-pages {
-    font-family: 'Oswald', sans-serif;
-    color:black;
-}
-
-.brand-h {
-    color: black;
-    font-weight: bold;
-    font-family: 'Fahkwang', sans-serif;
-}
-.drop-top {
-    margin-top: 15vh;
-    margin-bottom: 50vh;
-    max-width: 25rem;
-}
-
-.drop {
-    margin-top:5vh;
-    margin-bottom: 5vh;
-}
-
-.pad-it {
-    margin-top: 1vh;
-}
-
-.profile-labels {
-    color: #a76652;;
-}
 .save{
     float: right;
 }
@@ -190,29 +209,10 @@ input, form {
 }
 
 
-/* Profile Cards Scroller*/
+/* Profile Cards & Scroller*/
 
-.container-max {
-  max-width: 1800px;
-}
-.item-cards {
-  margin-bottom: 2rem;
-  border: 0;
-  display: flex;
-  align-content: center;
-  max-width: 18rem;
-  margin: 10px;
-}
-
-.scrolling-wrapper {
-  -webkit-overflow-scrolling: touch;
-    align-items: stretch;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    overflow-y: hidden;
-    margin: 20px;
-  
+.sec-titles {
+  margin-top: 5vh;
 }
 
 .shop-save-studios {
@@ -228,4 +228,43 @@ input, form {
 
 .places {
   max-width: 300px;
+}
+
+/* Scrollbar */
+
+.scrollbar {
+  -webkit-overflow-scrolling: touch;
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-y: hidden;
+    margin: 15px;
+ 
+}
+
+/* Special Effects */
+.btn:hover {
+  background-image:none;
+  background-color:#cf9e96;
+  color:white;
+}
+
+a:hover{
+color: #a76652;
+}
+/* Media Queries */
+
+@media (min-width: 1330px) {
+  .profile-image {
+    margin-left: 25%;
+  }
+
+}
+
+@media (min-width: 1277px) {
+  .profile-image {
+    margin-left: 25%;
+  }
+
 }

@@ -138,130 +138,135 @@ class Profile extends Component {
           {/* Profile Sidebar */}
           <div className="col-sm-3">
             <div className="card mx-auto mb-3 sidebar-prof">
-              <h5 className="prof-header center-flex">Welcome {this.state.username}</h5>
+              {/* Welcome & Image  */}
+              <h5 className="prof-header center-flex">Welcome {this.state.username} !</h5>
               <div className="profile-image center-flex" style={{ backgroundImage: `url(${this.state.image})` }}>
               </div>
-              <p className="pad-it center-flex">
-                Your Zip: {this.state.zipcode}<br></br>
-                Preferred Brand: {this.state.favBrand}</p>
-              <div className="pad-it">
+
+              {/* Upload Pic */}
+              <div className="pad-it ">
                 <form onSubmit={this.uploadPic} >
                   <input ref={(ref) => { this.uploadInput = ref; }} type="file" className="btn btn-sm btn-light" />
-                  <button className="btn btn-sm btn-light" type="submit">Save</button>
+                  <button className="btn btn-block btn-light" type="submit">Save</button>
                 </form>
 
-                <p className="my-profile">
-                  <br></br><input name="zipcode" type="text" value={this.state.zipcode} onChange={this.changeInput} placeholder="Alter Zipcode"></input>
-                  <label htmlFor="zipcode" className="profile-labels"><br></br><strong>Zip Code</strong></label>
-                  <button onClick={this.updateZip} className="btn btn-sm btn-light">Update</button><br></br>
+                {/* Update User Info */}
+                <hr />
+                <p className="my-profile text-center">
+                  <h5 className="prof-header text-center">My Info</h5>
+                  <p className="pad-it center-flex">
+                    <h6 className=" details-header text-center">
+                      Your Zip: {this.state.zipcode}
+                    </h6>
+                    <br></br>
+                    <h6 className="details-header text-center">
+                      Preferred Brand: {this.state.favBrand}
+                    </h6>
+                  </p>
+                  <br></br>
 
-                  <label htmlFor="brand" className="profile-labels"><br></br><strong>Shop By Brand</strong></label>
+                  <label htmlFor="zipcode" className="details-h">
+                    <strong>Zip Code</strong></label>
+                  <br></br>
+                  <input name="zipcode" type="text" value={this.state.zipcode} onChange={this.changeInput} placeholder="Alter Zipcode" className="text-center">
+                  </input>
+
+                  <button onClick={this.updateZip} className="btn btn-block btn-light">Save</button><br></br>
+
+                  <label htmlFor="brand" className="details-h"><br></br><strong>Shop By Brand</strong></label>
                   <br></br><select className="selectpicker" name="brand" onChange={this.updateBrand} value={this.state.favBrand}>
                     {this.state.brandArray.map(item => (
                       <option value={item} key={item}>{item}</option>
                     ))}
                   </select>
-                  <br></br><button onClick={this.updateUser} type="button" className="btn btn-sm btn-light">Save</button>
-                  <hr />
+                  <br></br><button onClick={this.updateUser} type="button" className="btn btn-block btn-light">Save</button>
                 </p>
               </div>
-           </div>          
-           </div>
+              <hr />
+
+            </div>
+
+          </div>
 
 
 
-
-
-          {/* SHOP BRANDS */}
 
           <div className="col-7 all-white ">
             <div>
-              <div className="row scrolling-wrapper card-sections " id="main">
-                <div>
-                  <h5 className="prof-header center-flex">Shop Your Brands</h5>
-                  <div>
-                    <div className="scrolling-wrapper">
-                      {this.state.shop.map((item, i) => (
-                        <div key={i}>
-                          <hr />
-                          <div className="card-group">
-                            <div className="card items-cards text-center">
-                              <div className="products-thumbs yourMakeup" style={{ backgroundImage: `url(${item.image_link})` }} />
-                              <div className="card-body">
-                                <p>{item.name}</p>
-                                <p>${item.price}0</p>
-                                <button className="btn btn-light btn-block save" onClick={() => { this.saveItem(i) }}>Save</button>
-                                <a href={item.product_link} target="blank"></a>
-                                <a href={item.product_link} target="blank"> </a>
-                              </div>
-                            </div>
+
+
+              {/* SHOP BRANDS */}
+
+              <h5 className="prof-header sec-titles center-flex">Shop Your Brands</h5>
+              <div className="row scrollbar">
+                <div className="scrollbar">
+                  {this.state.shop.map((item, i) => (
+                    <div key={i}>
+                      <hr />
+                      <div className="card-group">
+                        <div className="card items-cards text-center">
+                          <div className="products-thumbs yourMakeup" style={{ backgroundImage: `url(${item.image_link})` }} />
+                          <div className="card-body">
+                            <p>{item.name}</p>
+                            <p>${item.price}</p>
+                            <p><a href={item.product_link} target="blank">Learn More</a></p>
+                            <button className="btn btn-light btn-block" onClick={() => { this.saveItem(i) }}>Save</button>
                           </div>
                         </div>
-
-                      ))}
+                      </div>
                     </div>
-                  </div>
+                  ))}
                 </div>
               </div>
 
               {/* WISHLIST */}
-              <div className="row scrolling-wrapper card-sections">
-                <div>
-                  <h5 className="prof-header center-flex">Your Wishlist</h5>
-                  <div>
-                    <div className="scrolling-wrapper">
-                      {this.state.saveItem.map((item, i) => (
-                        <div key={i}>
-                          <hr />
-                          <div className="card-group">
-                            <div className="card items-cards text-center">
-                              <a href={item.product_link} target="blank"><img className="yourMakeup center" style={{ backgroundImage: `url(${item.image_link})` }} />
-                              </a><div className="card-body">
-                                <p>Item: {item.name}</p>
-                                <p>Price: ${item.price}</p>
-                                <button className="btn btn-block btn-light save" onClick={() => { this.UnsaveItem(i) }}>Remove</button>
-                                <a href={item.product_link} target="blank"></a>
-                              </div>
+
+                <h5 className="prof-header center-flex sec-titles">Your Wishlist</h5>
+                <div className="row scrollbar">
+                  <div className="scrollbar">
+                    {this.state.saveItem.map((item, i) => (
+                      <div key={i}>
+                        <hr />
+                        <div className="card-group">
+                          <div className="card items-cards text-center">
+                            <div className="products-thumbs yourMakeup" style={{ backgroundImage: `url(${item.image_link})` }} />
+                            <div className="card-body">
+                              <p>{item.name}</p>
+                              <p>${item.price}</p>
+                              <p><a href={item.product_link} target="blank">Learn More</a></p>
+                              <button className="btn btn-block" onClick={() => { this.UnsaveItem(i) }}>Remove</button>
                             </div>
                           </div>
                         </div>
-
-                      ))}
-                    </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              </div>
+
+
 
               {/* STUDIOS */}
-
-
-              <div className="row scrolling-wrapper card-sections">
-                <div>
-                  <h5 className="prof-header center-flex">Studios and Salons</h5>
-                  <div>
-                    <div className="scrolling-wrapper">
-                      {this.state.beautyPlaces.map((yourPlaces, i) => (
-                        <div key={i}>
-                          <hr />
-                          <div className="card-group">
-                            <div className="card items-cards text-center">
-                              <div className="card-body">
-                                <h6 className="nav-pages">{yourPlaces.name}</h6>
-                                <p>{yourPlaces.address}</p>
-                                <p>{yourPlaces.rating} Stars</p>
-                                <button className="btn btn-block btn-light save" href="www.google.com/maps">Directions</button>
-                              </div>
+                <h5 className="prof-header center-flex sec-titles">Studios and Salons</h5>
+                <div className="row scrollbar">
+                  <div className="scrollbar">
+                    {this.state.beautyPlaces.map((yourPlaces, i) => (
+                      <div key={i}>
+                        <hr />
+                        <div className="card-group">
+                          <div className="card mini items-cards text-center">
+                            <div className="card-body">
+                              <h6 className="nav-pages">{yourPlaces.name}</h6>
+                              <p>{yourPlaces.address}</p>
+                              <p>{yourPlaces.rating} Stars</p>
+                              <button className="btn btn-block" href="https://www.google.com/maps" target="blank">Directions</button>
                             </div>
                           </div>
                         </div>
+                      </div>
 
-                      ))}
-                    </div>
+                    ))}
                   </div>
                 </div>
-
-
-              </div>
             </div>
           </div>
 
