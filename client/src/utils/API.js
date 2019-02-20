@@ -25,13 +25,13 @@ export default {
     return axios.post('/api/update', {piece: piece, username:username, data:data});
   },
 
-  face: (username) => {
-    return axios.post('/api/face',{username: username});
-  },
+  // face: (username) => {
+  //   return axios.post('/api/face',{username: username});
+  // },
 
-  facialRecognition: (image) => {
-    return axios.post('/api/faceAnalyze', {image:image});
-  },
+  // facialRecognition: (image) => {
+  //   return axios.post('/api/faceAnalyze', {image:image});
+  // },
 
   itemCall: function (category) {
     // return new Promise((resolve, reject) => {

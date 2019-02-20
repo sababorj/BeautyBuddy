@@ -63,7 +63,7 @@ app.post('/api/signup', (req, res) => {
 // Script adding namespace to database for socketio chat
 require('./scripts/seedDB')(app);
 // Face Routes
-require('./routes/faceRoutes')(app);
+// require('./routes/faceRoutes')(app);
 
 // MakeUp API Routes
 require('./routes/makeUpRoutes')(app);
