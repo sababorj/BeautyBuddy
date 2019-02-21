@@ -48,12 +48,13 @@ class Category extends Component {
                         <br></br>
                         <div className="card text-center">
                             <div className="card-header text-center about-us">
-                                Who We Are
+                                About Us
                         </div>
                             <div className="card-body white-bk1">
-                                <h5 className="card-title">The Beauty Buddies!</h5>
-                                <p className="card-text">Beauty Buddy is the journaled resource hub for luxury and designer cosmetics, all falling under The Beauty Buddy umbrella. Beauty Buddy features in-depth products, reviews, photos, swatches, and even video tutorials. Focused on providing beautiful peeople all over the world with insight on new and trendy products. It serves as a trusted guide when navigating through the oftentimes overwhelming world of luxury beauty products and goods.</p>
+                                <h5 className="card-title">Beauty Buddy</h5>
+                                <p className="card-text">The Beauty Buddy is the resource hub for luxury and designer cosmetics, all falling under Beauty Buddies umbrella. The Beauty Buddy features in-depth products, reviews, photos, and even some video tutorials. Focused on providing #BeautyBuddies all around the globe with insight on all different products for all. It serves as a trusted guide when navigating through the oftentimes overwhelming world of luxury beauty products and goods.</p>
                                 <p>Always have your favorite beauty products at the tip of your fingers!</p>
+                                <a href="/" className="btn btn-md btn-outline-secondary">Subscribe</a>
                             </div>
                         </div>
                         <br></br>
@@ -66,7 +67,45 @@ class Category extends Component {
                         </div>
                     </div>
                 </div>
+                <br></br>
+                <br></br>
+
+                <footer className="page-footer font-small special-color-dark pt-4">
+                    <div className="container-2">
+                        <ul className="list-unstyled list-inline text-center">
+                            <li className="list-inline-item">
+                                <a className="btn-floating btn-fb mx-1">
+                                    <i className="fab fa-facebook-f"> </i>
+                                </a>
+                            </li>
+                            <li className="list-inline-item">
+                                <a className="btn-floating btn-tw mx-1">
+                                    <i className="fab fa-twitter"> </i>
+                                </a>
+                            </li>
+                            <li className="list-inline-item">
+                                <a className="btn-floating btn-gplus mx-1">
+                                    <i className="fab fa-google-plus-g"> </i>
+                                </a>
+                            </li>
+                            <li className="list-inline-item">
+                                <a className="btn-floating btn-li mx-1">
+                                    <i className="fab fa-linkedin-in"> </i>
+                                </a>
+                            </li>
+                            <li className="list-inline-item">
+                                <a className="btn-floating btn-dribbble mx-1">
+                                    <i className="fab fa-dribbble"> </i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="footer-copyright text-center py-3">© 2019 Copyright:
+      <a href="https://beautybuddy.herokuapp.com/">beautybuddy.herokuapp.com</a>
+                    </div>
+                </footer>
             </div>
+
         );
     }
 }
