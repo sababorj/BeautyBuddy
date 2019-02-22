@@ -1,6 +1,10 @@
 # BeautyBuddy
 Beauty Buddy is a personalized shopping assistant & virtual wellness buddy that helps you shop relevant products and find nearby studios. The ultimate goal of Beauty Buddy is to be a one-stop shop and hub to track your wellness journey. Part shopping assistant, part wellness and accountability coach. The E-commerce, Beauty, Health, and Wellness industries are growing exponentially - Americans spent over $12 billion on beauty and personal care products online over the last year
 
+To preview, feel free to go through the sign up process or use the following for logging in:
+demo@gmail.com
+demo
+
 [View Presentation](https://docs.google.com/presentation/d/e/2PACX-1vQrVRoJwS4R7jaGjcstDqiY3aESLpIWBO6g-Z32VZwEi0KJqRnoMewrNMFQZbk4YdlafmpXMxEEspHv/pub?start=false&loop=false&delayms=3000)
 
 ## Getting Started
